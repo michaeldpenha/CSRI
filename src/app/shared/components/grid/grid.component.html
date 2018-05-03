@@ -1,1 +1,35 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <ng-container *ngFor="let colDef of columnDefs">
+          <th>
+            <div (click) = "triggerSort(colDef)">
+              {{colDef.title}}
+              <span *ngIf="showSortingOptions(colDef)">
+                <span *ngIf="!reverseSort"><img src="../../assets/images/sort-up.png"></span>
+                <span *ngIf="reverseSort"><img src="../../assets/images/sort-down.png"></span>
+              </span>
+            </div>
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let data of gridData">
+        <tr>
+          <ng-container *ngFor="let colDef of columnDefs">
+            <td>{{customTemplate(data,colDef)}}</td>
+          </ng-container>
+        </tr>
+      </ng-container>
+
+      <!--<tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>-->
+    </tbody>
+  </table>
+</div>
 <app-pagination></app-pagination>

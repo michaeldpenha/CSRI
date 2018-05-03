@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { GridComponent } from './shared/components/grid/grid.component';
 import { SalesorderlistComponent } from './components/salesorderlist/salesorderlist.component';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
-import {GridService} from './shared/services/grid/grid.service';
+import {GridService} from './shared/components/grid/grid.service';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import {UtilsService} from './shared/services/utils/utils.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [GridService],
+  providers: [GridService,UtilsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

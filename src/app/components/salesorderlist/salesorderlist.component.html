@@ -1,4 +1,4 @@
 <p>
   salesorderlist works!
 </p>
-<app-grid></app-grid>
+<app-grid [columnDefs] = "columnDefs" [data]="data" (sortTrigger)="sortGridData($event)"></app-grid>
