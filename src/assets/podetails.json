@@ -1,0 +1,42 @@
+[
+  {
+    "cardNumber": "XXXX 56895",
+    "cardSelected": true
+  },
+  {
+    "cardNumber": "XXXX 11111",
+    "cardSelected": false
+  },
+  {
+    "cardNumber": "XXXX 12345",
+    "cardSelected": false
+  },
+  {
+    "cardNumber": "XXXX 78787",
+    "cardSelected": true
+  },
+  {
+    "cardNumber": "XXXX 12345",
+    "cardSelected": false
+  },
+  {
+    "cardNumber": "XXXX 12345",
+    "cardSelected": false
+  },
+  {
+    "cardNumber": "XXXX 12345",
+    "cardSelected": false
+  },
+  {
+    "cardNumber": "XXXX 12345",
+    "cardSelected": false
+  },
+  {
+    "cardNumber": "XXXX 12345",
+    "cardSelected": true
+  },
+  {
+    "cardNumber": "XXXX 12345",
+    "cardSelected": false
+  }
+]

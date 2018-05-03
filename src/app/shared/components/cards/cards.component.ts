@@ -9,17 +9,11 @@ import { NgForm } from '@angular/forms';
 export class CardsComponent implements OnInit {
  
   @Input() cardDetail:Object;
-  
+  @Output() cardIsSelected: EventEmitter<string> = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
   }
-  @Output() cardIsSelected: EventEmitter<string> =
-            new EventEmitter<string>();
+  
 
- 
-
-    onClick(): void {
-        this.cardIsSelected.emit(`The rating ${this.cardIsSelected} was clicked!`);
-    }
 }

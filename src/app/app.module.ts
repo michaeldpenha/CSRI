@@ -13,6 +13,8 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
 import { CardsComponent } from "./shared/components/cards/cards.component";
 import { PodetailsComponent } from "./components/podetails/podetails.component";
 import { ArrayFilterPipe } from "./shared/card-filter.pipe";
+import { POdetailsService } from "./components/podetails/podetails.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -28,9 +30,10 @@ import { ArrayFilterPipe } from "./shared/card-filter.pipe";
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [GridService],
+  providers: [GridService,POdetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
