@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GridComponent } from './grid.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { GridService } from './grid.service';
 
 describe('GridComponent', () => {
   let component: GridComponent;
@@ -8,7 +10,9 @@ describe('GridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GridComponent ]
+      declarations: [ GridComponent ],
+      providers:[GridService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
