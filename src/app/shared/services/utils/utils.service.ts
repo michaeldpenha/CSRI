@@ -18,4 +18,12 @@ export class UtilsService {
       return 0;
     }
   }
+  /**
+   * sliceArray 
+   */
+  public sliceArray = (item : any, startIndex : number, endIndex : number) : any => {
+    let slicedArray : any  = [];
+    slicedArray = item.slice(startIndex,endIndex);
+    return slicedArray;
+  }
 }

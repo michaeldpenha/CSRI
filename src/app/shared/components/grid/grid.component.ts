@@ -13,16 +13,20 @@ export class GridComponent implements OnInit, OnChanges {
   @Input('data') gridData: any = [];
   @Input() gridClass: string;
   @Input() gridConfig: any = {};
-  @Output() sortTrigger = new EventEmitter<any>(); 
+  @Input() defaultPage: number = 1;
+  @Input() pageLimit: number = 10;
+  @Input() totalRecords: number;
+  @Input() pageLimitArray : any = [];
+  @Output() sortTrigger = new EventEmitter<any>();
+  @Output() previousPage = new EventEmitter<any>();
+  @Output() nextPage = new EventEmitter<any>();
+  @Output() goToPage = new EventEmitter<any>();
+  @Output() pageLimitChange = new EventEmitter<any>();
   public reverseSort: boolean = true;
 
   // Events Exposed to parents
 
   //default values 
-
-  public orderByField: string;
-  public defaultPage: number = 1;
-  public defaultSize: number = 15;
   public noRecord: string = 'No data found'; // Need to put this string in a constant file
 
 
@@ -60,7 +64,7 @@ export class GridComponent implements OnInit, OnChanges {
    */
   public showSortingOptions = (config: any): boolean => {
     let property = this.gridService.sortField;
-    if (property == config.name) {
+    if (property == config.name && config.enableSorting) {
       return true;
     }
     return false;
@@ -69,9 +73,36 @@ export class GridComponent implements OnInit, OnChanges {
    * triggerSort
    */
   public triggerSort = (config: any): any => {
+    if (!config.enableSorting) {
+      return;
+    }
     this.gridService.sortField = config.name;
     this.reverseSort = !this.reverseSort;
     let direction = this.reverseSort ? 1 : -1;
-    this.sortTrigger.emit({direction : direction,property : this.gridService.sortField});
+    this.sortTrigger.emit({ direction: direction, property: this.gridService.sortField });
+  }
+  /**
+   * 
+   */
+  public prevPage = () =>{
+    this.previousPage.emit();
+  }
+  /**
+   * nextPage
+   */
+  public goNext = () => {
+    this.nextPage.emit();
+  }
+  /**
+   * goToPage
+   */
+  public moveToPage = (event : any ) =>{
+    this.goToPage.emit(event);
+  }
+  /**
+   * changeLimit
+   */
+  public changeLimit = (event : any ) => {
+    this.pageLimitChange.emit(event);
   }
 }
