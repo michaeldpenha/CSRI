@@ -14,6 +14,7 @@ export class SalesorderlistComponent implements OnInit {
   public pageLimit: number = 10;
   public totalRecords: number;
   public pageLimitArray : any = [];
+  public placeholder : string = 'Search for SO';
   constructor(public utils: UtilsService) { }
 
   ngOnInit() {
@@ -112,8 +113,7 @@ export class SalesorderlistComponent implements OnInit {
       deliverydate: '22/3/2019',
       statusOfOrder: 'Query'
     }];
-    this.totalRecords = this.soListData.length;
-    this.modifySoData();
+    this.modifySoData(this.soListData);
   }
   /**
    * sortGridData
@@ -123,28 +123,28 @@ export class SalesorderlistComponent implements OnInit {
     this.soListData.sort((a, b) => {
       return me.utils.sort(a, b, prop.property, prop.direction);
     });
-    this.modifySoData();
+    this.modifySoData(this.soListData);
   }
   /**
    * 
    */
   public previousPage = () => {
     this.defaultPage = this.defaultPage - 1;
-    this.modifySoData();
+    this.modifySoData(this.soListData);
   }
   /**
    * 
    */
   public nextPage = () => {
     this.defaultPage = this.defaultPage + 1;
-    this.modifySoData();
+    this.modifySoData(this.soListData);
   }
   /**
    * 
    */
   public goToPage = ($event) => {
     this.defaultPage = Number($event);
-    this.modifySoData();
+    this.modifySoData(this.soListData);
   }
   /**
    * 
@@ -152,12 +152,23 @@ export class SalesorderlistComponent implements OnInit {
   public pageLimitChange = (count: number) => {
     this.pageLimit = count;
     this.defaultPage = 1;
-    this.modifySoData();
+    this.modifySoData(this.soListData);
   }
   /**
    * 
    */
-  public modifySoData = () => {
-    this.data = this.utils.sliceArray(this.soListData, (this.defaultPage - 1) * this.pageLimit, this.defaultPage * this.pageLimit);
+  public modifySoData = (ary  :any) => {
+    this.totalRecords = ary.length;
+    this.data = this.utils.sliceArray(ary, (this.defaultPage - 1) * this.pageLimit, this.defaultPage * this.pageLimit);
+  }
+  /**
+   * searchData
+   */
+  public searchData = (val) => {
+    let searchArray : any = Object.keys(this.soListData[0]);
+    let filteredArry = this.utils.filterArray(this.soListData,val,searchArray);
+    this.defaultPage = 1;
+    this.modifySoData(filteredArry);
+    // this.data = this.utils.filterArray(this.soListData,)
   }
 }
