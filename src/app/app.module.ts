@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { GridComponent } from './shared/components/grid/grid.component';
 import { SalesorderlistComponent } from './components/salesorderlist/salesorderlist.component';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
-import {GridService} from './shared/services/grid/grid.service';
+import {GridService} from './shared/components/grid/grid.service';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import {UtilsService} from './shared/services/utils/utils.service';
 import { CardsComponent } from "./shared/components/cards/cards.component";
 import { PodetailsComponent } from "./components/podetails/podetails.component";
 import { ArrayFilterPipe } from "./shared/card-filter.pipe";
@@ -24,7 +25,8 @@ import { HttpClientModule } from "@angular/common/http";
     PaginationComponent,
     HeaderComponent,
     SidebarComponent,
-    CardsComponent,PodetailsComponent,
+    CardsComponent,
+    PodetailsComponent,
     ArrayFilterPipe
   ],
   imports: [
@@ -33,7 +35,7 @@ import { HttpClientModule } from "@angular/common/http";
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [GridService,POdetailsService],
+  providers: [GridService,UtilsService,POdetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

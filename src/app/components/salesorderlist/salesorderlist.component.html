@@ -1,4 +1,13 @@
-<p>
-  salesorderlist works!
-</p>
-<app-grid></app-grid>
+<app-grid 
+  [columnDefs] = "columnDefs" 
+  [data]="data" 
+  (sortTrigger)="sortGridData($event)"
+  [defaultPage] = "defaultPage"
+  [pageLimit] = "pageLimit"
+  [totalRecords] = "totalRecords"
+  (previousPage) = "previousPage($event)"
+  (nextPage)="nextPage($event)"
+  (goToPage) = "goToPage($event)"
+  (pageLimitChange)= "pageLimitChange($event)"
+  [pageLimitArray] = "pageLimitArray"></app-grid>
+
