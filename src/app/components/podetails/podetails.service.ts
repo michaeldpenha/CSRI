@@ -16,7 +16,7 @@ export class POdetailsService {
     constructor(private _http: HttpClient) { }
 
     getCards(): Observable<any> {
-        debugger
+        
         return this._http.get(this.jsonUrl)
             .map(response => response);
           

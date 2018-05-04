@@ -1,0 +1,28 @@
+/* Grid style variables*/
+$_font-semibold: OpenSans-Semibold;
+$_font-regular: OpenSans-Regular;
+$_table-font-size:14px;
+$_table-header-color: #395961;
+$_table-row-color: #333333;
+$_font-light:OpenSans-Light;
+$_table-header-padding:26px 20px;
+$_border-none:none;
+$_table-header-border:2px solid #c6c6c6;
+$_normal-line-height:1;
+$_table-row-padding:12px 20px;
+$_card-box-shadow:1px 0px 3px 0px rgba(0,0,0,0.2);
+$_text-decoration-underline:underline;
+
+.pagination-navigate button{
+    background: none;
+    border: $_border-none;
+    text-decoration: $_text-decoration-underline;
+    font-family:$_font-regular; 
+    font-size: $_table-font-size
+}
+.pagination-navigate button:focus{
+    outline: $_border-none;
+}
+.count-text{
+    margin-right: 50px
+}
