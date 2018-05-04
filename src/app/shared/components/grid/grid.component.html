@@ -5,11 +5,7 @@
         <ng-container *ngFor="let colDef of columnDefs">
           <th>
             <div (click)="triggerSort(colDef)">
-              {{colDef.title}}
-              <span *ngIf="showSortingOptions(colDef)">
-                <span *ngIf="!reverseSort"><img src="../../assets/images/sort-up.png"></span>
-              <span *ngIf="reverseSort"><img src="../../assets/images/sort-down.png"></span>
-              </span>
+              {{colDef.title}}<span *ngIf="showSortingOptions(colDef)"><span class="sort-arrow" *ngIf="!reverseSort"><i class="fa fa-caret-up"></i></span><span class="sort-arrow" *ngIf="reverseSort"><i class="fa fa-caret-down"></i></span></span>
             </div>
           </th>
         </ng-container>
