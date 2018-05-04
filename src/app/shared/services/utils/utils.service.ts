@@ -20,6 +20,9 @@ export class UtilsService {
   }
   /**
    * sliceArray 
+   * @Params : item - the array which needs to be slice
+   * startIndex  - the index from which it needs to start
+   * endIndex - the index till where it will end
    */
   public sliceArray = (item: any, startIndex: number, endIndex: number): any => {
     let slicedArray: any = [];
@@ -28,6 +31,11 @@ export class UtilsService {
   }
   /**
    * Filter Array
+   * @Params : items - the array which needs to be filtered
+   * filtertext - the text in which the array needs to be filtered
+   * searchIndex - the dataIndex on whihc it needs to search 
+   * 
+   * ([{name :'Michael'}], 'michael',['name'])
    */
   public filterArray = (items: any, filterText: string, searchIndex: any[]): any => {
     let filteredItems: any = [];
@@ -39,11 +47,5 @@ export class UtilsService {
       return result;
     });
     return filteredItems;
-  }
-  /**
-   * search on multiple parameters
-   */
-  public filterArrayOnMultipleParameters = (items: any) => {
-
   }
 }
