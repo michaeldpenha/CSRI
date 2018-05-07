@@ -1,4 +1,6 @@
 <app-searchfield [placeholder]="placeholder" (searchTrigger) = "searchData($event)"></app-searchfield>
+<button (click)="displayFilterOptions()">Filter</button>
+<app-filter-panel [displayPanel]="displayFilterOption" (applyFilter)="applyFilter()" (clearFilter)="clearFilter()"></app-filter-panel>
 <app-grid 
   [columnDefs] = "columnDefs" 
   [data]="data" 

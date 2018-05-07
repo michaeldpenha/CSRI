@@ -17,6 +17,7 @@ import { ArrayFilterPipe } from "./shared/card-filter.pipe";
 import { POdetailsService } from "./components/podetails/podetails.service";
 import { HttpClientModule } from "@angular/common/http";
 import { SearchfieldComponent } from './shared/components/searchfield/searchfield.component';
+import { FilterPanelComponent } from './shared/components/filter-panel/filter-panel.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SearchfieldComponent } from './shared/components/searchfield/searchfiel
     CardsComponent,
     PodetailsComponent,
     ArrayFilterPipe,
-    SearchfieldComponent
+    SearchfieldComponent,
+    FilterPanelComponent
   ],
   imports: [
     BrowserModule,
