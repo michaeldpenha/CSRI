@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormControl } from '@angular/forms';
 import { PodetailsComponent } from './podetails.component';
-
+import { Component, OnInit, ViewChildren } from '@angular/core';
+import { SearchfieldComponent } from '../../shared/components/searchfield/searchfield.component';
 describe('PodetailsComponent', () => {
   let component: PodetailsComponent;
   let fixture: ComponentFixture<PodetailsComponent>;

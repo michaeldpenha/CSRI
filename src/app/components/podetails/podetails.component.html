@@ -1,28 +1,20 @@
-<div class="">
-<form class="col-4">
-  <div class="form-row">
-     <label class="col-sm-2 col-form-label"  for="search">Search</label>
-     <input type="text" [(ngModel)]='listFilter' placeholder="Search by PAN" class="form-control col-sm-10" name="search" id="search" />
+<div class="container">
+ Search: <app-searchfield [placeholder]="placeholder" (searchTrigger)="performFilter($event)"></app-searchfield>
+  <div class="row col-sm-12">
+    <div>{{selectedCardCount}}</div>
+    <button class="pull-right" [disabled]="selectedCardCount?.length<=0" (click)="personalise($event)">Personalise</button></div>
+
+  <div class="row">
+    <div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter:true" #selectedcard>
+      <app-cards [cardDetail]='card'></app-cards>
+    </div>
   </div>
-</form>
-<br/>
-
-<div class="row">
-
-  <div class="clearfix"></div>
-<div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter:true as result"  >
-<app-cards [cardDetail]='card'  ></app-cards>
-</div>
-</div>
-
-<hr/>
-<div class="row">
-<div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter:false"  >
-<app-cards [cardDetail]='card' >   
-</app-cards>
-</div>
+  <hr/>
+  <div class="row">
+    <div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter:false">
+      <app-cards [cardDetail]='card'>
+      </app-cards>
+    </div>
+  </div>
 
 </div>
-
-</div>
-

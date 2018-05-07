@@ -5,8 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
     pure: false  
 })  
   
-export class ArrayFilterPipe implements PipeTransform {  
+export class ArrayFilterPipe implements PipeTransform {
+
      transform(items: any[], searchText: boolean): any[] {
+ 
     if(!items) return [];
    
       return items.filter( it => {

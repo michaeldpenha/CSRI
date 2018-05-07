@@ -37,7 +37,7 @@ import { SearchfieldComponent } from './shared/components/searchfield/searchfiel
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [GridService,UtilsService,POdetailsService],
+  providers: [GridService,UtilsService,POdetailsService,ArrayFilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren } from '@angular/core';
 import { POdetailsService } from './podetails.service'
-import {UtilsService} from '../../shared/services/utils/utils.service';
+import { UtilsService } from '../../shared/services/utils/utils.service';
+import { ArrayFilterPipe } from "../../shared/card-filter.pipe";
+import { SearchfieldComponent } from '../../shared/components/searchfield/searchfield.component';
 @Component({
   selector: 'app-podetails',
   templateUrl: './podetails.component.html',
@@ -8,37 +10,30 @@ import {UtilsService} from '../../shared/services/utils/utils.service';
 })
 export class PodetailsComponent implements OnInit {
 
-  _listFilter: string;
-
-  get listFilter(): string {
-    return this._listFilter;
-  }
-  set listFilter(value: string) {
-    this._listFilter = value;
-    this.filteredCards = this.listFilter ? this.performFilter(this.listFilter) : this.cardDetails;
-  }
+ @ViewChildren('selectedcard') selectedCardCount;
+ 
 
   cardDetails: any;
   filteredCards = this.cardDetails;
-  performFilter(filterBy: string): any[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.utils.filterArray(this.cardDetails,filterBy,['cardNumber']);
-    // this.cardDetails.filter((card: any) =>
-    //           (card.cardNumber.toLocaleLowerCase().indexOf(filterBy) !== -1) 
-    //         );
+  tempArray: any; 
+  performFilter(value): any {
+    value = value.toLocaleLowerCase();
+    this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['cardNumber']);
+  }
+  constructor(private podetailsService: POdetailsService, private utils: UtilsService, public cardpipe: ArrayFilterPipe) {
   }
 
-
-  constructor(private podetailsService: POdetailsService, private utils : UtilsService) {
-
-  }
-
+  
   ngOnInit() {
     this.podetailsService.getCards()
       .subscribe(cards => {
         this.cardDetails = cards;
         this.filteredCards = this.cardDetails
       });
+  }
+  personalise(eve: any) {
+    this.tempArray = this.utils.filterArray(this.cardDetails, 'true', ['cardSelected']);
+    console.log(this.tempArray);
   }
 
 }

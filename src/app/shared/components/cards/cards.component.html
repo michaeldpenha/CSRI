@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="text-right"><input type="checkbox" [(ngModel)]="cardDetail.cardSelected"/></div>
+  <div class="text-right"><input (ngModelChange)="onFilterChange($event)" type="checkbox" [(ngModel)]="cardDetail.cardSelected"/></div>
   <div class="card-body">
     <h5 class="card-title text-center">{{cardDetail.cardNumber}}</h5>    
   </div>
