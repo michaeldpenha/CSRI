@@ -13,14 +13,15 @@ export class SalesorderlistComponent implements OnInit {
   public defaultPage: number = 1;
   public pageLimit: number = 10;
   public totalRecords: number;
-  public pageLimitArray : any = [];
-  public placeholder : string = 'Search for SO';
+  public pageLimitArray: any = [];
+  public placeholder: string = 'Search for SO';
+  public displayFilterOption: boolean = false;
   constructor(public utils: UtilsService) { }
 
   ngOnInit() {
     this.populateSalesOrderGrid();
     this.fetchStatusOrderList();
-    this.pageLimitArray = [10,20,30];
+    this.pageLimitArray = [10, 20, 30];
   }
   /**
    * populateSalesOrderGrid
@@ -157,7 +158,7 @@ export class SalesorderlistComponent implements OnInit {
   /**
    * 
    */
-  public modifySoData = (ary  :any) => {
+  public modifySoData = (ary: any) => {
     this.totalRecords = ary.length;
     this.data = this.utils.sliceArray(ary, (this.defaultPage - 1) * this.pageLimit, this.defaultPage * this.pageLimit);
   }
@@ -165,10 +166,28 @@ export class SalesorderlistComponent implements OnInit {
    * searchData
    */
   public searchData = (val) => {
-    let searchArray : any = Object.keys(this.soListData[0]);
-    let filteredArry = this.utils.filterArray(this.soListData,val,searchArray);
+    let searchArray: any = Object.keys(this.soListData[0]);
+    let filteredArry = this.utils.filterArray(this.soListData, val, searchArray);
     this.defaultPage = 1;
     this.modifySoData(filteredArry);
     // this.data = this.utils.filterArray(this.soListData,)
+  }
+  /**
+   * displayFilterOptions
+   */
+  public displayFilterOptions = () => {
+    this.displayFilterOption = !this.displayFilterOption;
+  }
+  /**
+   * applyFilter
+   */
+  public applyFilter = () => {
+    console.log('Apply Filter')
+  }
+  /**
+   * clearFilter
+   */
+  public clearFilter = () => {
+    console.log('Clear Filter')
   }
 }
