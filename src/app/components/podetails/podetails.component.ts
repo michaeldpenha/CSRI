@@ -32,7 +32,7 @@ export class PodetailsComponent implements OnInit {
       });
   }
   personalise(eve: any) {
-    this.tempArray = this.utils.filterArray(this.cardDetails, 'true', ['cardSelected']);
+    this.tempArray = this.utils.filterArray(this.cardDetails, 'true', ['cardSelected'],'or');
     console.log(this.tempArray);
   }
 
