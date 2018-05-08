@@ -17,6 +17,7 @@ export class SalesorderlistComponent implements OnInit {
   public totalRecords: number;
   public pageLimitArray: any = [];
   public placeholder: string = 'Search for SO';
+  public filterButtonClass:string="col-2 filter-button fa fa-filter"
   public displayFilterOption: boolean = false;
   myForm: FormGroup;
   constructor(public utils: UtilsService) { 

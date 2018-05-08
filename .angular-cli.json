@@ -23,7 +23,8 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "assets/sass/styles.scss",
         "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-        "../node_modules/font-awesome/scss/font-awesome.scss"
+        "../node_modules/font-awesome/scss/font-awesome.scss",
+         "../node_modules/npm-font-open-sans/open-sans.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js"

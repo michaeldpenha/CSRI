@@ -1,0 +1,15 @@
+.filter-panel .card-body{
+    padding: 30px 20px 20px 30px
+}
+.pipe{
+    width: 1px;
+    background: #c5c5c5;
+    margin: 4px 0;
+}
+select.form-control:not([size]):not([multiple]){
+    height: 30px
+}
+.filter-panel{
+    -webkit-box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
