@@ -2,10 +2,10 @@
 <app-button (onButtonClick)="displayFilterOptions()"></app-button>
 <app-filter-panel [displayPanel]="displayFilterOption" (applyFilter)="applyFilter()" (clearFilter)="clearFilter()">
   <form [formGroup]="myForm">
-    Sales Order Id <input formControlName="soId" placeholder="SOID"> Issuer <input formControlName="issuer" placeholder="Issuer">    Issuer Id <input formControlName="issuerid" placeholder="Issuer Id"> Volume <input formControlName="volumeFrom" type="number">    to <input formControlName="volumeTo" type="number"> Delivery Date
+    Sales Order Id <input formControlName="orderId" placeholder="SOID">  Volume <input formControlName="volumeFrom" type="number">    to <input formControlName="volumeTo" type="number"> Delivery Date
     <input formControlName="fromDate" type="text" placeholder="Datepicker" class="form-control" bsDatepicker>
     <input formControlName="toDate" type="text" placeholder="Datepicker" class="form-control" bsDatepicker>
-    <select formControlName="statusOfOrder">
+    <select formControlName="status">
       <option value="volvo">Volvo</option>
       <option value="saab">Saab</option>
       <option value="mercedes">Mercedes</option>
