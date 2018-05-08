@@ -1,0 +1,49 @@
+<div class="reassign">
+
+  <div class="page-heading">
+    <h4>Reassign / Redirect Sales Orders</h4>
+  </div>
+
+  <div class="page-body">
+    <form  (ngSubmit)="onSubmit(reassignForm)" [formGroup]="reassignForm">
+      
+      <label>Selected Sale Orders (06)</label>
+      <div class="selection-wrapper">
+        <a class="selected">12345 <span aria-hidden="true">&times;</span></a>
+        <a class="selected">12345 <span aria-hidden="true">&times;</span></a>
+      </div>
+      <hr />
+
+      <label>Please select</label>
+      <div class="form-group">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="so" value="external" (change)="checkType()" >
+          <label class="form-check-label">External Satellites</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="so" value="cdp" (change)="checkType()">
+          <label class="form-check-label">CDP</label>
+        </div>
+      </div>
+      <br />
+      
+      <div class="form-group row" [hidden]="!showDropdown">
+        <label class="col-md-2">Choose Satellite</label>
+        <div class="col-md-4">
+          <select class="form-control" (ngModel)="reassignForm.printer" required>
+            <option selected>Choose...</option>
+            <option>Mumbai</option>
+            <option>Pune</option>
+          </select>
+        </div>
+      </div>
+      <br />
+      <br />
+      <div class="text-center">
+        <button  class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-success">Redirect</button>
+      </div>
+    </form>
+  </div><!-- .page-body -->
+
+</div><!-- .reassign -->

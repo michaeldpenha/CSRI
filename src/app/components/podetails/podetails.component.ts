@@ -18,7 +18,7 @@ export class PodetailsComponent implements OnInit {
   tempArray: any; 
   performFilter(value): any {
     value = value.toLocaleLowerCase();
-    this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['cardNumber']);
+    this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['cardNumber'],'or');
   }
   constructor(private podetailsService: POdetailsService, private utils: UtilsService, public cardpipe: ArrayFilterPipe) {
   }

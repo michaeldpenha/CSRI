@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SalesorderlistComponent } from './components/salesorderlist/salesorderlist.component';
 import { PodetailsComponent } from "./components/podetails/podetails.component";
+import { ReassignComponent } from "./components/reassign/reassign.component";
 
 const routes: Routes = [{
   path : '', redirectTo : '/sales-order', pathMatch : 'full'
@@ -11,6 +12,9 @@ const routes: Routes = [{
 },
 {
   path : 'po-details',component : PodetailsComponent
+},
+{
+  path : 'reassign',component : ReassignComponent
 }];
 
 @NgModule({

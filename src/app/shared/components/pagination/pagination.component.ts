@@ -15,6 +15,7 @@ export class PaginationComponent implements OnInit {
   @Output() goNext = new EventEmitter<boolean>();
   @Output() goPage = new EventEmitter<number>();
   @Output() changeInPerPage = new EventEmitter<number>();
+  public currentPageCount: number;
   constructor() { }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['count']) {
@@ -22,6 +23,14 @@ export class PaginationComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.calculateCurrentPageCount();
+    
+  }
+  /**
+   * calculateCurrentPageCount
+   */
+  public calculateCurrentPageCount = () => {
+    this.currentPageCount = (!this.lastPage()) ? this.perPage * this.page : this.count;
   }
   /**
    * getMin
@@ -43,18 +52,24 @@ export class PaginationComponent implements OnInit {
    * onPage
    */
   public onPage = (n: number): void => {
+    this.page = n;
+    this.calculateCurrentPageCount();
     this.goPage.emit(n);
   }
   /**
    * onPrev
    */
   public onPrev = (): void => {
+    this.page = this.page - 1;
+    this.calculateCurrentPageCount();
     this.goPrev.emit(true);
   }
   /**
    * onNext 
    */
   public onNext = (next: boolean): void => {
+    this.page = this.page + 1;
+    this.calculateCurrentPageCount();
     this.goNext.emit(next);
   }
   /**
@@ -99,6 +114,7 @@ export class PaginationComponent implements OnInit {
    */
   public onPageSelect = (...n) => {
     this.perPage = Number(n[0]);
+    this.calculateCurrentPageCount();
     this.changeInPerPage.emit(this.perPage);
   }
 }

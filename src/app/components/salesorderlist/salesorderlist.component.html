@@ -13,7 +13,7 @@
           <form [formGroup]="myForm" class="row">
           <div class="form-group col-2">
             <label for="soId">Sales Order Id:</label>
-            <input formControlName="soId" id="soId" name="soId" placeholder="SOID" class="form-control"> 
+            <input formControlName="orderId" id="soId" name="soId" placeholder="SOID" class="form-control"> 
           </div>
           <div class="form-group col-2">
             <label for="issuer">Issuer:</label>
@@ -36,7 +36,7 @@
           </div>
           <div class="form-group col-2">
             <label for="fromDate">Status:</label>
-            <select formControlName="statusOfOrder" class="form-control">
+            <select formControlName="status" class="form-control">
               <option value="volvo">Volvo</option>
               <option value="saab">Saab</option>
               <option value="mercedes">Mercedes</option>

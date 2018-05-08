@@ -7,10 +7,10 @@ import { AppComponent } from './app.component';
 import { GridComponent } from './shared/components/grid/grid.component';
 import { SalesorderlistComponent } from './components/salesorderlist/salesorderlist.component';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
-import {GridService} from './shared/components/grid/grid.service';
+import { GridService } from './shared/components/grid/grid.service';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import {UtilsService} from './shared/services/utils/utils.service';
+import { UtilsService } from './shared/services/utils/utils.service';
 import { CardsComponent } from "./shared/components/cards/cards.component";
 import { PodetailsComponent } from "./components/podetails/podetails.component";
 import { ArrayFilterPipe } from "./shared/card-filter.pipe";
@@ -21,6 +21,7 @@ import { FilterPanelComponent } from './shared/components/filter-panel/filter-pa
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { ButtonComponent } from './shared/components/button/button.component';
+import { ReassignComponent } from "./components/reassign/reassign.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { ButtonComponent } from './shared/components/button/button.component';
     ArrayFilterPipe,
     SearchfieldComponent,
     FilterPanelComponent,
-    ButtonComponent
+    ButtonComponent,
+    ReassignComponent
   ],
   imports: [
     BrowserModule,
