@@ -21,11 +21,13 @@
       "prefix": "app",
       "styles": [
         "assets/sass/styles.scss",
-        "../node_modules/bootstrap/scss/bootstrap.scss",
+        "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
         "../node_modules/font-awesome/scss/font-awesome.scss",
-        "../node_modules/npm-font-open-sans/open-sans.scss"
+        "../node_modules/gijgo/css/gijgo.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { GridConfig } from '../../shared/models/grid.config';
 import { UtilsService } from '../../shared/services/utils/utils.service';
+import { FormGroup, FormControl,ReactiveFormsModule  } from '@angular/forms';
+import * as $ from 'jquery';
 @Component({
   selector: 'app-salesorderlist',
   templateUrl: './salesorderlist.component.html',
@@ -16,12 +18,24 @@ export class SalesorderlistComponent implements OnInit {
   public pageLimitArray: any = [];
   public placeholder: string = 'Search for SO';
   public displayFilterOption: boolean = false;
-  constructor(public utils: UtilsService) { }
+  myForm: FormGroup;
+  constructor(public utils: UtilsService) { 
+  }
 
   ngOnInit() {
     this.populateSalesOrderGrid();
     this.fetchStatusOrderList();
     this.pageLimitArray = [10, 20, 30];
+    this.myForm = new FormGroup({
+      soId: new FormControl(''),
+      volumeFrom: new FormControl(''),
+      issuer : new FormControl(''),
+      issuerid : new FormControl(''),
+      volumeTo: new FormControl(''),
+      deliveryFromDate : new FormControl(''),
+      deliveryToDate : new FormControl(''),
+      statusOfOrder : new FormControl('')
+    });
   }
   /**
    * populateSalesOrderGrid

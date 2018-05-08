@@ -18,7 +18,9 @@ import { POdetailsService } from "./components/podetails/podetails.service";
 import { HttpClientModule } from "@angular/common/http";
 import { SearchfieldComponent } from './shared/components/searchfield/searchfield.component';
 import { FilterPanelComponent } from './shared/components/filter-panel/filter-panel.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap';
+import { ButtonComponent } from './shared/components/button/button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +33,17 @@ import { FilterPanelComponent } from './shared/components/filter-panel/filter-pa
     PodetailsComponent,
     ArrayFilterPipe,
     SearchfieldComponent,
-    FilterPanelComponent
+    FilterPanelComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [GridService,UtilsService,POdetailsService,ArrayFilterPipe],
   bootstrap: [AppComponent]

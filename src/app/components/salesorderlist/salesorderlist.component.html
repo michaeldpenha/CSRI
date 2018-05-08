@@ -1,16 +1,10 @@
-<app-searchfield [placeholder]="placeholder" (searchTrigger) = "searchData($event)"></app-searchfield>
-<button (click)="displayFilterOptions()">Filter</button>
-<app-filter-panel [displayPanel]="displayFilterOption" (applyFilter)="applyFilter()" (clearFilter)="clearFilter()"></app-filter-panel>
-<app-grid 
-  [columnDefs] = "columnDefs" 
-  [data]="data" 
-  (sortTrigger)="sortGridData($event)"
-  [defaultPage] = "defaultPage"
-  [pageLimit] = "pageLimit"
-  [totalRecords] = "totalRecords"
-  (previousPage) = "previousPage($event)"
-  (nextPage)="nextPage($event)"
-  (goToPage) = "goToPage($event)"
-  (pageLimitChange)= "pageLimitChange($event)"
-  [pageLimitArray] = "pageLimitArray"></app-grid>
-
+<app-searchfield [placeholder]="placeholder" (searchTrigger)="searchData($event)"></app-searchfield>
+<app-button (onButtonClick)="displayFilterOptions()"></app-button>
+<app-filter-panel [displayPanel]="displayFilterOption" (applyFilter)="applyFilter()" (clearFilter)="clearFilter()">
+  <form [formGroup]="myForm">
+    Sales Order Id <input formControlName="soId" placeholder="SOID"> Issuer <input formControlName="issuer" placeholder="Issuer">    Issuer Id <input formControlName="issuerid" placeholder="Issuer Id"> Volume <input formControlName="volumeFrom" type="number">    to <input formControlName="volumeTo" type="number"> Delivery Date
+    </form>
+</app-filter-panel>
+<app-grid [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" [defaultPage]="defaultPage" [pageLimit]="pageLimit"
+  [totalRecords]="totalRecords" (previousPage)="previousPage($event)" (nextPage)="nextPage($event)" (goToPage)="goToPage($event)"
+  (pageLimitChange)="pageLimitChange($event)" [pageLimitArray]="pageLimitArray"></app-grid>

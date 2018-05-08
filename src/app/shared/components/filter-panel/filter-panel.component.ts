@@ -9,6 +9,9 @@ export class FilterPanelComponent implements OnInit {
   @Output() applyFilter = new EventEmitter<any>();
   @Output() clearFilter = new EventEmitter<any>();
   @Input() displayPanel: boolean = false;
+
+  public applyText : string = "Apply";
+  public clearText : string = "Clear";
   constructor() { }
 
   ngOnInit() {

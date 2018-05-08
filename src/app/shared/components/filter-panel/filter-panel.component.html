@@ -1,4 +1,4 @@
 <ng-container *ngIf="displayPanel">
   <ng-content></ng-content>
-  <div><button (click)="apply()">Apply</button><button (click)="clear()">Clear</button></div>
+  <div><app-button [text]="applyText" (onButtonClick)="apply()"></app-button><app-button [text]="clearText" (onButtonClick)="clear()">Clear</app-button></div>
 </ng-container>
