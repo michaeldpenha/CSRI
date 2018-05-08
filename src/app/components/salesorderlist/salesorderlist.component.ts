@@ -32,8 +32,8 @@ export class SalesorderlistComponent implements OnInit {
       issuer : new FormControl(''),
       issuerid : new FormControl(''),
       volumeTo: new FormControl(''),
-      deliveryFromDate : new FormControl(''),
-      deliveryToDate : new FormControl(''),
+      fromDate : new FormControl(''),
+      toDate : new FormControl(''),
       statusOfOrder : new FormControl('')
     });
   }
