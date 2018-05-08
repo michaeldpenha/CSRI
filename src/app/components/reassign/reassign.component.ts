@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-reassign',
@@ -11,7 +11,7 @@ export class ReassignComponent implements OnInit {
 
   reassignForm: FormGroup;
   showDropdown: boolean = false;
-  
+
   ngOnInit() {
     this.reassignForm = new FormGroup({
       so: new FormControl('')
@@ -24,10 +24,12 @@ export class ReassignComponent implements OnInit {
      } else {
       this.showDropdown = false;
      }
+     return true;
   }
 
-  onSubmit(reassignFormData){
-     console.log(reassignFormData.controls.so.value);
+  onSubmitReassign(reassignForm){
+     console.log(reassignForm.controls.so.value);
+     return true;
   }
 
 }

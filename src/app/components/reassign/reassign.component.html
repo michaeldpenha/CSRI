@@ -5,7 +5,7 @@
   </div>
 
   <div class="page-body">
-    <form  (ngSubmit)="onSubmit(reassignForm)" [formGroup]="reassignForm">
+    <form [formGroup]="reassignForm" (ngSubmit)="onSubmitReassign(reassignForm)">
       
       <label>Selected Sale Orders (06)</label>
       <div class="selection-wrapper">
@@ -27,7 +27,7 @@
       </div>
       <br />
       
-      <div class="form-group row" [hidden]="!showDropdown">
+      <div class="form-group row" *ngIf="showDropdown">
         <label class="col-md-2">Choose Satellite</label>
         <div class="col-md-4">
           <select class="form-control" (ngModel)="reassignForm.printer" required>
@@ -40,7 +40,7 @@
       <br />
       <br />
       <div class="text-center">
-        <button  class="btn btn-default">Cancel</button>
+        <button type="button" class="btn btn-default">Cancel</button>
         <button type="submit" class="btn btn-success">Redirect</button>
       </div>
     </form>
