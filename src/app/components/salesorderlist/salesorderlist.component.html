@@ -6,6 +6,9 @@
     <app-button [cls]="secondaryButtonClass" [text]="generatePoText" [disabled]="selectedArray.length == 0" (onButtonClick)="generatePO()"></app-button>
     <app-button [cls]="secondaryButtonClass" [text]="redirectText" [disabled]="selectedArray.length == 0" (onButtonClick)="redirect()"></app-button>
   </div>
+  <ng-container *ngFor ="let item of adavancedArray">
+    <app-removable-card [label] = "item.value" [item]="item" (removeCard)="removeFilter($event)"></app-removable-card>
+  </ng-container>
   <div class="row" [hidden]="!displayFilterOption">
     <div class="col">
 

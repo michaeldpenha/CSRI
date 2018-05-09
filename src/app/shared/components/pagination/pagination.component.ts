@@ -20,6 +20,7 @@ export class PaginationComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['count']) {
       this.count = this.count;
+      this.calculateCurrentPageCount();
     }
   }
   ngOnInit() {

@@ -5,6 +5,8 @@ import { UtilsService } from '../../shared/services/utils/utils.service';
 
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
 describe('SalesorderlistComponent', () => {
   let component: SalesorderlistComponent;
   let fixture: ComponentFixture<SalesorderlistComponent>;
@@ -13,7 +15,7 @@ describe('SalesorderlistComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SalesorderlistComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule, ReactiveFormsModule,],
+      imports: [FormsModule, ReactiveFormsModule,BsDatepickerModule.forRoot()],
       providers: [UtilsService]
     })
       .compileComponents();

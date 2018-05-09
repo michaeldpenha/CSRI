@@ -274,7 +274,8 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
     filterKeys.forEach((item) => {
       (me.filterForm.controls[item].value && me.filterForm.controls[item].value != '') ? me.adavancedArray.push({ key: item, value: me.filterForm.controls[item].value }) : '';
     });
-    this.filterSOData()
+    this.filterSOData();
+    this.displayFilterOptions();
   }
   /**
    * clearFilter
@@ -362,5 +363,14 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
       let selectedIndx = this.utils.fetchObjectFromAnArray(this.selectedArray, item, 'orderId');
       this.selectedArray.splice(selectedIndx, 1);
     }
+  }
+  /**
+   * removeFilter
+   */
+  public removeFilter = (item) => {
+    let index = this.utils.fetchObjectFromAnArray(this.adavancedArray, item.value, item.key);
+    this.filterForm.controls[item.value.key].setValue('');
+    this.adavancedArray.splice(index,1);
+    this.filterSOData();
   }
 }
