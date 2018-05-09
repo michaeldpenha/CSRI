@@ -12,7 +12,7 @@
       <div class="card filter-panel">
         <div class="card-body">
           <app-filter-panel [displayPanel]="displayFilterOption" (applyFilter)="applyFilter()" (clearFilter)="clearFilter()">
-            <form [formGroup]="myForm" class="row">
+            <form [formGroup]="filterForm" class="row">
               <div class="form-group col-2">
                 <label for="soId">Sales Order Id:</label>
                 <input formControlName="orderId" id="soId" name="soId" placeholder="SOID" class="form-control">

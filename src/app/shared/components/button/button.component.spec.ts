@@ -22,4 +22,10 @@ describe('ButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should trigger button click',() =>{
+    component.onButtonClick.subscribe(a=>{
+      expect(component).toBeTruthy();
+    });
+    component.buttonClick();
+  });
 });
