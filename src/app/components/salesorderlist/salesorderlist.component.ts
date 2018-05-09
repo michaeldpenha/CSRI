@@ -22,7 +22,7 @@ export class SalesorderlistComponent implements OnInit {
   public placeholder: string = 'Search for SO';
   public filterButtonClass: string = "col-2 filter-button fa fa-filter"
   public displayFilterOption: boolean = false;
-  myForm: FormGroup;
+  filterForm: FormGroup;
   public adavancedArray: any = [];
   public globalSearchText: any = '';
   public allCheck: boolean = false;
@@ -46,14 +46,20 @@ export class SalesorderlistComponent implements OnInit {
     this.populateSalesOrderGrid();
     this.fetchStatusOrderList();
     this.pageLimitArray = [10, 20, 30];
-    this.myForm = new FormGroup({
+    this.filterFormsControls(); 
+  }
+  /**
+   * filterFormsControls
+   */
+  public filterFormsControls = () => {
+    this.filterForm = new FormGroup({
       orderId: new FormControl(''),
       volumeFrom: new FormControl(''),
       volumeTo: new FormControl(''),
       fromDate: new FormControl(''),
       toDate: new FormControl(''),
       status: new FormControl('')
-    });
+    })
   
  }
 ngDoCheck(){
@@ -264,9 +270,9 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.myForm.controls['fromDa
   public applyFilter = () => {
     let me = this;
     me.adavancedArray = [];
-    let filterKeys = Object.keys(me.myForm.controls);
+    let filterKeys = Object.keys(me.filterForm.controls);
     filterKeys.forEach((item) => {
-      (me.myForm.controls[item].value && me.myForm.controls[item].value != '') ? me.adavancedArray.push({ key: item, value: me.myForm.controls[item].value }) : '';
+      (me.filterForm.controls[item].value && me.filterForm.controls[item].value != '') ? me.adavancedArray.push({ key: item, value: me.filterForm.controls[item].value }) : '';
     });
     this.filterSOData()
   }
@@ -275,6 +281,7 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.myForm.controls['fromDa
    */
   public clearFilter = () => {
     this.adavancedArray = [];
+    this.filterForm.reset();
     this.filterSOData();
   }
   /**

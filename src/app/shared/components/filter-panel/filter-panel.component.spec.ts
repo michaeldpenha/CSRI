@@ -23,4 +23,17 @@ describe('FilterPanelComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should trigger apply',()=>{
+    component.applyFilter.subscribe(() =>{
+      expect(component).toBeTruthy();
+    });
+    component.apply();
+  });
+
+  it('should trigger clear',()=>{
+    component.clearFilter.subscribe(() =>{
+      expect(component).toBeTruthy();
+    });
+    component.clear();
+  });
 });
