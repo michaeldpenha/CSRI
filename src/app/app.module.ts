@@ -24,6 +24,7 @@ import { ButtonComponent } from './shared/components/button/button.component';
 import { ReassignComponent } from "./components/reassign/reassign.component";
 import { CardPersonalizationService } from './components/card-personalization/card-personalization.service';
 import { CardPersonalizationComponent } from './components/card-personalization/card-personalization.component';
+import { ReassignService } from './components/reassign/reassign.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,7 @@ import { CardPersonalizationComponent } from './components/card-personalization/
     ReactiveFormsModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [GridService,UtilsService,POdetailsService,ArrayFilterPipe,CardPersonalizationService],
+  providers: [GridService, UtilsService, POdetailsService, ArrayFilterPipe, CardPersonalizationService, ReassignService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

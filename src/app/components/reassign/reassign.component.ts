@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { ReassignService } from './reassign.service';
 
 @Component({
   selector: 'app-reassign',
