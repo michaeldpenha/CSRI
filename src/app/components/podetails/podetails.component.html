@@ -1,7 +1,6 @@
 <div class="container">
  Search: <app-searchfield [placeholder]="placeholder" (searchTrigger)="performFilter($event)"></app-searchfield>
   <div class="row col-sm-12">
-    <div>{{selectedCardCount}}</div>
     <button class="pull-right" [disabled]="selectedCardCount?.length<=0" (click)="personalise($event)">Personalise</button></div>
 
   <div class="row">

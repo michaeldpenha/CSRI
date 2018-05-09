@@ -22,6 +22,8 @@ export class GridComponent implements OnInit, OnChanges {
   @Output() nextPage = new EventEmitter<any>();
   @Output() goToPage = new EventEmitter<any>();
   @Output() pageLimitChange = new EventEmitter<any>();
+  @Output() allChecked = new EventEmitter<any>();
+  @Output() rowSelected = new EventEmitter<any>();
   public reverseSort: boolean = true;
 
   // Events Exposed to parents
@@ -104,5 +106,17 @@ export class GridComponent implements OnInit, OnChanges {
    */
   public changeLimit = (event : any ) => {
     this.pageLimitChange.emit(event);
+  }
+  /**
+   * allSelected
+   */
+  public allSelected = (event) => {
+    this.allChecked.emit(event);
+  }
+  /**
+   * rowSelection
+   */
+  public rowSelection = (item) => {
+    this.rowSelected.emit(item);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChildren } from '@angular/core';
-import { POdetailsService } from './podetails.service'
+import { POdetailsService } from './podetails.service';
 import { UtilsService } from '../../shared/services/utils/utils.service';
 import { ArrayFilterPipe } from "../../shared/card-filter.pipe";
 import { SearchfieldComponent } from '../../shared/components/searchfield/searchfield.component';
@@ -9,8 +9,6 @@ import { SearchfieldComponent } from '../../shared/components/searchfield/search
   styleUrls: ['./podetails.component.scss']
 })
 export class PodetailsComponent implements OnInit {
-
- @ViewChildren('selectedcard') selectedCardCount;
  
 
   cardDetails: any;
@@ -33,7 +31,7 @@ export class PodetailsComponent implements OnInit {
   }
   personalise(eve: any) {
     this.tempArray = this.utils.filterArray(this.cardDetails, 'true', ['cardSelected'],'or');
-    console.log(this.tempArray);
+    //console.log(this.tempArray);
   }
 
 }

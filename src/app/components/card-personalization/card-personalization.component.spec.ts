@@ -2,13 +2,19 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardPersonalizationComponent } from './card-personalization.component';
 
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { CardsComponent } from "../../shared/components/cards/cards.component";
+import { CardPersonalizationService } from "./card-personalization.service"; 
+import { HttpClientModule } from '@angular/common/http';
 describe('CardPersonalizationComponent', () => {
   let component: CardPersonalizationComponent;
   let fixture: ComponentFixture<CardPersonalizationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardPersonalizationComponent ]
+      imports : [HttpClientModule],
+      declarations: [ CardPersonalizationComponent,ButtonComponent,CardsComponent ],
+      providers : [CardPersonalizationService]
     })
     .compileComponents();
   }));

@@ -2,10 +2,14 @@
   <table class="table">
     <thead>
       <tr>
+        <th><input type="checkbox" (click)="allSelected($event)"></th>
         <ng-container *ngFor="let colDef of columnDefs">
           <th>
             <div (click)="triggerSort(colDef)">
-              {{colDef.title}}<span *ngIf="showSortingOptions(colDef)"><span class="sort-arrow" *ngIf="!reverseSort"><i class="fa fa-caret-up"></i></span><span class="sort-arrow" *ngIf="reverseSort"><i class="fa fa-caret-down"></i></span></span>
+              {{colDef.title}}<span *ngIf="showSortingOptions(colDef)"><span class="sort-arrow" *ngIf="!reverseSort"><i class="fa fa-caret-up"></i></span>
+              <span
+                class="sort-arrow" *ngIf="reverseSort"><i class="fa fa-caret-down"></i></span>
+                </span>
             </div>
           </th>
         </ng-container>
@@ -14,6 +18,8 @@
     <tbody>
       <ng-container *ngFor="let data of gridData">
         <tr>
+          <td><input type="checkbox" (click)="rowSelection(data)"  [checked]="data.selected"></td>
+
           <ng-container *ngFor="let colDef of columnDefs">
             <td>{{customTemplate(data,colDef)}}</td>
           </ng-container>

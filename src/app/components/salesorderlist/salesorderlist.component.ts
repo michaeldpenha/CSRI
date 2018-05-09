@@ -17,11 +17,16 @@ export class SalesorderlistComponent implements OnInit {
   public totalRecords: number;
   public pageLimitArray: any = [];
   public placeholder: string = 'Search for SO';
-  public filterButtonClass:string="col-2 filter-button fa fa-filter"
+  public filterButtonClass: string = "col-2 filter-button fa fa-filter"
   public displayFilterOption: boolean = false;
   myForm: FormGroup;
   public adavancedArray: any = [];
   public globalSearchText: any = '';
+  public allCheck: boolean = false;
+  public generatePoText: string = 'Generate PO';
+  public redirectText: string = "Redirect";
+  public isItemSelected: boolean = false;
+  public selectedArray: any = [];
   constructor(public utils: UtilsService) {
   }
 
@@ -53,127 +58,127 @@ export class SalesorderlistComponent implements OnInit {
    * fetchStatusOrderList
    */
   public fetchStatusOrderList = () => {
-    this.soListData = [ {
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-10",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-05",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-08",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-10",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-05",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-08",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-10",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-05",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-08",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-10",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-05",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-08",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-10",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-05",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-08",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-10",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-05",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-08",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-10",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-05",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-08",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-10",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-05",
-            "status": "Queued"
-        },{
-            "orderId": "1",
-            "volume": 50,
-            "deliveryDate": "2018-05-08",
-            "status": "Queued"
-        }];
+    this.soListData = [{
+      "orderId": "15",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "13",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "12",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "11",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "10",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }];
     this.modifySoData(this.soListData);
   }
   /**
@@ -285,11 +290,53 @@ export class SalesorderlistComponent implements OnInit {
         break;
       case 'todate': filteredArry = this.utils.filterArrayRangeBased(ary, 'deliveryDate', obj.value, 'lesserorequaltodate');
         break;
-      case 'volumeto':filteredArry =  this.utils.filterArrayRangeBased(ary, 'volume', obj.value, 'lesserorequalto');
+      case 'volumeto': filteredArry = this.utils.filterArrayRangeBased(ary, 'volume', obj.value, 'lesserorequalto');
         break;
-      case 'volumefrom':filteredArry = this.utils.filterArrayRangeBased(ary, 'volume', obj.value, 'greaterorequalto');
+      case 'volumefrom': filteredArry = this.utils.filterArrayRangeBased(ary, 'volume', obj.value, 'greaterorequalto');
         break;
     }
     return filteredArry;
+  }
+  /**
+   * allSOSelected
+   */
+  public allSOSelected = (a) => {
+    this.selectedArray = [];
+    this.allCheck = !this.allCheck;
+    this.soListData.forEach((item) => {
+      item.selected = this.allCheck;
+      this.allCheck ? this.selectedArray.push(item) : '';
+    });
+  }
+  /**
+   * generatePO
+   */
+  public generatePO = () => {
+    console.log('PO');
+  }
+  /**
+   * redirect
+   */
+  public redirect = () => {
+    console.log('Redirect');
+  }
+  /**
+   * rowSelected
+   */
+  public rowSelected = (item) => {
+    this.populateSelectedArray(item);
+  }
+  /**
+   * populateSelectedArray
+   */
+  public populateSelectedArray = (item : any) => {
+    let index = this.utils.fetchObjectFromAnArray(this.soListData, item, 'orderId');
+    this.soListData[index].selected = !this.soListData[index].selected;
+    if (this.soListData[index].selected) {
+      this.selectedArray.push(this.soListData[index]);
+    } else {
+      let selectedIndx = this.utils.fetchObjectFromAnArray(this.selectedArray, item, 'orderId');
+      this.selectedArray.splice(selectedIndx, 1);
+    }
   }
 }
