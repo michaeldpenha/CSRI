@@ -16,31 +16,3 @@ $_font-semibold: OpenSans-Semibold;
     @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
  }
  
-
- 
- /* Register button */
- .btn-card-personization {
-  @include btn-configuration($_btn-height_signup,$_btn-width_signup,$_btn-border_signup,
-                             $_btn-font-size_signup,$_btn-background_signup,$_btn-border-radius_signup,
-                             $_btn-text-color_signup); 
- }
-.filter-button{
-    padding: 8px;
-    border: none;
-    background: none;
-    cursor: pointer
-}
-  button:focus {
-    outline: none
-  }
-  .form-control{
-    padding: 0 10px;
-    font-size: 14px;
-    border:1px solid #cbcbcc;
-    height: 30px;
-
-}
-  label{
-    font-family: OpenSans-Semibold;
-    font-size: 13px;
-  }
