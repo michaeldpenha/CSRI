@@ -8,24 +8,26 @@ $_body-font-stack: Helvetica, Sans-serif;
 $_body-background-color: #FFE4C4;
 
 
-/* Button's Variable for Login   */
+/* Button's Variable for Primary   */
 $_btn-height: 30px;
-$_btn-width:  80px;
-$_btn-border: 2px solid green;
-$_btn-font-size: 12px;
-$_btn-background:#FF7E00; 
-$_btn-border-radius: 0%;
+$_btn-width:  96px;
+$_btn-radius: 3px;
+
+$_btn-background:#1ebe9c; 
+
+$_btn-font-size: 14px;
+$_btn-border-radius: 3px;
 $_btn-text-color: #fff;
 
 
-/* Button's Variable for Register  */
-$_btn-height_signup: 50px;
-$_btn-width_signup:  160px;
-$_btn-border_signup: 0px solid orange;
-$_btn-font-size_signup: 16px;
-$_btn-background_signup: orange; 
-$_btn-border-radius_signup: 5%;
-$_btn-text-color_signup: #fff;
+/* Button's Variable for Secondary  */
+// $_btn-height_signup: 50px;
+// $_btn-width_signup:  160px;
+// $_btn-border_signup: 0px solid orange;
+// $_btn-font-size_signup: 16px;
+// $_btn-background_signup: orange; 
+// $_btn-border-radius_signup: 5%;
+// $_btn-text-color_signup: #fff;
 
 /* Grid style variables*/
 $_font-semibold: OpenSans-Semibold;

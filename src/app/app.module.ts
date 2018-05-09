@@ -22,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { ButtonComponent } from './shared/components/button/button.component';
 import { ReassignComponent } from "./components/reassign/reassign.component";
-
+import { CardPersonalizationService } from './components/card-personalization/card-personalization.service';
+import { CardPersonalizationComponent } from './components/card-personalization/card-personalization.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { ReassignComponent } from "./components/reassign/reassign.component";
     SearchfieldComponent,
     FilterPanelComponent,
     ButtonComponent,
-    ReassignComponent
+    ReassignComponent,
+    CardPersonalizationComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { ReassignComponent } from "./components/reassign/reassign.component";
     ReactiveFormsModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [GridService,UtilsService,POdetailsService,ArrayFilterPipe],
+  providers: [GridService,UtilsService,POdetailsService,ArrayFilterPipe,CardPersonalizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

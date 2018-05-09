@@ -11,11 +11,11 @@ $_font-semibold: OpenSans-Semibold;
 //     background-color: $_body-background-color
 // }
 
-/* Login button */
-.btn-login {
-  @include btn-configuration($_btn-height,$_btn-width,$_btn-border,$_btn-font-size,$_btn-background,
-                             $_btn-border-radius,$_btn-text-color); 
+/* Master button */
+.btn-master {
+    @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
  }
+ 
 
  
  /* Register button */

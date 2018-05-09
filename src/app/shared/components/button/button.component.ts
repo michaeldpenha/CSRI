@@ -12,6 +12,7 @@ export class ButtonComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
   /**
    * buttonClick
@@ -19,4 +20,5 @@ export class ButtonComponent implements OnInit {
   public buttonClick = () => {
     this.onButtonClick.emit();
   }
+
 }

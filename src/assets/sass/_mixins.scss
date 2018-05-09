@@ -1,14 +1,11 @@
 
-@mixin btn-configuration($_btn-height,$_btn-width,$_btn-border,$_btn-font-size,
-                         $_btn-background,$_btn-border-radius,$_btn-text-color) {
+@mixin btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background,$_btn-font-size,$_btn-border-radius,$_btn-text-color) {
     height: $_btn-height;
     width: $_btn-width;
-    border: $_btn-border;
     font-size: $_btn-font-size;
     background: $_btn-background;
     border-radius: $_btn-border-radius; 
     color: $_btn-text-color;
-
 }
 
 

@@ -1,0 +1,53 @@
+<div class="container-fluid" style="margin-top:100px" id="print-section">
+  <app-button class="pull-right" [text] = "personalizeButton"  [cls]="buttonClass"></app-button>
+  <div class="clearfix"></div>
+   <hr>
+    <div class="row" *ngFor = "let cardPersonalization of cardPersonalization" >
+      <div class="col-sm-4">
+        <app-cards>
+          <div class="row">
+            <div class="col-md-4 border-right">
+              <p><small>No. Of cards</small></p>
+              <b>{{ cardPersonalization.no_of_cards }}</b>
+            </div>
+            <div class="col-md-8">
+              <p><small>Schedule</small></p>
+              <small>  <p>Delivery Date  :  {{ cardPersonalization.date }} </p> </small>
+            </div>
+          </div>
+        </app-cards>
+      </div>
+
+      <div class="col-sm-4">
+        <app-cards>
+          <div class="row">
+            <div class="col-md-4 border-right">
+              <p> <img src="./assets/images/{{cardPersonalization.image}}" />
+              </p>
+              <p> <img src="./assets/images/{{cardPersonalization.image}}" />
+              </p>
+            </div>
+            <div class="col-md-8">
+              <p><small>Program</small></p>
+              <small>  <p>{{ cardPersonalization.program }}</p> </small>
+            </div>
+          </div>
+        </app-cards>
+      </div>
+
+      <div class="col-sm-4">
+        <app-cards>
+          <div class="row">
+            <div class="col-md-5 border-right">
+              <i class="fa fa-print" style="font-size:48px;color:black"></i>
+            </div>
+            <div class="col-md-6">
+              <p><small>Assigned Printer</small></p>
+              <p> {{ cardPersonalization.card_available }}</p>
+            </div>
+          </div>
+        </app-cards>
+      </div>
+
+    </div>
+</div>
