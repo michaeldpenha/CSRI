@@ -15,7 +15,7 @@ import { CardsComponent } from "./shared/components/cards/cards.component";
 import { PodetailsComponent } from "./components/podetails/podetails.component";
 import { ArrayFilterPipe } from "./shared/card-filter.pipe";
 import { POdetailsService } from "./components/podetails/podetails.service";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpClient,HTTP_INTERCEPTORS } from "@angular/common/http";
 import { SearchfieldComponent } from './shared/components/searchfield/searchfield.component';
 import { FilterPanelComponent } from './shared/components/filter-panel/filter-panel.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +25,8 @@ import { ReassignComponent } from "./components/reassign/reassign.component";
 import { CardPersonalizationService } from './components/card-personalization/card-personalization.service';
 import { CardPersonalizationComponent } from './components/card-personalization/card-personalization.component';
 import { ReassignService } from './components/reassign/reassign.service';
+
+import {HttpInterceptorsService} from  './shared/services/http/http-interceptors.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +53,11 @@ import { ReassignService } from './components/reassign/reassign.service';
     ReactiveFormsModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [GridService, UtilsService, POdetailsService, ArrayFilterPipe, CardPersonalizationService, ReassignService],
+  providers: [{
+    provide : HTTP_INTERCEPTORS,
+    useClass : HttpInterceptorsService,
+    multi : true
+  },GridService, UtilsService, POdetailsService, ArrayFilterPipe, CardPersonalizationService, ReassignService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
