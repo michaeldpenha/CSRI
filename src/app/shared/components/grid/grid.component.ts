@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { GridService } from './grid.service';
 
@@ -7,7 +7,7 @@ import { GridService } from './grid.service';
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss']
 })
-export class GridComponent implements OnInit, OnChanges {
+export class GridComponent implements OnInit {
   // Input Parameters from the parent component
   @Input() columnDefs: any = [];
   @Input('data') gridData: any = [];
@@ -35,25 +35,6 @@ export class GridComponent implements OnInit, OnChanges {
   constructor(private gridService: GridService) { }
 
   ngOnInit() {
-  }
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['gridData']) {
-      this.initGrid();
-    }
-  }
-
-  /**
-   * initGrid
-   */
-  public initGrid = () => {
-    this.fetchGridInfo();
-  }
-  /**
-   * fetchGridInfo
-   */
-  public fetchGridInfo = () => {
-    let me = this;
-
   }
   /**
    * customTemplate
