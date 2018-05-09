@@ -63,8 +63,8 @@ export class SalesorderlistComponent implements OnInit {
   
  }
 ngDoCheck(){
-this.dateFromPickerConfig = Object.assign({},{maxDate:this.myForm.controls['toDate'].value});
-this.dateToPickerConfig = Object.assign({},{minDate:this.myForm.controls['fromDate'].value});
+this.dateFromPickerConfig = Object.assign({},{maxDate:this.filterForm.controls['toDate'].value});
+this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fromDate'].value});
 }
   /**
    * populateSalesOrderGrid
