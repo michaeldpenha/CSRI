@@ -3,8 +3,8 @@
     <app-searchfield class="col-4" [placeholder]="placeholder" (searchTrigger)="searchData($event)"></app-searchfield>
     <div class="pipe"></div>
     <app-button [cls]="filterButtonClass" (onButtonClick)="displayFilterOptions()"></app-button>
-    <app-button [cls]="" [text]="generatePoText" [disabled]="selectedArray.length == 0" (onButtonClick)="generatePO()"></app-button>
-    <app-button [cls]="" [text]="redirectText" [disabled]="selectedArray.length == 0" (onButtonClick)="redirect()"></app-button>
+    <app-button [cls]="secondaryButtonClass" [text]="generatePoText" [disabled]="selectedArray.length == 0" (onButtonClick)="generatePO()"></app-button>
+    <app-button [cls]="secondaryButtonClass" [text]="redirectText" [disabled]="selectedArray.length == 0" (onButtonClick)="redirect()"></app-button>
   </div>
   <div class="row" [hidden]="!displayFilterOption">
     <div class="col">
@@ -34,19 +34,17 @@
         <div class="form-group col-3">
           <label for="fromDate">Delivery Date:</label>
           <div>
-            <input formControlName="fromDate" id="fromDate" type="text" placeholder="Datepicker" class="form-control pull-left col-5"
-              bsDatepicker>
+            <input formControlName="fromDate" id="fromDate" type="text" [bsConfig]="dateFromPickerConfig"  placeholder="Datepicker" class="form-control pull-left col-5"
+              bsDatepicker readonly>
             <div class=" pull-left">to</div>
-            <input formControlName="toDate" type="text" placeholder="Datepicker" class="form-control col-5 pull-left" bsDatepicker>
+            <input formControlName="toDate" type="text" placeholder="Datepicker" [bsConfig]="dateToPickerConfig" class="form-control col-5 pull-left" bsDatepicker readonly>
           </div>
         </div>
         <div class="form-group col-2">
           <label for="fromDate">Status:</label>
           <select formControlName="status" class="form-control">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
+              <option value="Queued">Queued</option>
+          
             </select>
         </div>
 

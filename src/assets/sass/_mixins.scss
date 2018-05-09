@@ -1,11 +1,16 @@
 
 @mixin btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background,$_btn-font-size,$_btn-border-radius,$_btn-text-color) {
     height: $_btn-height;
-    width: $_btn-width;
+    min-width: $_btn-width;
     font-size: $_btn-font-size;
     background: $_btn-background;
     border-radius: $_btn-border-radius; 
     color: $_btn-text-color;
+    border: none;
+    padding: 10px 16px;
+    margin-left: 10px;
+    line-height: 1;
+    font-family:OpenSans-Regular;
 }
 
 

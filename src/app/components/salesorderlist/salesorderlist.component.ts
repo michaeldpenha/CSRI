@@ -2,13 +2,16 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GridConfig } from '../../shared/models/grid.config';
 import { UtilsService } from '../../shared/services/utils/utils.service';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+
 import * as $ from 'jquery';
+import { BsDatepickerConfig } from "ngx-bootstrap";
 @Component({
   selector: 'app-salesorderlist',
   templateUrl: './salesorderlist.component.html',
   styleUrls: ['./salesorderlist.component.scss']
 })
 export class SalesorderlistComponent implements OnInit {
+
   public columnDefs: any = [];
   public data: any = [];
   public soListData: any = [];
@@ -27,7 +30,16 @@ export class SalesorderlistComponent implements OnInit {
   public redirectText: string = "Redirect";
   public isItemSelected: boolean = false;
   public selectedArray: any = [];
+  public masterButtonClass:string= "btn-master";
+  public secondaryButtonClass:string= "btn-secondary";
+  
+  dateFromPickerConfig :Partial<BsDatepickerConfig>;
+  dateToPickerConfig :Partial<BsDatepickerConfig>;
+
   constructor(public utils: UtilsService) {
+  
+    
+  
   }
 
   ngOnInit() {
@@ -42,7 +54,12 @@ export class SalesorderlistComponent implements OnInit {
       toDate: new FormControl(''),
       status: new FormControl('')
     });
-  }
+  
+ }
+ngDoCheck(){
+this.dateFromPickerConfig = Object.assign({},{maxDate:this.myForm.controls['toDate'].value});
+this.dateToPickerConfig = Object.assign({},{minDate:this.myForm.controls['fromDate'].value});
+}
   /**
    * populateSalesOrderGrid
    */

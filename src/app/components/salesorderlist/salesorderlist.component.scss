@@ -13,3 +13,7 @@ select.form-control:not([size]):not([multiple]){
     -webkit-box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.2);
 }
+.filter-button{
+    background: none;
+    border: none
+}

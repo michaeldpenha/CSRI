@@ -15,4 +15,7 @@ $_font-semibold: OpenSans-Semibold;
 .btn-master {
     @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
  }
+.btn-secondary {
+    @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background-sec,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
+ }
  
