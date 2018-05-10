@@ -30,7 +30,7 @@ export class OrderListService {
       new GridConfig('volume', 'Volume', true),
       new GridConfig('deliveryDate', 'Delivery Date', false),
       new GridConfig('status', 'Status Of order', true)],
-      `${endPoints.urlPath.salesOrder}`
+      `${endPoints.baseUrl}/${endPoints.urlPath.salesOrder}/1/sales-orders`
     );
     return config;
   }
@@ -55,7 +55,7 @@ export class OrderListService {
       new GridConfig('deliveryDate', 'Delivery Date', false),
       new GridConfig('card', 'Card Program', true),
       new GridConfig('status', 'Status Of order', true)],
-      `${endPoints.urlPath.salesOrder}`
+      `${endPoints.urlPath.salesOrder}/1/sales-orders`
     );
     return config;
   }

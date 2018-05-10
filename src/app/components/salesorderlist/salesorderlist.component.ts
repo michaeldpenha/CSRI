@@ -70,10 +70,10 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
    */
   public populateSalesOrderGrid = () => {
     this.columnDefs = [
-      new GridConfig('orderId', 'Sales Order Id', true, '<div>Michael</div>'),
-      new GridConfig('volume', 'Volume', true, '<div>Dpenha</div>'),
-      new GridConfig('deliveryDate', 'Delivery Date', false, '<div>Dpenha</div>'),
-      new GridConfig('status', 'Status Of order', true, '<div>Dpenha</div>')
+      new GridConfig('orderId', 'Sales Order Id', true),
+      new GridConfig('volume', 'Volume', true),
+      new GridConfig('deliveryDate', 'Delivery Date', false),
+      new GridConfig('status', 'Status Of order', true)
     ];
   }
   /**
