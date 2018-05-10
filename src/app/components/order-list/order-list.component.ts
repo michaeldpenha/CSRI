@@ -3,63 +3,77 @@ import { GridConfig } from '../../shared/models/grid.config';
 import { UtilsService } from '../../shared/services/utils/utils.service';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
+import { HttpClient } from '@angular/common/http';
+import { Resolve, ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
 import { BsDatepickerConfig } from "ngx-bootstrap";
 @Component({
-  selector: 'app-salesorderlist',
-  templateUrl: './salesorderlist.component.html',
-  styleUrls: ['./salesorderlist.component.scss']
+  selector: 'app-order-list',
+  templateUrl: './order-list.component.html',
+  styleUrls: ['./order-list.component.scss']
 })
-export class SalesorderlistComponent implements OnInit {
+export class OrderListComponent implements OnInit {
 
   public columnDefs: any = [];
   public data: any = [];
-  public soListData: any = [];
+  public listData: any = [];
   public defaultPage: number = 1;
   public pageLimit: number = 10;
   public totalRecords: number;
   public pageLimitArray: any = [];
-  public placeholder: string = "Search using Id's,status,issuer etc.";
+  public placeholder: string = "";
   public filterButtonClass: string = "col-2 filter-button fa fa-filter";
   public displayFilterOption: boolean = false;
   filterForm: FormGroup;
   public adavancedArray: any = [];
   public globalSearchText: any = '';
   public allCheck: boolean = false;
-  public generatePoText: string = 'Generate PO';
-  public redirectText: string = "Redirect";
+  public beforeRedirect: string = '';
+  public redirectText: string = '';
   public isItemSelected: boolean = false;
   public selectedArray: any = [];
   public masterButtonClass:string= "btn-master";
   public secondaryButtonClass:string= "btn-secondary";
-  
+  public config :any;
+  public advanFilterForm: any;
   dateFromPickerConfig :Partial<BsDatepickerConfig>;
   dateToPickerConfig :Partial<BsDatepickerConfig>;
 
-  constructor(public utils: UtilsService) {
-  
-    
-  
+  constructor(public utils: UtilsService,public route :ActivatedRoute,public http: HttpClient) {
   }
 
   ngOnInit() {
+    this.config = this.route.snapshot.data['config'];
+    this.initializeOrderList();
+  }
+  /**
+   * initializeOrderList
+   */
+  public initializeOrderList = () => {
     this.populateSalesOrderGrid();
     this.fetchStatusOrderList();
-    this.pageLimitArray = [10, 20, 30];
+    this.defaultPageSettings();
     this.filterFormsControls(); 
+  }
+  /**
+   * defaultPageSettings
+   */
+  public defaultPageSettings = () => {
+    this.pageLimitArray =this.config.perPageArray;
+    this.redirectText = this.config.redirect;
+    this.beforeRedirect = this.config.beforeRedirect;
+    this.placeholder = this.config.globalPlaceholder;
   }
   /**
    * filterFormsControls
    */
   public filterFormsControls = () => {
-    this.filterForm = new FormGroup({
-      orderId: new FormControl(''),
-      volumeFrom: new FormControl(''),
-      volumeTo: new FormControl(''),
-      fromDate: new FormControl(''),
-      toDate: new FormControl(''),
-      status: new FormControl('')
+    let formGrp : any = {};
+    this.advanFilterForm = this.config.filterForm;
+    this.advanFilterForm.forEach((item)=>{
+      formGrp[item.dataIndex] = new FormControl('');
     });
+    this.filterForm = new FormGroup(formGrp);
  }
 ngDoCheck(){
 this.dateFromPickerConfig = Object.assign({},{maxDate:this.filterForm.controls['toDate'].value});
@@ -69,170 +83,172 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
    * populateSalesOrderGrid
    */
   public populateSalesOrderGrid = () => {
-    this.columnDefs = [
-      new GridConfig('orderId', 'Sales Order Id', true),
-      new GridConfig('volume', 'Volume', true),
-      new GridConfig('deliveryDate', 'Delivery Date', false),
-      new GridConfig('status', 'Status Of order', true)
-    ];
+    this.columnDefs = this.config.gridConfigs;
   }
   /**
    * fetchStatusOrderList
    */
   public fetchStatusOrderList = () => {
-    this.soListData = [{
-      "orderId": "15",
-      "volume": 50,
-      "deliveryDate": "2018-05-10",
-      "status": "Queued"
-    }, {
-      "orderId": "13",
-      "volume": 50,
-      "deliveryDate": "2018-05-05",
-      "status": "Queued"
-    }, {
-      "orderId": "12",
-      "volume": 50,
-      "deliveryDate": "2018-05-08",
-      "status": "Queued"
-    }, {
-      "orderId": "11",
-      "volume": 50,
-      "deliveryDate": "2018-05-10",
-      "status": "Queued"
-    }, {
-      "orderId": "10",
-      "volume": 50,
-      "deliveryDate": "2018-05-05",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-08",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-10",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-05",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-08",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-10",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-05",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-08",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-10",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-05",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-08",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-10",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-05",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-08",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-10",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-05",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-08",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-10",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-05",
-      "status": "Queued"
-    }, {
-      "orderId": "1",
-      "volume": 50,
-      "deliveryDate": "2018-05-08",
-      "status": "Queued"
-    }];
-    this.modifySoData(this.soListData);
+    this.http.get(this.config.url).toPromise().then(data => {
+        this.listData = data['salesOrders'];
+        this.modifySoData(this.listData);
+    },err => {
+      this.listData = [];
+      this.modifySoData(this.listData);
+    })
+    // this.listData = [{
+    //   "orderId": "15",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-10",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "13",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-05",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "12",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-08",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "11",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-10",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "10",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-05",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-08",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-10",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-05",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-08",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-10",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-05",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-08",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-10",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-05",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-08",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-10",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-05",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-08",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-10",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-05",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-08",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-10",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-05",
+    //   "status": "Queued"
+    // }, {
+    //   "orderId": "1",
+    //   "volume": 50,
+    //   "deliveryDate": "2018-05-08",
+    //   "status": "Queued"
+    // }];
+    
   }
   /**
    * sortGridData
    */
   public sortGridData = (prop: any) => {
     let me = this;
-    this.soListData.sort((a, b) => {
+    this.listData.sort((a, b) => {
       return me.utils.sort(a, b, prop.property, prop.direction);
     });
-    this.modifySoData(this.soListData);
+    this.modifySoData(this.listData);
   }
   /**
    * 
    */
   public previousPage = () => {
     this.defaultPage = this.defaultPage - 1;
-    this.modifySoData(this.soListData);
+    this.modifySoData(this.listData);
   }
   /**
    * 
    */
   public nextPage = () => {
     this.defaultPage = this.defaultPage + 1;
-    this.modifySoData(this.soListData);
+    this.modifySoData(this.listData);
   }
   /**
    * 
    */
   public goToPage = ($event) => {
     this.defaultPage = Number($event);
-    this.modifySoData(this.soListData);
+    this.modifySoData(this.listData);
   }
   /**
    * 
@@ -240,7 +256,7 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
   public pageLimitChange = (count: number) => {
     this.pageLimit = count;
     this.defaultPage = 1;
-    this.modifySoData(this.soListData);
+    this.modifySoData(this.listData);
   }
   /**
    * 
@@ -255,7 +271,7 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
   public searchData = (val) => {
     this.globalSearchText = val;
     this.filterSOData();
-    // this.data = this.utils.filterArray(this.soListData,)
+    // this.data = this.utils.filterArray(this.listData,)
   }
   /**
    * displayFilterOptions
@@ -288,8 +304,8 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
    * filterSOData
    */
   public filterSOData = () => {
-    let searchArray: any = Object.keys(this.soListData[0]);
-    let filteredArry = this.utils.filterArray(this.soListData, this.globalSearchText, searchArray, 'or');
+    let searchArray: any = Object.keys(this.listData[0]);
+    let filteredArry = this.utils.filterArray(this.listData, this.globalSearchText, searchArray, 'or');
     filteredArry = this.adavancedArray.length > 0 ? this.applyMultipleFilter(filteredArry) : filteredArry;
     this.defaultPage = 1;
     this.modifySoData(filteredArry);
@@ -327,7 +343,7 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
   public allSOSelected = (a) => {
     this.selectedArray = [];
     this.allCheck = !this.allCheck;
-    this.soListData.forEach((item) => {
+    this.listData.forEach((item) => {
       item.selected = this.allCheck;
       this.allCheck ? this.selectedArray.push(item) : '';
     });
@@ -354,10 +370,10 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
    * populateSelectedArray
    */
   public populateSelectedArray = (item : any) => {
-    let index = this.utils.fetchObjectFromAnArray(this.soListData, item, 'orderId');
-    this.soListData[index].selected = !this.soListData[index].selected;
-    if (this.soListData[index].selected) {
-      this.selectedArray.push(this.soListData[index]);
+    let index = this.utils.fetchObjectFromAnArray(this.listData, item, 'orderId');
+    this.listData[index].selected = !this.listData[index].selected;
+    if (this.listData[index].selected) {
+      this.selectedArray.push(this.listData[index]);
     } else {
       let selectedIndx = this.utils.fetchObjectFromAnArray(this.selectedArray, item, 'orderId');
       this.selectedArray.splice(selectedIndx, 1);
@@ -371,5 +387,11 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
     this.filterForm.controls[item.value.key].setValue('');
     this.adavancedArray.splice(index,1);
     this.filterSOData();
+  }
+  /**
+   * ifDateField
+   */
+  public ifDateField = (item : any) => {
+    return item.dataIndex.toLowerCase().indexOf('date') > -1;
   }
 }

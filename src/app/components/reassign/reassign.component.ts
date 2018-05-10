@@ -12,8 +12,13 @@ export class ReassignComponent implements OnInit {
 
   reassignForm: FormGroup;
   showDropdown: boolean = false;
-  public satellites :any = [];
-  public salesOrders :any = [];
+  public satellites: any = [];
+  public salesOrders: any = [];
+  public SoReassign= {
+    "redirectOption":"SATELLITE",
+    "satelliteId":"2",
+    "salesOrderIds":[1]
+    };
 
   ngOnInit() {
     this.reassignForm = new FormGroup({
@@ -40,7 +45,14 @@ export class ReassignComponent implements OnInit {
       }
     );
 
-
+    this.reassignService.patchSoReassign(this.SoReassign).subscribe(
+      (response) => { 
+        console.log(response);
+      },
+      (error) => { 
+        console.log(error) 
+      }
+    );
 
   }
 

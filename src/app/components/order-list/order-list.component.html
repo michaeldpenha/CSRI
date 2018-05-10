@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <app-searchfield class="col-4" [placeholder]="placeholder" (searchTrigger)="searchData($event)"></app-searchfield>
+    <div class="pipe"></div>
+    <app-button [cls]="filterButtonClass" (onButtonClick)="displayFilterOptions()"></app-button>
+    <app-button [cls]="secondaryButtonClass" [text]="beforeRedirect" [disabled]="selectedArray.length == 0" (onButtonClick)="generatePO()"></app-button>
+    <app-button [cls]="secondaryButtonClass" [text]="redirectText" [disabled]="selectedArray.length == 0" (onButtonClick)="redirect()"></app-button>
+  </div>
+  <ng-container *ngFor="let item of adavancedArray">
+    <app-removable-card [label]="item.value" [item]="item" (removeCard)="removeFilter($event)"></app-removable-card>
+  </ng-container>
+  <div class="row" [hidden]="!displayFilterOption">
+    <div class="col">
+
+      <div class="card filter-panel">
+        <div class="card-body">
+          <app-filter-panel [displayPanel]="displayFilterOption" (applyFilter)="applyFilter()" (clearFilter)="clearFilter()">
+            <form [formGroup]="filterForm" class="row">
+              <ng-container *ngFor="let filter of advanFilterForm">
+                <div [ngClass]="filter.parentClass">
+                  <label [for]="filter.dataIndex">{{filter.label}}:</label>
+                  <ng-container *ngIf="filter.key == 'to'">
+                    <div class="pull-left">to</div>
+                  </ng-container>
+                  <ng-container *ngIf="filter.type === 'I'">
+                    <ng-container *ngIf="ifDateField(filter)">
+                      <input [type]="filter.subType" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
+                        [ngClass]="filter.inputClass" [bsConfig]="dateFromPickerConfig" bsDatepicker readonly>
+                    </ng-container>
+                    <ng-container *ngIf="!ifDateField(filter)">
+                      <input [type]="filter.subType" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
+                        [ngClass]="filter.inputClass">
+                    </ng-container>
+
+                  </ng-container>
+                  <ng-container *ngIf="filter.type == 'S'">
+                    <select [formControlName]="filter.dataIndex" [ngClass]="filter.inputClass">
+                        <ng-container *ngFor="let option of filter.options">
+                          <option [value]="option.key">{{option.value}}</option>
+                        </ng-container>
+                      </select>
+                  </ng-container>
+                </div>
+              </ng-container>
+              <!-- <div class="form-group col-2"><label for="soId">Sales Order Id:</label>
+                <input formControlName="orderId" id="soId" name="soId" placeholder="SOID" class="form-control">
+              </div>-->
+              <!-- <div class="form-group col-2">
+            <label for="issuer">Issuer:</label>
+            <input formControlName="issuer" id="issuer" name="issuer" placeholder="Issuer" class="form-control">
+          </div>
+          <div class="form-group col-2">
+            <label for="issuerid">Issuer Id:</label>
+             <input formControlName="issuerid" id="issuerid" name="issuerid" class="form-control" placeholder="Issuer Id">
+          </div>-->
+              <!--<div class="form-group col-3">
+                  <label for="volumeFrom">Volume:</label>
+                  <div class=""><input formControlName="volumeFrom" id="volumeFrom" class="form-control col-5 pull-left" type="number">
+                    <div class=" pull-left">to</div><input class="form-control col-5 pull-left" formControlName="volumeTo" type="number"></div>
+                </div>
+
+                <div class="form-group col-3">
+                  <label for="fromDate">Delivery Date:</label>
+                  <div>
+                    <input formControlName="fromDate" id="fromDate" type="text" [bsConfig]="dateFromPickerConfig" placeholder="Datepicker" class="form-control pull-left col-5"
+                      bsDatepicker readonly>
+                    <div class=" pull-left">to</div>
+                    <input formControlName="toDate" type="text" placeholder="Datepicker" [bsConfig]="dateToPickerConfig" class="form-control col-5 pull-left"
+                      bsDatepicker readonly>
+                  </div>
+                </div>
+                <div class="form-group col-2">
+                  <label for="fromDate">Status:</label>
+                  <select formControlName="status" class="form-control">
+              <option value="Queued">Queued</option>
+          
+            </select>
+                </div>-->
+
+            </form>
+          </app-filter-panel>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <app-grid [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" [defaultPage]="defaultPage" [pageLimit]="pageLimit"
+    [totalRecords]="totalRecords" (previousPage)="previousPage($event)" (nextPage)="nextPage($event)" (goToPage)="goToPage($event)"
+    (pageLimitChange)="pageLimitChange($event)" [pageLimitArray]="pageLimitArray" (allChecked)="allSOSelected($event)" (rowSelected)="rowSelected($event)"></app-grid>
+</div>

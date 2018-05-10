@@ -5,6 +5,7 @@ import { ReassignComponent } from './reassign.component';
 import { Component } from '@angular/core';
 import { HttpClient, HttpHandler, HttpErrorResponse } from '@angular/common/http';
 import { ReassignService } from './reassign.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('ReassignComponent', () => {
   let component: ReassignComponent;
@@ -14,6 +15,7 @@ describe('ReassignComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule],
       declarations: [ ReassignComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [HttpClient, HttpHandler, ReassignService]
     })
     .compileComponents();

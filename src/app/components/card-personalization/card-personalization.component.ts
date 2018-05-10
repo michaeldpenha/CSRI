@@ -11,22 +11,31 @@ import { Observable } from 'rxjs/observable';
 export class CardPersonalizationComponent implements OnInit {
 
   constructor(protected pesonalization: CardPersonalizationService) { }
-  
+
   cardPersonalization: any;
   cancelButton = "Cancel";
   personalizeButton = "Personalize";
-  buttonClass = "btn-master"; 
+  buttonClass = "btn-master";
+  isCheckBox : boolean = true;
+  opendDivId: any;
+  private showHidePersonalItems = true;
 
   ngOnInit() {
+
     this.pesonalization.getPersonalizeData()
       .subscribe(
       (successResponse) => {
-        this.cardPersonalization =  successResponse;
+        this.cardPersonalization = successResponse;
       },
       (errorResponse) => {
         window.alert('Error occurred while fetching events. Please contact administrator for more details.');
       }
       );
 
-    }
+  }
+
+  toggleProductionItems(index:any) {
+    this.opendDivId = index;
+    this.showHidePersonalItems = !this.showHidePersonalItems;
+  }
 }

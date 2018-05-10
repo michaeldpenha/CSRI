@@ -28,7 +28,8 @@ import { ReassignService } from './components/reassign/reassign.service';
 
 import {HttpInterceptorsService} from  './shared/services/http/http-interceptors.service';
 import { RemovableCardComponent } from './shared/components/removable-card/removable-card.component';
-import { ProductionorderlistComponent } from './components/productionorderlist/productionorderlist.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
+import {OrderListService} from  './shared/services/resolve/order-list/order-list.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,7 @@ import { ProductionorderlistComponent } from './components/productionorderlist/p
     ReassignComponent,
     CardPersonalizationComponent,
     RemovableCardComponent,
-    ProductionorderlistComponent
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,7 @@ import { ProductionorderlistComponent } from './components/productionorderlist/p
     provide : HTTP_INTERCEPTORS,
     useClass : HttpInterceptorsService,
     multi : true
-  },GridService, UtilsService, POdetailsService, ArrayFilterPipe, CardPersonalizationService, ReassignService],
+  },GridService, UtilsService, POdetailsService, ArrayFilterPipe, CardPersonalizationService, ReassignService,OrderListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
