@@ -5,6 +5,7 @@ export const endPoints = {
     baseUrl : 'http://172.26.21.138:8094',
     //baseUrl : 'http://172.26.21.106:8094',
     urlPath: { 
+        salesOrder : ''
         //loginApi: '/auth/login',
     }
 };
