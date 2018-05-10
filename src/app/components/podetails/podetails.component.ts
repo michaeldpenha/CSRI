@@ -10,8 +10,11 @@ import { SearchfieldComponent } from '../../shared/components/searchfield/search
 })
 export class PodetailsComponent implements OnInit {
  
-
-  cardDetails: any;
+  public personalizeButton:string="Personalize All"
+   public redirectButton:string="Redirect"
+  public cardDetails: any;
+  public masterButtonClass:string= "btn-master";
+  public secondaryButtonClass:string= "btn-secondary";
   filteredCards = this.cardDetails;
   tempArray: any; 
   performFilter(value): any {
@@ -29,9 +32,15 @@ export class PodetailsComponent implements OnInit {
         this.filteredCards = this.cardDetails
       });
   }
+ngDoCheck(){
+  if(this.cardDetails){
+  this.tempArray = this.utils.filterArray(this.cardDetails, 'true', ['cardSelected'],'or');
+  }
+
+  }
   personalise(eve: any) {
     this.tempArray = this.utils.filterArray(this.cardDetails, 'true', ['cardSelected'],'or');
-    //console.log(this.tempArray);
+    console.log(this.tempArray);
   }
 
 }
