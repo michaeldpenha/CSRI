@@ -32,14 +32,16 @@ export class OrderListComponent implements OnInit {
   public redirectText: string = '';
   public isItemSelected: boolean = false;
   public selectedArray: any = [];
-  public masterButtonClass:string= "btn-master";
-  public secondaryButtonClass:string= "btn-secondary";
-  public config :any;
+  public masterButtonClass: string = "btn-master";
+  public secondaryButtonClass: string = "btn-secondary";
+  public config: any;
   public advanFilterForm: any;
-  dateFromPickerConfig :Partial<BsDatepickerConfig>;
-  dateToPickerConfig :Partial<BsDatepickerConfig>;
+  public redirectView: boolean = false;
+  public redirectSelectedArray : any = [];
+  dateFromPickerConfig: Partial<BsDatepickerConfig>;
+  dateToPickerConfig: Partial<BsDatepickerConfig>;
 
-  constructor(public utils: UtilsService,public route :ActivatedRoute,public http: HttpClient) {
+  constructor(public utils: UtilsService, public route: ActivatedRoute, public http: HttpClient) {
   }
 
   ngOnInit() {
@@ -53,13 +55,13 @@ export class OrderListComponent implements OnInit {
     this.populateSalesOrderGrid();
     this.fetchStatusOrderList();
     this.defaultPageSettings();
-    this.filterFormsControls(); 
+    this.filterFormsControls();
   }
   /**
    * defaultPageSettings
    */
   public defaultPageSettings = () => {
-    this.pageLimitArray =this.config.perPageArray;
+    this.pageLimitArray = this.config.perPageArray;
     this.redirectText = this.config.redirect;
     this.beforeRedirect = this.config.beforeRedirect;
     this.placeholder = this.config.globalPlaceholder;
@@ -68,17 +70,17 @@ export class OrderListComponent implements OnInit {
    * filterFormsControls
    */
   public filterFormsControls = () => {
-    let formGrp : any = {};
+    let formGrp: any = {};
     this.advanFilterForm = this.config.filterForm;
-    this.advanFilterForm.forEach((item)=>{
+    this.advanFilterForm.forEach((item) => {
       formGrp[item.dataIndex] = new FormControl('');
     });
     this.filterForm = new FormGroup(formGrp);
- }
-ngDoCheck(){
-this.dateFromPickerConfig = Object.assign({},{maxDate:this.filterForm.controls['toDate'].value});
-this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fromDate'].value});
-}
+  }
+  ngDoCheck() {
+    this.dateFromPickerConfig = Object.assign({}, { maxDate: this.filterForm.controls['toDate'].value });
+    this.dateToPickerConfig = Object.assign({}, { minDate: this.filterForm.controls['fromDate'].value });
+  }
   /**
    * populateSalesOrderGrid
    */
@@ -89,10 +91,11 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
    * fetchStatusOrderList
    */
   public fetchStatusOrderList = () => {
+    this.listData = [];
     this.http.get(this.config.url).toPromise().then(data => {
-        this.listData = data['salesOrders'];
-        this.modifySoData(this.listData);
-    },err => {
+      this.listData = data['salesOrders'];
+      this.modifySoData(this.listData);
+    }, err => {
       this.listData = [];
       this.modifySoData(this.listData);
     })
@@ -217,7 +220,7 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
     //   "deliveryDate": "2018-05-08",
     //   "status": "Queued"
     // }];
-    
+
   }
   /**
    * sortGridData
@@ -358,6 +361,8 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
    * redirect
    */
   public redirect = () => {
+    this.redirectView = true;
+    this.redirectSelectedArray = JSON.parse(JSON.stringify(this.selectedArray));
     console.log('Redirect');
   }
   /**
@@ -369,7 +374,7 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
   /**
    * populateSelectedArray
    */
-  public populateSelectedArray = (item : any) => {
+  public populateSelectedArray = (item: any) => {
     let index = this.utils.fetchObjectFromAnArray(this.listData, item, 'orderId');
     this.listData[index].selected = !this.listData[index].selected;
     if (this.listData[index].selected) {
@@ -385,13 +390,32 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
   public removeFilter = (item) => {
     let index = this.utils.fetchObjectFromAnArray(this.adavancedArray, item.value, item.key);
     this.filterForm.controls[item.value.key].setValue('');
-    this.adavancedArray.splice(index,1);
+    this.adavancedArray.splice(index, 1);
     this.filterSOData();
   }
   /**
    * ifDateField
    */
-  public ifDateField = (item : any) => {
+  public ifDateField = (item: any) => {
     return item.dataIndex.toLowerCase().indexOf('date') > -1;
+  }
+  /**
+   * datePickerConfig
+   */
+  public datePickerConfig = (item: any) => {
+    return item.key.toLowerCase().indexOf('to') ? this.dateToPickerConfig : this.dateFromPickerConfig;
+  }
+  /**
+   * onCancel 
+   */
+  public onCancel = () => {
+    this.redirectView = false;
+  }
+  /**
+   * redirectTrigger
+   */
+  public redirectTrigger = () => {
+    this.redirectView = false;
+    this.fetchStatusOrderList();
   }
 }

@@ -1,72 +1,88 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { ReassignService } from './reassign.service';
-
+import { UtilsService } from '../../shared/services/utils/utils.service';
 @Component({
   selector: 'app-reassign',
   templateUrl: './reassign.component.html',
   styleUrls: ['./reassign.component.scss']
 })
 export class ReassignComponent implements OnInit {
-  constructor(protected reassignService: ReassignService) { }
-
+  constructor(protected reassignService: ReassignService, private utils: UtilsService) { }
+  @Input('selectionArray') selectedArray: any;
+  @Output() onCancelClick = new EventEmitter<any>();
+  @Output() redirectTrigger = new EventEmitter<any>();
   reassignForm: FormGroup;
-  showDropdown: boolean = false;
+  public showDropdown: boolean = false;
   public satellites: any = [];
-  public salesOrders: any = [];
-  public SoReassign= {
-    "redirectOption":"SATELLITE",
-    "satelliteId":"2",
-    "salesOrderIds":[1]
-    };
-
+  public redirectionMedium: string = '';
+  public param: any;
   ngOnInit() {
+    this.initializeForm();
+    this.fetchSatelliteInfo();
+  }
+  /**
+   * initializeForm
+   */
+  public initializeForm = () => {
     this.reassignForm = new FormGroup({
       so: new FormControl('')
     });
-
+  }
+  /**
+   * fetchSatelliteInfo
+   */
+  public fetchSatelliteInfo = () => {
     this.reassignService.getSatellite().subscribe(
-      (response) => { 
-        console.log(response);
+      (response) => {
         this.satellites = response.satellites;
       },
-      (error) => { 
-        console.log(error) 
+      (error) => {
+        console.log(error)
       }
     );
-
-    this.reassignService.getSalesOrder().subscribe(
-      (response) => { 
-        console.log(response);
-        this.salesOrders = response.salesOrders;
-      },
-      (error) => { 
-        console.log(error) 
-      }
-    );
-
-    this.reassignService.patchSoReassign(this.SoReassign).subscribe(
-      (response) => { 
-        console.log(response);
-      },
-      (error) => { 
-        console.log(error) 
-      }
-    );
-
   }
-
-  checkType() {
-    if (this.reassignForm.controls.so.value == 'external') {
-      this.showDropdown = true;
-    } else {
-      this.showDropdown = false;
-    }
+  checkType = () => {
+    this.redirectionMedium = this.reassignForm.controls.so.value;
   }
 
   onSubmitReassign(reassignForm) {
-    console.log(reassignForm.controls.so.value);
-    return true;
+    let selectedOrders: any = [];
+    this.selectedArray.forEach((item) => {
+      selectedOrders.push(item.orderId);
+    });
+    this.param = {
+      "redirectOption": this.redirectionMedium.toUpperCase(),
+      "satelliteId": "2",
+      "salesOrderIds": selectedOrders
+    };
+    this.reAssign();
   }
-
+  /**
+   * removeSelectedArray
+   */
+  public removeSelectedArray = (e: any, item) => {
+    let index = this.utils.fetchObjectFromAnArray(this.selectedArray, item, 'orderId');
+    this.selectedArray.splice(index, 1);
+  }
+  /**
+   * onCancel
+   */
+  public onCancel = () => {
+    this.onCancelClick.emit();
+  }
+  /**
+   * reAssign
+   */
+  public reAssign = () => {
+    this.reassignService.patchSoReassign(this.param).subscribe(
+      (response) => {
+        console.log(response);
+        this.redirectTrigger.emit();
+      },
+      (error) => {
+        console.log(error)
+      }
+    );
+  }
 }
