@@ -6,18 +6,19 @@ import { PodetailsComponent } from "./components/podetails/podetails.component";
 import { ReassignComponent } from "./components/reassign/reassign.component";
 import { CardPersonalizationComponent } from "./components/card-personalization/card-personalization.component";
 
+import { ProductionorderlistComponent } from './components/productionorderlist/productionorderlist.component';
 const routes: Routes = [{
-  path : '', redirectTo : '/sales-order', pathMatch : 'full'
-},{
-  path : 'sales-order',component : SalesorderlistComponent
-},
-{
-  path : 'po-details',component : PodetailsComponent
-},
-{
-  path : 'reassign',component : ReassignComponent
-},{
-  path : 'po-personalization',component : CardPersonalizationComponent
+  path: '', redirectTo: '/sales-order', pathMatch: 'full'
+}, {
+  path: 'sales-order', component: SalesorderlistComponent
+}, {
+  path: 'po-details', component: PodetailsComponent
+}, {
+  path: 'reassign', component: ReassignComponent
+}, {
+  path: 'po-personalization', component: CardPersonalizationComponent
+}, {
+  path: 'production-order', component: ProductionorderlistComponent
 }];
 
 @NgModule({

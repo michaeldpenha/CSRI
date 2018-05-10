@@ -27,6 +27,8 @@ import { CardPersonalizationComponent } from './components/card-personalization/
 import { ReassignService } from './components/reassign/reassign.service';
 
 import {HttpInterceptorsService} from  './shared/services/http/http-interceptors.service';
+import { RemovableCardComponent } from './shared/components/removable-card/removable-card.component';
+import { ProductionorderlistComponent } from './components/productionorderlist/productionorderlist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,9 @@ import {HttpInterceptorsService} from  './shared/services/http/http-interceptors
     FilterPanelComponent,
     ButtonComponent,
     ReassignComponent,
-    CardPersonalizationComponent
+    CardPersonalizationComponent,
+    RemovableCardComponent,
+    ProductionorderlistComponent
   ],
   imports: [
     BrowserModule,
