@@ -28,15 +28,14 @@
               <div class="form-group col-3">
                 <label for="volumeFrom">Volume:</label>
                 <div class=""><input formControlName="volumeFrom" id="volumeFrom" class="form-control col-5 pull-left" type="number">
-                  <div
-                    class=" pull-left">to</div><input class="form-control col-5 pull-left" formControlName="volumeTo" type="number"></div>
+                  <div class="to-text pull-left">to</div><input class="form-control col-5 pull-left" formControlName="volumeTo" type="number"></div>
         </div>
         <div class="form-group col-3">
           <label for="fromDate">Delivery Date:</label>
           <div>
             <input formControlName="fromDate" id="fromDate" type="text" [bsConfig]="dateFromPickerConfig"  placeholder="Datepicker" class="form-control pull-left col-5"
               bsDatepicker readonly>
-            <div class=" pull-left">to</div>
+            <div class="to-text pull-left">to</div>
             <input formControlName="toDate" type="text" placeholder="Datepicker" [bsConfig]="dateToPickerConfig" class="form-control col-5 pull-left" bsDatepicker readonly>
           </div>
         </div>

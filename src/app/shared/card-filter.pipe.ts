@@ -10,6 +10,7 @@ export class ArrayFilterPipe implements PipeTransform {
      transform(items: any[], searchText: boolean): any[] {
  
     if(!items) return [];
+    debugger
    
       return items.filter( it => {
       return (searchText) ? it.cardSelected == searchText : (!it.cardSelected || it.cardSelected === searchText);

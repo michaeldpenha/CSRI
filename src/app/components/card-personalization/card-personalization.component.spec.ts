@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NgForm } from '@angular/forms';
 import { CardPersonalizationComponent } from './card-personalization.component';
-
+import { FormControl, FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { CardsComponent } from "../../shared/components/cards/cards.component";
 import { CardPersonalizationService } from "./card-personalization.service"; 
@@ -12,7 +12,7 @@ describe('CardPersonalizationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports : [HttpClientModule],
+      imports : [HttpClientModule,FormsModule],
       declarations: [ CardPersonalizationComponent,ButtonComponent,CardsComponent ],
       providers : [CardPersonalizationService]
     })

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { PodetailsComponent } from './podetails.component';
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import { SearchfieldComponent } from '../../shared/components/searchfield/searchfield.component';
@@ -14,7 +14,7 @@ describe('PodetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports : [HttpClientModule],
+      imports : [HttpClientModule,FormsModule],
       declarations: [ PodetailsComponent,SearchfieldComponent,ArrayFilterPipe,CardsComponent ],
       providers: [POdetailsService,UtilsService,ArrayFilterPipe]
     })
