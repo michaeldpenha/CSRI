@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReassignComponent } from './reassign.component';
 import { Component } from '@angular/core';
+import { HttpClient, HttpHandler, HttpErrorResponse } from '@angular/common/http';
+import { ReassignService } from './reassign.service';
 
 describe('ReassignComponent', () => {
   let component: ReassignComponent;
@@ -11,7 +13,8 @@ describe('ReassignComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule],
-      declarations: [ ReassignComponent ]
+      declarations: [ ReassignComponent ],
+      providers: [HttpClient, HttpHandler, ReassignService]
     })
     .compileComponents();
   }));
