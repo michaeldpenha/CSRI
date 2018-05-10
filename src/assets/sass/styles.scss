@@ -1,18 +1,23 @@
 @import './_variables';
 @import './_mixins';
 @import './_variables';
-$_font-semibold: OpenSans-Semibold;
-/* Default body parameters */
-// {
-//     font-size: $_body-font-size;
-//     font-family: $_body-font-stack;
-//     margin: $_body-margin;
-//     padding: $_body-padding;
-//     background-color: $_body-background-color
-// }
+
+
 
 /* Master button */
 .btn-master {
     @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
  }
- 
+
+ .personalize-btn{
+     margin-bottom: 10px;
+     margin-top: 0px;
+ }
+
+.card-p .card{
+    height: 150px;
+ }
+
+.card-p .small-card{
+    height: 500px !important;
+}
