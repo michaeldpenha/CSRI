@@ -13,4 +13,14 @@ describe('GridService', () => {
   it('should be created', inject([GridService], (service: GridService) => {
     expect(service).toBeTruthy();
   }));
+
+  it('should set coloumn name',inject([GridService], (service: GridService)=>{
+    service.columnName = 'orderId';
+    expect(service.columnName).toBe('orderId');
+  }));
+
+  it('should set sortfield',inject([GridService],(service : GridService)=>{
+    service.sortField = "name";
+    expect(service.sortField).toBe('name');
+  }));
 });

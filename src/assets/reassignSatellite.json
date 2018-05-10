@@ -1,0 +1,16 @@
+{
+    "message": "Operation was successful",
+    "status": "SUCCESS",
+    "satellites": [
+        {
+            "id": "1",
+            "name": "Satellite-1",
+            "address": "Aundh"
+        },
+        {
+            "id": "2",
+            "name": "Satellite 2",
+            "address": "Baner"
+        }
+    ]
+}

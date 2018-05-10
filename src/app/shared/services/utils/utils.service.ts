@@ -87,4 +87,14 @@ export class UtilsService {
     });
     return filteredArray;
   }
+  /**
+   * fetchObjectFromAnArray
+   */
+  public fetchObjectFromAnArray = (ary : any ,obj : any,index : string) : any => {
+    let selectedIndex : number;
+    ary.forEach((item,i)=>{
+     if(item[index] === obj[index]) { selectedIndex = i;}
+    });
+    return selectedIndex;
+  }
 }

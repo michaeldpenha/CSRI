@@ -12,6 +12,8 @@ export class FilterPanelComponent implements OnInit {
 
   public applyText : string = "Apply";
   public clearText : string = "Clear";
+  public masterButtonClass:string= "btn-master";
+  public secondaryButtonClass:string= "btn-secondary";
   constructor() { }
 
   ngOnInit() {

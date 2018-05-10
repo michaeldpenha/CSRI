@@ -22,4 +22,11 @@ describe('SearchfieldComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should trigger search event' , () => {
+    let e = {target : {value : 1}};
+    component.searchTrigger.subscribe((a) => {
+      expect(a).toBe(1);
+    });
+    component.searchData(e);
+  });
 });

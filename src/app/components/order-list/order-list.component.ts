@@ -3,14 +3,15 @@ import { GridConfig } from '../../shared/models/grid.config';
 import { UtilsService } from '../../shared/services/utils/utils.service';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
+import { Resolve, ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
 import { BsDatepickerConfig } from "ngx-bootstrap";
 @Component({
-  selector: 'app-salesorderlist',
-  templateUrl: './salesorderlist.component.html',
-  styleUrls: ['./salesorderlist.component.scss']
+  selector: 'app-order-list',
+  templateUrl: './order-list.component.html',
+  styleUrls: ['./order-list.component.scss']
 })
-export class SalesorderlistComponent implements OnInit {
+export class OrderListComponent implements OnInit {
 
   public columnDefs: any = [];
   public data: any = [];
@@ -19,47 +20,59 @@ export class SalesorderlistComponent implements OnInit {
   public pageLimit: number = 10;
   public totalRecords: number;
   public pageLimitArray: any = [];
-  public placeholder: string = "Search using Id's,status,issuer etc.";
+  public placeholder: string = "";
   public filterButtonClass: string = "col-2 filter-button fa fa-filter";
   public displayFilterOption: boolean = false;
   filterForm: FormGroup;
   public adavancedArray: any = [];
   public globalSearchText: any = '';
   public allCheck: boolean = false;
-  public generatePoText: string = 'Generate PO';
-  public redirectText: string = "Redirect";
+  public beforeRedirect: string = '';
+  public redirectText: string = '';
   public isItemSelected: boolean = false;
   public selectedArray: any = [];
   public masterButtonClass:string= "btn-master";
   public secondaryButtonClass:string= "btn-secondary";
-  
+  public config :any;
+  public advanFilterForm: any;
   dateFromPickerConfig :Partial<BsDatepickerConfig>;
   dateToPickerConfig :Partial<BsDatepickerConfig>;
 
-  constructor(public utils: UtilsService) {
-  
-    
-  
+  constructor(public utils: UtilsService,public route :ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.config = this.route.snapshot.data['config'];
+    this.initializeOrderList();
+  }
+  /**
+   * initializeOrderList
+   */
+  public initializeOrderList = () => {
     this.populateSalesOrderGrid();
     this.fetchStatusOrderList();
-    this.pageLimitArray = [10, 20, 30];
+    this.defaultPageSettings();
     this.filterFormsControls(); 
+  }
+  /**
+   * defaultPageSettings
+   */
+  public defaultPageSettings = () => {
+    this.pageLimitArray =this.config.perPageArray;
+    this.redirectText = this.config.redirect;
+    this.beforeRedirect = this.config.beforeRedirect;
+    this.placeholder = this.config.globalPlaceholder;
   }
   /**
    * filterFormsControls
    */
   public filterFormsControls = () => {
-    this.filterForm = new FormGroup({
-      orderId: new FormControl(''),
-      volumeFrom: new FormControl(''),
-      volumeTo: new FormControl(''),
-      fromDate: new FormControl(''),
-      toDate: new FormControl(''),
-      status: new FormControl('')
+    let formGrp : any = {};
+    this.advanFilterForm = this.config.filterForm;
+    this.advanFilterForm.forEach((item)=>{
+      formGrp[item.dataIndex] = new FormControl('');
     });
+    this.filterForm = new FormGroup(formGrp);
  }
 ngDoCheck(){
 this.dateFromPickerConfig = Object.assign({},{maxDate:this.filterForm.controls['toDate'].value});
@@ -69,12 +82,7 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
    * populateSalesOrderGrid
    */
   public populateSalesOrderGrid = () => {
-    this.columnDefs = [
-      new GridConfig('orderId', 'Sales Order Id', true, '<div>Michael</div>'),
-      new GridConfig('volume', 'Volume', true, '<div>Dpenha</div>'),
-      new GridConfig('deliveryDate', 'Delivery Date', false, '<div>Dpenha</div>'),
-      new GridConfig('status', 'Status Of order', true, '<div>Dpenha</div>')
-    ];
+    this.columnDefs = this.config.gridConfigs;
   }
   /**
    * fetchStatusOrderList
@@ -371,5 +379,11 @@ this.dateToPickerConfig = Object.assign({},{minDate:this.filterForm.controls['fr
     this.filterForm.controls[item.value.key].setValue('');
     this.adavancedArray.splice(index,1);
     this.filterSOData();
+  }
+  /**
+   * ifDateField
+   */
+  public ifDateField = (item : any) => {
+    return item.dataIndex.toLowerCase().indexOf('date') > -1;
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChildren } from '@angular/core';
-import { POdetailsService } from './podetails.service'
+import { POdetailsService } from './podetails.service';
 import { UtilsService } from '../../shared/services/utils/utils.service';
 import { ArrayFilterPipe } from "../../shared/card-filter.pipe";
 import { SearchfieldComponent } from '../../shared/components/searchfield/searchfield.component';
@@ -9,11 +9,12 @@ import { SearchfieldComponent } from '../../shared/components/searchfield/search
   styleUrls: ['./podetails.component.scss']
 })
 export class PodetailsComponent implements OnInit {
-
- @ViewChildren('selectedcard') selectedCardCount;
  
-
-  cardDetails: any;
+  public personalizeButton:string="Personalize All"
+   public redirectButton:string="Redirect"
+  public cardDetails: any;
+  public masterButtonClass:string= "btn-master";
+  public secondaryButtonClass:string= "btn-secondary";
   filteredCards = this.cardDetails;
   tempArray: any; 
   performFilter(value): any {
@@ -30,6 +31,12 @@ export class PodetailsComponent implements OnInit {
         this.cardDetails = cards;
         this.filteredCards = this.cardDetails
       });
+  }
+ngDoCheck(){
+  if(this.cardDetails){
+  this.tempArray = this.utils.filterArray(this.cardDetails, 'true', ['cardSelected'],'or');
+  }
+
   }
   personalise(eve: any) {
     this.tempArray = this.utils.filterArray(this.cardDetails, 'true', ['cardSelected'],'or');

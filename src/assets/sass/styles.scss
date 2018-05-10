@@ -8,7 +8,6 @@
 .btn-master {
     @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
  }
-
  .personalize-btn{
      margin-bottom: 10px;
      margin-top: 0px;
@@ -20,4 +19,12 @@
 
 .card-p .small-card{
     height: 500px !important;
+}
+.btn-secondary {
+    @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background-sec,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
+ }
+ input.form-control, select.form-control {
+    height: 30px;
+    line-height: 1;
+    padding: 0 10px;
 }

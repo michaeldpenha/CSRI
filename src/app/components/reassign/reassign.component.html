@@ -9,8 +9,7 @@
       
       <label>Selected Sale Orders (06)</label>
       <div class="selection-wrapper">
-        <a class="selected">12345 <span aria-hidden="true">&times;</span></a>
-        <a class="selected">12345 <span aria-hidden="true">&times;</span></a>
+        <app-removable-card [label]="salesOrder.orderId" *ngFor="let salesOrder of salesOrders"></app-removable-card>
       </div>
       <hr />
 
@@ -32,8 +31,7 @@
         <div class="col-md-4">
           <select class="form-control" (ngModel)="reassignForm.printer" required>
             <option selected>Choose...</option>
-            <option>Mumbai</option>
-            <option>Pune</option>
+            <option *ngFor="let satellite of satellites">{{satellite.name}}</option>
           </select>
         </div>
       </div>

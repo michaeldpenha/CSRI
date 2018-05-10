@@ -1,18 +1,35 @@
 <div class="container">
- Search: <app-searchfield [placeholder]="placeholder" (searchTrigger)="performFilter($event)"></app-searchfield>
-  <div class="row col-sm-12">
-    <div>{{selectedCardCount}}</div>
-    <button class="pull-right" [disabled]="selectedCardCount?.length<=0" (click)="personalise($event)">Personalise</button></div>
-
   <div class="row">
-    <div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter:true" #selectedcard>
-      <app-cards [cardDetail]='card'></app-cards>
+  <div class="col-sm-4">
+    Search:
+    <app-searchfield [placeholder]="placeholder" (searchTrigger)="performFilter($event)"></app-searchfield>
+  </div>
+  
+  <div class="col-sm-4" >
+    <div class="alert alert-success text-center" *ngIf="this.tempArray && this.tempArray.length">
+    {{this.tempArray.length}} Cards Selected
     </div>
   </div>
-  <hr/>
+ 
+  <div class="col-sm-4">
+    <app-button class="pull-right" [text]="personalizeButton" (click)="personalise($event)" [cls]="masterButtonClass"></app-button>
+      <app-button class="pull-right" [text]="redirectButton" (click)="personalise($event)" [cls]="secondaryButtonClass"></app-button>
+  </div>
+  </div>
+  <div class="row" *ngIf="this.tempArray && this.tempArray.length">
+    <div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter:true" #selectedcard>
+      <app-cards [cardDetail]='card'>
+        <h5>{{card.cardNumber}}</h5>
+      </app-cards>
+    </div>
+    <div class="clearfix"></div>
+    <hr/>
+  </div>
+
   <div class="row">
     <div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter:false">
       <app-cards [cardDetail]='card'>
+        <h5>{{card.cardNumber}}</h5>
       </app-cards>
     </div>
   </div>

@@ -1,50 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SalesorderlistComponent } from './salesorderlist.component';
-import { UtilsService } from '../../shared/services/utils/utils.service';
+import { OrderListComponent } from './order-list.component';
 
-import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BsDatepickerModule } from 'ngx-bootstrap';
-
-describe('SalesorderlistComponent', () => {
-  let component: SalesorderlistComponent;
-  let fixture: ComponentFixture<SalesorderlistComponent>;
+describe('OrderListComponent', () => {
+  let component: OrderListComponent;
+  let fixture: ComponentFixture<OrderListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SalesorderlistComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule, ReactiveFormsModule,BsDatepickerModule.forRoot()],
-      providers: [UtilsService]
+      declarations: [ OrderListComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SalesorderlistComponent);
+    fixture = TestBed.createComponent(OrderListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    component.soListData = [{
-      fName: 'Michael',
-      lName: 'Dpenha'
-    }, {
-      fName: 'Mayur',
-      lName: 'Patil'
-    }, {
-      fName: 'Sheetal',
-      lName: 'Aware'
-    }, {
-      fName: 'Sachin',
-      lName: 'Rajput'
-    }];
-    component.defaultPage = 1;
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
   it('should sort Grid Data Descending', () => {
     component.sortGridData({ property: 'fName', direction: -1 });
     expect(component.soListData[0].fName).toBe('Sheetal');
