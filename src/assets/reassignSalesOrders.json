@@ -1,0 +1,19 @@
+{
+    "message": "Operation was successful",
+    "status": "SUCCESS",
+    "salesOrders": [
+        {
+            "orderId": "1",
+            "volume": 50,
+            "deliveryDate": "2018-05-08",
+            "status": "Queued"
+        },
+        {
+            "orderId": "2",
+            "volume": 100,
+            "deliveryDate": "2018-05-9",
+            "status": "Queued"
+        }
+
+    ]
+}

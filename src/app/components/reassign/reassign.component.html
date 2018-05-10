@@ -9,7 +9,7 @@
       
       <label>Selected Sale Orders (06)</label>
       <div class="selection-wrapper">
-        <a class="selected" *ngFor="let salesOrder of salesOrders">{{salesOrder.orderId}} <span aria-hidden="true">&times;</span></a>
+        <app-removable-card [label]="salesOrder.orderId" *ngFor="let salesOrder of salesOrders"></app-removable-card>
       </div>
       <hr />
 
