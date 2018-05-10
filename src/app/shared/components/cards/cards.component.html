@@ -1,7 +1,11 @@
 <div class="card">
+ <div class="card-body">
   <div class="text-right">
     <span *ngIf="!isCheckBoxtoChild">
       <input (ngModelChange)="onFilterChange($event)" type="checkbox" />
     </span>
+  </div>
+
+      <ng-content></ng-content>
   </div>
 </div>

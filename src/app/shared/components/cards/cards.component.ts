@@ -14,7 +14,7 @@ export class CardsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.isCheckBoxtoChild);
+    //console.log(this.isCheckBoxtoChild);
   }
   
 
