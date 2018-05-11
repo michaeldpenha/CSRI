@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
 import { BsDatepickerConfig } from "ngx-bootstrap";
+import {OrderListService} from '../../shared/services/order-list/order-list.service';
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
@@ -41,11 +42,11 @@ export class OrderListComponent implements OnInit {
   dateFromPickerConfig: Partial<BsDatepickerConfig>;
   dateToPickerConfig: Partial<BsDatepickerConfig>;
 
-  constructor(public utils: UtilsService, public route: ActivatedRoute, public http: HttpClient) {
+  constructor(public utils: UtilsService, public route: ActivatedRoute, public http: HttpClient,public listService :  OrderListService) {
   }
 
   ngOnInit() {
-    this.config = this.route.snapshot.data['config'];
+    this.config = this.listService.config;
     this.initializeOrderList();
   }
   /**

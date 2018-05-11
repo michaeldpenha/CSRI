@@ -7,11 +7,11 @@ import { ReassignComponent } from "./components/reassign/reassign.component";
 import { CardPersonalizationComponent } from "./components/card-personalization/card-personalization.component";
 import {OrderListComponent} from './components/order-list/order-list.component';
 
-import {OrderListService} from  './shared/services/resolve/order-list/order-list.service';
+import {OrderListResolveService} from  './shared/services/resolve/order-list/order-list-resolve.service';
 const routes: Routes = [{
   path: '', redirectTo: '/sales-order', pathMatch: 'full'
 }, {
-  path: 'sales-order', component: OrderListComponent,resolve : {config : OrderListService},data: { path: 'sales' }
+  path: 'sales-order', component: OrderListComponent,resolve : {config : OrderListResolveService},data: { path: 'sales' }
 }, {
   path: 'po-details', component: PodetailsComponent
 }, {
@@ -19,7 +19,7 @@ const routes: Routes = [{
 }, {
   path: 'po-personalization', component: CardPersonalizationComponent
 }, {
-  path: 'production-order', component: OrderListComponent,resolve : {config : OrderListService},data: { path: 'production' }
+  path: 'production-order', component: OrderListComponent,resolve : {config : OrderListResolveService},data: { path: 'production' }
 }];
 
 @NgModule({

@@ -29,7 +29,8 @@ import { ReassignService } from './components/reassign/reassign.service';
 import {HttpInterceptorsService} from  './shared/services/http/http-interceptors.service';
 import { RemovableCardComponent } from './shared/components/removable-card/removable-card.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
-import {OrderListService} from  './shared/services/resolve/order-list/order-list.service';
+import {OrderListResolveService} from  './shared/services/resolve/order-list/order-list-resolve.service';
+import {OrderListService} from './shared/services/order-list/order-list.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,7 @@ import {OrderListService} from  './shared/services/resolve/order-list/order-list
     provide : HTTP_INTERCEPTORS,
     useClass : HttpInterceptorsService,
     multi : true
-  },GridService, UtilsService, POdetailsService, ArrayFilterPipe, CardPersonalizationService, ReassignService,OrderListService],
+  },GridService, UtilsService, POdetailsService, ArrayFilterPipe, CardPersonalizationService, ReassignService,OrderListResolveService,OrderListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
