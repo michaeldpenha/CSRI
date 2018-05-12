@@ -1,0 +1,6 @@
+<ng-container *ngIf="!redirectView">
+    <app-order-list (redirectEvent)="onRedirect($event)" [refreshData] = "refeshData"></app-order-list>
+</ng-container>
+<ng-container *ngIf="redirectView">
+    <app-reassign [selectionArray]="redirectSelectedArray" (redirectTrigger)="redirectTrigger()" (onCancelClick)="onCancel()"></app-reassign>
+</ng-container>

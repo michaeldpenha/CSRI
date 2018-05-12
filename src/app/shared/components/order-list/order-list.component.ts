@@ -1,20 +1,20 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { GridConfig } from '../../shared/models/grid.config';
-import { UtilsService } from '../../shared/services/utils/utils.service';
+import { Component, OnInit, ViewChild, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { GridConfig } from '../../models/index';
+import { UtilsService, OrderListService } from '../../services/index';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
 import { BsDatepickerConfig } from "ngx-bootstrap";
-import {OrderListService} from '../../shared/services/order-list/order-list.service';
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderListComponent implements OnInit {
-
+  @Input() refreshData: any;
+  @Output() redirectEvent = new EventEmitter<any>();
   public columnDefs: any = [];
   public data: any = [];
   public listData: any = [];
@@ -38,23 +38,28 @@ export class OrderListComponent implements OnInit {
   public config: any;
   public advanFilterForm: any;
   public redirectView: boolean = false;
-  public redirectSelectedArray : any = [];
+  public redirectSelectedArray: any = [];
   dateFromPickerConfig: Partial<BsDatepickerConfig>;
   dateToPickerConfig: Partial<BsDatepickerConfig>;
 
-  constructor(public utils: UtilsService, public route: ActivatedRoute, public http: HttpClient,public listService :  OrderListService) {
+  constructor(public utils: UtilsService, public route: ActivatedRoute, public http: HttpClient, public listService: OrderListService) {
   }
 
   ngOnInit() {
     this.config = this.listService.config;
     this.initializeOrderList();
   }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['refreshData']) {
+      this.config = (this.config) ? this.config : this.listService.config;
+      this.fetchStatusOrderList();
+    }
+  }
   /**
    * initializeOrderList
    */
   public initializeOrderList = () => {
     this.populateSalesOrderGrid();
-    this.fetchStatusOrderList();
     this.defaultPageSettings();
     this.filterFormsControls();
   }
@@ -221,7 +226,7 @@ export class OrderListComponent implements OnInit {
     //   "deliveryDate": "2018-05-08",
     //   "status": "Queued"
     // }];
-
+    this.modifySoData(this.listData);
   }
   /**
    * sortGridData
@@ -362,9 +367,8 @@ export class OrderListComponent implements OnInit {
    * redirect
    */
   public redirect = () => {
-    this.redirectView = true;
     this.redirectSelectedArray = JSON.parse(JSON.stringify(this.selectedArray));
-    console.log('Redirect');
+    this.redirectEvent.emit(this.redirectSelectedArray);
   }
   /**
    * rowSelected
@@ -405,18 +409,5 @@ export class OrderListComponent implements OnInit {
    */
   public datePickerConfig = (item: any) => {
     return item.key.toLowerCase().indexOf('to') ? this.dateToPickerConfig : this.dateFromPickerConfig;
-  }
-  /**
-   * onCancel 
-   */
-  public onCancel = () => {
-    this.redirectView = false;
-  }
-  /**
-   * redirectTrigger
-   */
-  public redirectTrigger = () => {
-    this.redirectView = false;
-    this.fetchStatusOrderList();
   }
 }

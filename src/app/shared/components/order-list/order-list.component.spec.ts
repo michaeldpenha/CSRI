@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrderListComponent } from './order-list.component';
-import { UtilsService } from '../../shared/services/utils/utils.service';
+import { UtilsService,OrderListService } from '../../services/index';
 
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -9,11 +9,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { OrderConfig } from '../../shared/models/order.config';
-import { OrderFiltersConfig } from '../../shared/models/order-filters.config';
-import { GridConfig } from '../../shared/models/grid.config';
-import { endPoints } from '../../shared/constants/endPoints';
-import { OrderListService } from '../../shared/services/order-list/order-list.service';
+import { OrderConfig,OrderFiltersConfig,GridConfig } from '../../models/index';
+import { endPoints } from '../../constants/index';
 describe('OrderListComponent', () => {
   let component: OrderListComponent;
   let fixture: ComponentFixture<OrderListComponent>;

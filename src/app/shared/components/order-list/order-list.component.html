@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!redirectView">
+<div class="container">
   <div class="row">
     <app-searchfield class="col-4" [placeholder]="placeholder" (searchTrigger)="searchData($event)"></app-searchfield>
     <div class="pipe"></div>
@@ -91,7 +91,4 @@
   <app-grid [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" [defaultPage]="defaultPage" [pageLimit]="pageLimit"
     [totalRecords]="totalRecords" (previousPage)="previousPage($event)" (nextPage)="nextPage($event)" (goToPage)="goToPage($event)"
     (pageLimitChange)="pageLimitChange($event)" [pageLimitArray]="pageLimitArray" (allChecked)="allSOSelected($event)" (rowSelected)="rowSelected($event)"></app-grid>
-</div>
-<div class="container" *ngIf="redirectView">
-  <app-reassign [selectionArray]="redirectSelectedArray" (redirectTrigger) = "redirectTrigger()" (onCancelClick)="onCancel()"></app-reassign>
 </div>
