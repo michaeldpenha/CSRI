@@ -11,7 +11,6 @@ export class ProgressStatusComponent implements OnInit {
   constructor() { }
   
   ngOnInit() {
-    // console.log(this.progressStatus);
   }
 
 }

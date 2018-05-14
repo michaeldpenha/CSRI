@@ -28,13 +28,12 @@ import { GridService } from './shared/components/grid/grid.service';
 import { PodetailsComponent } from "./components/podetails/podetails.component";
 import { ArrayFilterPipe } from "./shared/card-filter.pipe";
 import { POdetailsService } from "./components/podetails/podetails.service";
-
 import { ReassignComponent } from "./shared/components/reassign/reassign.component";
-import { CardPersonalizationService } from './components/card-personalization/card-personalization.service';
-import { CardPersonalizationComponent } from './components/card-personalization/card-personalization.component';
+
 import { ReassignService } from './shared/components/reassign/reassign.service';
 import { ProgressStatusComponent } from "./shared/components/progress-status/progress-status.component";
 import { LoaderComponent } from './shared/components/loader/loader.component';
+import { CardPersonalizationService } from "./pages/card-personalization/card-personalization.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +42,6 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
     PodetailsComponent,
     ArrayFilterPipe,
     ReassignComponent,
-    CardPersonalizationComponent,
     PagesComponent,
     ProgressStatusComponent,
     LoaderComponent

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PodetailsComponent } from "./components/podetails/podetails.component";
+import { CardPersonalizationComponent } from "./components/card-personalization/card-personalization.component";
 
 import { SalesOrderComponent, ProductionOrderComponent } from './pages/index';
-import { CardPersonalizationComponent } from "./pages/card-personalization/card-personalization.component";
-
 const routes: Routes = [{
   path: '',
   redirectTo: '/sales-order',
@@ -15,7 +14,7 @@ const routes: Routes = [{
 }, {
   path: 'po-details',
   component: PodetailsComponent
-},  {
+}, {
   path: 'po-personalization',
   component: CardPersonalizationComponent
 }, {
@@ -27,6 +26,5 @@ const routes: Routes = [{
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-
 export class AppRoutingModule { }
 
