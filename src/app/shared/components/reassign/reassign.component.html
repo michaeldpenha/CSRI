@@ -37,7 +37,7 @@
           <div class="form-group">
             <label>To</label>
             <select class="form-control" formControlName="externalSatellite" required>
-              <option selected>Choose satellite</option>
+              <option value="">Choose satellite</option>
               <option *ngFor="let satellite of satellites" [value]="satellite.id">{{satellite.name}}</option>
             </select>
           </div>
