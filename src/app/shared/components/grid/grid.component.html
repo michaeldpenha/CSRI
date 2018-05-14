@@ -38,8 +38,3 @@
       </ng-container>
     </tbody>
   </table>
-
-<ng-container *ngIf="gridData.length > 0">
-  <app-pagination [pageLimitArray]="pageLimitArray" [count]="totalRecords" class="row" [page]="defaultPage" [perPage]="pageLimit"
-    [pagesToShow]="5" (goPrev)="prevPage()" (goNext)="goNext()" (goPage)="moveToPage($event)" (changeInPerPage)="changeLimit($event)"></app-pagination>
-</ng-container>

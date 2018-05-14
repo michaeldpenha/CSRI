@@ -13,16 +13,8 @@ export class GridComponent implements OnInit {
   @Input('data') gridData: any = [];
   @Input() gridClass: string;
   @Input() gridConfig: any = {};
-  @Input() defaultPage: number = 1;
-  @Input() pageLimit: number = 10;
-  @Input() totalRecords: number;
-  @Input() pageLimitArray : any = [];
   @Input() allItemsSelected : boolean = false;
   @Output() sortTrigger = new EventEmitter<any>();
-  @Output() previousPage = new EventEmitter<any>();
-  @Output() nextPage = new EventEmitter<any>();
-  @Output() goToPage = new EventEmitter<any>();
-  @Output() pageLimitChange = new EventEmitter<any>();
   @Output() allChecked = new EventEmitter<any>();
   @Output() rowSelected = new EventEmitter<any>();
   public reverseSort: boolean = true;
@@ -64,30 +56,6 @@ export class GridComponent implements OnInit {
     this.reverseSort = !this.reverseSort;
     let direction = this.reverseSort ? 1 : -1;
     this.sortTrigger.emit({ direction: direction, property: this.gridService.sortField });
-  }
-  /**
-   * 
-   */
-  public prevPage = () =>{
-    this.previousPage.emit();
-  }
-  /**
-   * nextPage
-   */
-  public goNext = () => {
-    this.nextPage.emit();
-  }
-  /**
-   * goToPage
-   */
-  public moveToPage = (event : any ) =>{
-    this.goToPage.emit(event);
-  }
-  /**
-   * changeLimit
-   */
-  public changeLimit = (event : any ) => {
-    this.pageLimitChange.emit(event);
   }
   /**
    * allSelected

@@ -26,13 +26,13 @@
           <app-filter-panel [displayPanel]="displayFilterOption" (applyFilter)="applyFilter()" (clearFilter)="clearFilter()">
             <form [formGroup]="filterForm" class="row">
               <ng-container *ngFor="let filter of advanFilterForm">
-                 <ng-container *ngIf="filter.key == 'to'">
-                    <div class="pull-left to-text">to</div>
-                  </ng-container>
+                <ng-container *ngIf="filter.key == 'to'">
+                  <div class="pull-left to-text">to</div>
+                </ng-container>
                 <div [ngClass]="filter.parentClass">
                   <label [for]="filter.dataIndex">{{filter.label   }} </label>
-                <ng-container *ngIf="filter.key == 'to'">
-                <div class="blank-labels"></div>
+                  <ng-container *ngIf="filter.key == 'to'">
+                    <div class="blank-labels"></div>
                   </ng-container>
                   <ng-container *ngIf="filter.type === 'I'">
                     <ng-container *ngIf="ifDateField(filter)">
@@ -97,7 +97,10 @@
   </div>
 
 
-  <app-grid [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" [defaultPage]="defaultPage" [pageLimit]="pageLimit"
-    [totalRecords]="totalRecords" (previousPage)="previousPage($event)" (nextPage)="nextPage($event)" (goToPage)="goToPage($event)"
-    (pageLimitChange)="pageLimitChange($event)" [pageLimitArray]="pageLimitArray" (allChecked)="allSOSelected($event)" (rowSelected)="rowSelected($event)" [allItemsSelected]="allCheck"></app-grid>
+  <app-grid [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" (allChecked)="allSOSelected($event)"
+    (rowSelected)="rowSelected($event)" [allItemsSelected]="allCheck"></app-grid>
+  <ng-container *ngIf="data.length > 0">
+    <app-pagination [pageLimitArray]="pageLimitArray" [count]="totalRecords" class="row" [page]="defaultPage" [perPage]="pageLimit"
+      [pagesToShow]="5" (goPrev)="previousPage($event)" (goNext)="nextPage($event)" (goPage)="goToPage($event)" (changeInPerPage)="pageLimitChange($event)"></app-pagination>
+  </ng-container>
 </div>

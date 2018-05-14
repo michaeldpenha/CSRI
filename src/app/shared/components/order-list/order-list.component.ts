@@ -243,21 +243,21 @@ export class OrderListComponent implements OnInit {
    */
   public previousPage = () => {
     this.defaultPage = this.defaultPage - 1;
-    this.modifySoData(this.listData);
+    this.filterSOData();
   }
   /**
    * 
    */
   public nextPage = () => {
     this.defaultPage = this.defaultPage + 1;
-    this.modifySoData(this.listData);
+    this.filterSOData();
   }
   /**
    * 
    */
   public goToPage = ($event) => {
     this.defaultPage = Number($event);
-    this.modifySoData(this.listData);
+    this.filterSOData();
   }
   /**
    * 
@@ -265,7 +265,7 @@ export class OrderListComponent implements OnInit {
   public pageLimitChange = (count: number) => {
     this.pageLimit = count;
     this.defaultPage = 1;
-    this.modifySoData(this.listData);
+    this.filterSOData();
   }
   /**
    * 

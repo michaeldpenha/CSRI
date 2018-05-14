@@ -22,8 +22,6 @@ import { SharedServices, HttpInterceptorsService } from './shared/services/index
  * Pages Component
  */
 import {PagesComponent} from './pages/index';
-
-import { SalesorderlistComponent } from './components/salesorderlist/salesorderlist.component';
 import { GridService } from './shared/components/grid/grid.service';
 
 import { ArrayFilterPipe } from "./shared/card-filter.pipe";
@@ -38,7 +36,6 @@ import { CardPersonalizationService } from "./pages/card-personalization/card-pe
   declarations: [
     AppComponent,
     SharedComponents,
-    SalesorderlistComponent,
    
     ArrayFilterPipe,
     ReassignComponent,
