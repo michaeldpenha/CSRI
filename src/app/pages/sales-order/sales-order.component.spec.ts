@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SalesOrderComponent } from './sales-order.component';
 import { OrderListComponent, SearchfieldComponent, ButtonComponent, RemovableCardComponent, FilterPanelComponent } from '../../shared/components/index';
-import { ReassignComponent } from '../../components/reassign/reassign.component'; 
+import { ReassignComponent } from '../../shared/components/reassign/reassign.component'; 
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BsDatepickerModule } from 'ngx-bootstrap';
