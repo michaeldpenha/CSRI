@@ -45,7 +45,7 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
     ReassignComponent,
     CardPersonalizationComponent,
     PagesComponent,
-    ProgressStatusComponent
+    ProgressStatusComponent,
     LoaderComponent
   ],
   imports: [
