@@ -308,12 +308,13 @@ export class OrderListComponent implements OnInit {
     this.adavancedArray = [];
     this.filterForm.reset();
     this.filterSOData();
+    this.displayFilterOptions();
   }
   /**
    * filterSOData
    */
   public filterSOData = () => {
-    let searchArray: any = Object.keys(this.listData[0]);
+    let searchArray: any = this.listData.length > 0 ? Object.keys(this.listData[0]) : [];
     let filteredArry = this.utils.filterArray(this.listData, this.globalSearchText, searchArray, 'or');
     filteredArry = this.adavancedArray.length > 0 ? this.applyMultipleFilter(filteredArry) : filteredArry;
     this.defaultPage = 1;
