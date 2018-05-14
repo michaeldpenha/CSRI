@@ -2,17 +2,18 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="row">
-       <div class="col-9">
-    <app-searchfield [placeholder]="placeholder" (searchTrigger)="searchData($event)"></app-searchfield>
-       </div>
-    <div class="col-3">
-    <div class="pipe"></div>
-    <app-button [cls]="filterButtonClass" (onButtonClick)="displayFilterOptions()"></app-button>
+        <div class="col-9">
+          <app-searchfield [placeholder]="placeholder" (searchTrigger)="searchData($event)"></app-searchfield>
+        </div>
+        <div class="col-3">
+          <div class="pipe"></div>
+          <app-button [cls]="filterButtonClass" (onButtonClick)="displayFilterOptions()"></app-button>
+        </div>
+      </div>
     </div>
-  </div>
-    </div><div class="col-sm-6 text-md-right">
-    <app-button [cls]="secondaryButtonClass" [text]="beforeRedirect" [disabled]="selectedArray.length == 0" (onButtonClick)="generatePO()"></app-button>
-    <app-button [cls]="secondaryButtonClass" [text]="redirectText" [disabled]="selectedArray.length == 0" (onButtonClick)="redirect()"></app-button>
+    <div class="col-sm-6 text-md-right">
+      <app-button [cls]="secondaryButtonClass" [text]="beforeRedirect" [disabled]="selectedArray.length == 0" (onButtonClick)="generatePO()"></app-button>
+      <app-button [cls]="secondaryButtonClass" [text]="redirectText" [disabled]="selectedArray.length == 0" (onButtonClick)="redirect()"></app-button>
     </div>
   </div>
   <ng-container *ngFor="let item of adavancedArray">
@@ -99,6 +100,12 @@
 
   <app-grid class="d-none d-md-block" [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" (allChecked)="allSOSelected($event)"
     (rowSelected)="rowSelected($event)" [allItemsSelected]="allCheck"></app-grid>
+  <ng-container *ngFor="let item of data">
+    <app-cards class="d-sm-none" (recordSelected)="recordSelected($event)" [cardDetail]='item'>
+
+    </app-cards>
+  </ng-container>
+
   <ng-container *ngIf="data.length > 0">
     <app-pagination [pageLimitArray]="pageLimitArray" [count]="totalRecords" class="row" [page]="defaultPage" [perPage]="pageLimit"
       [pagesToShow]="5" (goPrev)="previousPage($event)" (goNext)="nextPage($event)" (goPage)="goToPage($event)" (changeInPerPage)="pageLimitChange($event)"></app-pagination>

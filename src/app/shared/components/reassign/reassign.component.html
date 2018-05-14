@@ -1,13 +1,13 @@
 <div class="reassign">
 
   <div class="page-heading">
-    <h4>Redirect sales order</h4>
+    <h4>{{headerText}}</h4>
   </div>
 
   <div class="page-body">
     <form [formGroup]="reassignForm" (ngSubmit)="onSubmitReassign(reassignForm)">
       
-      <label>Selected Sales Orders ({{selectedArray.length}})</label>
+      <label>{{selectionText}} ({{selectedArray.length}})</label>
       <div>
         <app-removable-card (removeCard) = "removeSelectedArray($event,selected)" [label]="selected.orderId" *ngFor="let selected of selectedArray"></app-removable-card>
       </div>
@@ -36,9 +36,9 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>To</label>
-            <select class="form-control" required>
+            <select class="form-control" formControlName="externalSatellite" required>
               <option selected>Choose satellite</option>
-              <option *ngFor="let satellite of satellites">{{satellite.name}}</option>
+              <option *ngFor="let satellite of satellites" [value]="satellite.id">{{satellite.name}}</option>
             </select>
           </div>
         </div>
