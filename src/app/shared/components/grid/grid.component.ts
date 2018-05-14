@@ -17,6 +17,7 @@ export class GridComponent implements OnInit {
   @Input() pageLimit: number = 10;
   @Input() totalRecords: number;
   @Input() pageLimitArray : any = [];
+  @Input() allItemsSelected : boolean = false;
   @Output() sortTrigger = new EventEmitter<any>();
   @Output() previousPage = new EventEmitter<any>();
   @Output() nextPage = new EventEmitter<any>();

@@ -2,7 +2,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th><input type="checkbox" (click)="allSelected($event)"></th>
+        <th><input type="checkbox" (click)="allSelected($event)" [checked]="allItemsSelected"></th>
         <ng-container *ngFor="let colDef of columnDefs">
           <th>
             <div (click)="triggerSort(colDef)">
@@ -20,8 +20,8 @@
         <tr>
           <td><input type="checkbox" (click)="rowSelection(data)"  [checked]="data.selected"></td>
 
-          <ng-container *ngFor="let colDef of columnDefs">
-            <td>{{customTemplate(data,colDef)}}</td>
+          <ng-container *ngFor="let colDef of columnDefs; let last = last">
+            <td>{{customTemplate(data,colDef)}} <ng-container *ngIf="last"><app-progress-status ></app-progress-status></ng-container></td>
           </ng-container>
         </tr>
       </ng-container>

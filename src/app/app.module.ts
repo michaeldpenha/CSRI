@@ -1,54 +1,51 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { ReactiveFormsModule } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { GridComponent } from './shared/components/grid/grid.component';
+/**
+ * SharedComponents from shared folder
+ */
+import { SharedComponents } from './shared/components/index';
+
+
+/**
+ * SharedService from Shared folder
+ */
+import { SharedServices, HttpInterceptorsService } from './shared/services/index';
+/**
+ * Pages Component
+ */
+import {PagesComponent} from './pages/index';
+
 import { SalesorderlistComponent } from './components/salesorderlist/salesorderlist.component';
-import { PaginationComponent } from './shared/components/pagination/pagination.component';
 import { GridService } from './shared/components/grid/grid.service';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { UtilsService } from './shared/services/utils/utils.service';
-import { CardsComponent } from "./shared/components/cards/cards.component";
 import { PodetailsComponent } from "./components/podetails/podetails.component";
 import { ArrayFilterPipe } from "./shared/card-filter.pipe";
 import { POdetailsService } from "./components/podetails/podetails.service";
-import { HttpClientModule, HttpClient,HTTP_INTERCEPTORS } from "@angular/common/http";
-import { SearchfieldComponent } from './shared/components/searchfield/searchfield.component';
-import { FilterPanelComponent } from './shared/components/filter-panel/filter-panel.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { BsDatepickerModule } from 'ngx-bootstrap';
-import { ButtonComponent } from './shared/components/button/button.component';
+
 import { ReassignComponent } from "./components/reassign/reassign.component";
 import { CardPersonalizationService } from './components/card-personalization/card-personalization.service';
 import { CardPersonalizationComponent } from './components/card-personalization/card-personalization.component';
 import { ReassignService } from './components/reassign/reassign.service';
-
-import {HttpInterceptorsService} from  './shared/services/http/http-interceptors.service';
-import { RemovableCardComponent } from './shared/components/removable-card/removable-card.component';
-import { OrderListComponent } from './components/order-list/order-list.component';
-import {OrderListService} from  './shared/services/resolve/order-list/order-list.service';
+import { ProgressStatusComponent } from "./shared/components/progress-status/progress-status.component";
 import { LoaderComponent } from './shared/components/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
-    GridComponent,
+    SharedComponents,
     SalesorderlistComponent,
-    PaginationComponent,
-    HeaderComponent,
-    SidebarComponent,
-    CardsComponent,
     PodetailsComponent,
     ArrayFilterPipe,
-    SearchfieldComponent,
-    FilterPanelComponent,
-    ButtonComponent,
     ReassignComponent,
     CardPersonalizationComponent,
-    RemovableCardComponent,
-    OrderListComponent,
+    PagesComponent,
+    ProgressStatusComponent
     LoaderComponent
   ],
   imports: [
@@ -61,10 +58,10 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
     BsDatepickerModule.forRoot()
   ],
   providers: [{
-    provide : HTTP_INTERCEPTORS,
-    useClass : HttpInterceptorsService,
-    multi : true
-  },GridService, UtilsService, POdetailsService, ArrayFilterPipe, CardPersonalizationService, ReassignService,OrderListService],
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorsService,
+    multi: true
+  }, SharedServices, GridService, POdetailsService, ArrayFilterPipe, CardPersonalizationService, ReassignService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

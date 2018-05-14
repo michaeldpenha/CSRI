@@ -28,7 +28,7 @@
                   <ng-container *ngIf="filter.type === 'I'">
                     <ng-container *ngIf="ifDateField(filter)">
                       <input [type]="filter.subType" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
-                        [ngClass]="filter.inputClass" [bsConfig]="dateFromPickerConfig" bsDatepicker readonly>
+                        [ngClass]="filter.inputClass" [bsConfig]="datePickerConfig(filter)" bsDatepicker readonly>
                     </ng-container>
                     <ng-container *ngIf="!ifDateField(filter)">
                       <input [type]="filter.subType"  [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
@@ -90,5 +90,5 @@
 
   <app-grid [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" [defaultPage]="defaultPage" [pageLimit]="pageLimit"
     [totalRecords]="totalRecords" (previousPage)="previousPage($event)" (nextPage)="nextPage($event)" (goToPage)="goToPage($event)"
-    (pageLimitChange)="pageLimitChange($event)" [pageLimitArray]="pageLimitArray" (allChecked)="allSOSelected($event)" (rowSelected)="rowSelected($event)"></app-grid>
+    (pageLimitChange)="pageLimitChange($event)" [pageLimitArray]="pageLimitArray" (allChecked)="allSOSelected($event)" (rowSelected)="rowSelected($event)" [allItemsSelected]="allCheck"></app-grid>
 </div>

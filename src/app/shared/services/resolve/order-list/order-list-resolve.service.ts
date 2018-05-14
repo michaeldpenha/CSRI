@@ -4,10 +4,11 @@ import { Resolve, ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angula
 import { GridConfig } from '../../../models/grid.config';
 import { endPoints } from '../../../constants/endPoints';
 import { OrderFiltersConfig } from '../../../models/order-filters.config';
+import {OrderListService} from '../../order-list/order-list.service';
 @Injectable()
-export class OrderListService {
-
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+export class OrderListResolveService {
+  
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private listService : OrderListService) { }
   resolve = (route: ActivatedRouteSnapshot): any => {
     return this.populateConfig(route.data['path']);
   }
@@ -71,6 +72,7 @@ export class OrderListService {
         break;
       default: break;
     }
+    this.listService.config = config;
     return config;
 
   }

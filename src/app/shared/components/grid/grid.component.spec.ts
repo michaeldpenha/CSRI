@@ -44,17 +44,17 @@ describe('GridComponent', () => {
   });
 
   it('should create a custom template', () => {
-    let result = component.customTemplate(component.gridData[0], new GridConfig('fName', 'First Name', true, ''));
+    let result = component.customTemplate(component.gridData[0], new GridConfig('fName', 'First Name', true));
     expect(result).toBe('Michael');
   });
   it('should show Sort Options', inject([GridService], (service: GridService) => {
     service.sortField = 'fName';
-    let result = component.showSortingOptions(new GridConfig('fName', 'First Name', true, ''));
+    let result = component.showSortingOptions(new GridConfig('fName', 'First Name', true));
     expect(result).toBe(true);
   }));
   it('should hide Sort Options', inject([GridService], (service: GridService) => {
     service.sortField = 'fName';
-    let result = component.showSortingOptions(new GridConfig('fName', 'First Name', false, ''));
+    let result = component.showSortingOptions(new GridConfig('fName', 'First Name', false));
     expect(result).toBe(false);
   }));
   it('should trigger sort', inject([GridService,UtilsService], (service: GridService,utils: UtilsService) => {
@@ -63,10 +63,10 @@ describe('GridComponent', () => {
     component.sortTrigger.subscribe(a=>{
       expect(a.property).toBe('fName');
     });
-     component.triggerSort(new GridConfig('fName', 'First Name', true, ''));
+     component.triggerSort(new GridConfig('fName', 'First Name', true));
   }));
   it('should not trigger sort', inject([GridService,UtilsService], (service: GridService,utils: UtilsService) => {
-     component.triggerSort(new GridConfig('fName', 'First Name', false, ''));
+     component.triggerSort(new GridConfig('fName', 'First Name', false));
   }));
   it('should trigger previous page', inject([GridService,UtilsService], (service: GridService,utils: UtilsService) => {
     component.previousPage.subscribe(a=>{

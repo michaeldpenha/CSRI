@@ -1,5 +1,5 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-removable-card',
   templateUrl: './removable-card.component.html',
@@ -18,6 +18,14 @@ export class RemovableCardComponent implements OnInit {
    */
   public removeContainer = (item,key) => {
     this.removeCard.emit({key : key,value : item});
+  }
+  /**
+   * displayLabel
+   */
+  public displayLabel = (item : any , label : any):string => {
+    let result : string;
+    result = (item) ? (item.key.toLowerCase().indexOf('date') === -1) ? item.value : moment(item.value).format('MM/D/YYYY') : label;
+    return result;
   }
 
 }

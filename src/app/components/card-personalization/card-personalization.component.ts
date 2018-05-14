@@ -18,6 +18,9 @@ export class CardPersonalizationComponent implements OnInit {
   buttonClass = "btn-master";
   isCheckBox : boolean = true;
   opendDivId: any;
+  public poCardClass:string="po-cards";
+  passProgressStatus : string = "80%";
+
   private showHidePersonalItems = true;
 
   ngOnInit() {
@@ -31,7 +34,6 @@ export class CardPersonalizationComponent implements OnInit {
         window.alert('Error occurred while fetching events. Please contact administrator for more details.');
       }
       );
-
   }
 
   toggleProductionItems(index:any) {

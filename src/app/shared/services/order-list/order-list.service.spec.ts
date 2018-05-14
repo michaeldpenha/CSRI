@@ -1,10 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { OrderListService } from './order-list.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('OrderListService', () => {
+
+describe('OrderList.ServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       providers: [OrderListService]
     });
   });

@@ -14,11 +14,6 @@ export class ReassignService {
   getSatellite(): Observable<any> {
     return this.http.get('http://172.30.30.20:8096/api/issuers/1/satellites');
   }
-
-  getSalesOrder(): Observable<any> {
-    return this.http.get('http://172.30.30.20:8096/api/issuers/1/sales-orders');
-  }
-
   patchSoReassign(param):Observable<any> {
     return this.http.patch('http://172.30.30.20:8096/api/issuers/1/reassign-sales-orders', param);
   }
