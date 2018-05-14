@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PodetailsComponent } from "./components/podetails/podetails.component";
+import { PodetailsComponent } from "./pages/podetails/podetails.component";
 
 import { SalesOrderComponent, ProductionOrderComponent } from './pages/index';
 import { CardPersonalizationComponent } from "./pages/card-personalization/card-personalization.component";

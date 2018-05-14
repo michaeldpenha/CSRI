@@ -25,9 +25,9 @@ import {PagesComponent} from './pages/index';
 
 import { SalesorderlistComponent } from './components/salesorderlist/salesorderlist.component';
 import { GridService } from './shared/components/grid/grid.service';
-import { PodetailsComponent } from "./components/podetails/podetails.component";
+
 import { ArrayFilterPipe } from "./shared/card-filter.pipe";
-import { POdetailsService } from "./components/podetails/podetails.service";
+import { POdetailsService } from "./pages/podetails/podetails.service";
 import { ReassignComponent } from "./shared/components/reassign/reassign.component";
 
 import { ReassignService } from './shared/components/reassign/reassign.service';
@@ -39,7 +39,7 @@ import { CardPersonalizationService } from "./pages/card-personalization/card-pe
     AppComponent,
     SharedComponents,
     SalesorderlistComponent,
-    PodetailsComponent,
+   
     ArrayFilterPipe,
     ReassignComponent,
     PagesComponent,
