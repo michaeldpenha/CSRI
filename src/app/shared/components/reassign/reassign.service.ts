@@ -5,6 +5,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import {endPoints} from '../../../shared/constants/index';
 
 @Injectable()
 export class ReassignService {
@@ -12,10 +13,10 @@ export class ReassignService {
   constructor(private http: HttpClient) { }
 
   getSatellite(): Observable<any> {
-    return this.http.get('http://172.30.30.20:8096/api/issuers/1/satellites');
+    return this.http.get( `${endPoints.baseUrl}/${endPoints.urlPath.salesOrder}/1/satellites` );
   }
   patchSoReassign(param):Observable<any> {
-    return this.http.patch('http://172.30.30.20:8096/api/issuers/1/reassign-sales-orders', param);
+    return this.http.patch( `${endPoints.baseUrl}/${endPoints.urlPath.salesOrder}/1/reassign-sales-orders`, param);
   }
 
 }
