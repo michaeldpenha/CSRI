@@ -1,53 +1,72 @@
-<div class="container-fluid" style="margin-top:100px" id="print-section">
-
+<div class="container">
   <app-button class="pull-right personalize-btn" [text]="personalizeButton" [cls]="buttonClass"></app-button>
   <div class="clearfix"></div>
-  <div class="card">
+  <div class="card ">
     <div class="card-body">
+        
       <div class="row" *ngFor="let cardPersonalization of cardPersonalization; let i = index;">
+        
+      <div class="col-2"><strong>PO #5345345</strong> </div><div class="col-2 text-right">Queued</div><div class="col-8"><app-progress-status [progressStatus]="passProgressStatus"></app-progress-status></div>
+
+        <div class="col-sm-4 "> 
+          <app-cards [cls]="poCardClass" [isCheckBoxtoChild]="isCheckBox">
+           
+            <div class="row ">
+              <div class="col-3 text-right">
+                <h5>{{cardPersonalization.no_of_cards_to_print}}</h5>
+              </div>
+              <div class="col-9 ">No of cards to be printed</div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-right">
+                <h5>{{cardPersonalization.no_of_cards_available}}</h5>
+              </div>
+              <div class="col-9">No of cards available</div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-right">
+                <h5>{{cardPersonalization.max_card_to_print}}</h5>
+              </div>
+              <div class="col-9">Maximum cards that can be printed</div>
+            </div>
+          </app-cards>
+        </div>
+
 
         <div class="col-sm-4">
-          <app-cards>
+          <app-cards [cls]="poCardClass" [isCheckBoxtoChild]="isCheckBox">
             <div class="row">
-              <div class="col-md-4 border-right">
-                <p><b>{{ cardPersonalization.no_of_cards }}</b> <small>No. Of cards to be printed</small></p>
-                <p><b>{{ cardPersonalization.no_of_cards }}</b> <small>No. Of cards to be printed</small></p>
-                <p><b>{{ cardPersonalization.no_of_cards }}</b> <small>No. Of cards to be printed</small></p>
+              <div class="col-sm-4 border-right">
+                <p> <img src="./assets/images/credit-card-1.jpg">
+                </p>
+                <p> <img _ngcontent-c1="" src="./assets/images/credit-card-1.jpg">
+                </p>
               </div>
-              <div class="col-md-6">
-                <p><small>Schedule</small></p>
-                <small>  <p>Delivery Date  :  {{ cardPersonalization.date }} </p> </small>
+              <div class="col-sm-4 small">
+                <p>Programs</p>
+                <p>{{cardPersonalization.program1}}</p>
+                <p>{{cardPersonalization.program2}}</p>
+                <p>{{cardPersonalization.program3}}</p>
+                <p>{{cardPersonalization.program4}}</p>
               </div>
             </div>
           </app-cards>
         </div>
 
-        <div class="col-sm-4">
-          <app-cards>
-            <div class="row">
-              <div class="col-md-4 border-right">
-                <p> <img src="./assets/images/{{cardPersonalization.image}}" />
-                </p>
-                <p> <img src="./assets/images/{{cardPersonalization.image}}" />
-                </p>
-              </div>
-              <div class="col-md-8">
-                <p><small>Program</small></p>
-                <small>  <p>{{ cardPersonalization.program }}</p> </small>
-              </div>
-            </div>
-          </app-cards>
-        </div>
 
         <div class="col-sm-4">
-          <app-cards>
+          <app-cards [cls]="poCardClass" [isCheckBoxtoChild]="isCheckBox">
             <div class="row">
-              <div class="col-md-5 border-right">
-                <i class="fa fa-print" style="font-size:48px;color:black"></i>
+              <div class="col-sm-6  border-right">
+                <p>Assigned printer</p>
+                <p>{{cardPersonalization.assigned_printer}}</p>
+                <p>{{cardPersonalization.hopper}}</p>
+                <p>{{cardPersonalization.Max_card_print}}</p>
               </div>
-              <div class="col-md-6">
-                <p><small>Assigned Printer</small></p>
-                <p> {{ cardPersonalization.card_available }}</p>
+              <div class="col-sm-5">
+                <p>delivery Date</p>
+                <p>{{cardPersonalization.delivery_date}}</p>
+                <p>2 days to go</p>
               </div>
             </div>
           </app-cards>
@@ -96,3 +115,4 @@
     </div>
   </div>
 </div>
+

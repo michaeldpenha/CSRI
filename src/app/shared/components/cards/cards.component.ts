@@ -9,12 +9,12 @@ import { NgForm } from '@angular/forms';
 export class CardsComponent implements OnInit {
  
   @Input() cardDetail:Object;
+  @Input() cls:string;
   @Input() isCheckBoxtoChild: boolean;
   @Output() cardIsSelected: EventEmitter<string> = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
-    //console.log(this.isCheckBoxtoChild);
   }
   
 

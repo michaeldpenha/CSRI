@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" [ngClass]="cls">
  <div class="card-body">
   <div class="text-right">
     <span *ngIf="!isCheckBoxtoChild">
@@ -6,5 +6,5 @@
     </span>
   </div>
   <ng-content></ng-content>      
-  </div>
+</div>
 </div>
