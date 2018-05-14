@@ -28,6 +28,7 @@ export class ReassignComponent implements OnInit {
     this.reassignForm = new FormGroup({
       so: new FormControl('')
     });
+    this.redirectionMedium = 'satellite';
   }
   /**
    * fetchSatelliteInfo
@@ -53,7 +54,7 @@ export class ReassignComponent implements OnInit {
     });
     this.param = {
       "redirectOption": this.redirectionMedium.toUpperCase(),
-      "satelliteId": "2",
+      "satelliteId": 1,
       "salesOrderIds": selectedOrders
     };
     this.reAssign();

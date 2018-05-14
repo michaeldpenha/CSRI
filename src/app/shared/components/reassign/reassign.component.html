@@ -1,22 +1,22 @@
 <div class="reassign">
 
   <div class="page-heading">
-    <h4>Reassign / Redirect Sales Orders</h4>
+    <h4>Redirect sales order</h4>
   </div>
 
   <div class="page-body">
     <form [formGroup]="reassignForm" (ngSubmit)="onSubmitReassign(reassignForm)">
       
-      <label>Selected Sale Orders ({{selectedArray.length}})</label>
-      <div class="selection-wrapper">
+      <label>Selected Sales Orders ({{selectedArray.length}})</label>
+      <div>
         <app-removable-card (removeCard) = "removeSelectedArray($event,selected)" [label]="selected.orderId" *ngFor="let selected of selectedArray"></app-removable-card>
       </div>
       <hr />
 
-      <label>Please select</label>
+      <label>Please select redirect option</label>
       <div class="form-group">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" formControlName="so" value="satellite" (change)="checkType()" >
+          <input class="form-check-input" type="radio" formControlName="so" value="satellite" (change)="checkType()" [checked]="redirectionMedium == 'satellite'">
           <label class="form-check-label">External Satellites</label>
         </div>
         <div class="form-check form-check-inline">
@@ -24,15 +24,23 @@
           <label class="form-check-label">CDP</label>
         </div>
       </div>
-      <br />
+      <hr />
       
       <div class="form-group row" *ngIf="redirectionMedium == 'satellite'">
-        <label class="col-md-2">Choose Satellite</label>
-        <div class="col-md-4">
-          <select class="form-control" (ngModel)="reassignForm.printer" required>
-            <option selected>Choose...</option>
-            <option *ngFor="let satellite of satellites">{{satellite.name}}</option>
-          </select>
+        <div class="col-md-2">
+            <div class="form-group">
+              <label>From</label>
+              <input type="text" class="form-control input-height" value="Existing satellite" disabled>
+            </div>
+          </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>To</label>
+            <select class="form-control" required>
+              <option selected>Choose satellite</option>
+              <option *ngFor="let satellite of satellites">{{satellite.name}}</option>
+            </select>
+          </div>
         </div>
       </div>
       <br />
@@ -45,3 +53,24 @@
   </div><!-- .page-body -->
 
 </div><!-- .reassign -->
+
+
+<!-- Reassign Confirmation Modal -->
+<div class="modal fade" id="reassignConfirm" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Reassign Confirmation</h4>
+        </div>
+        <div class="modal-body">
+          <h2>Are you sure?</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Redirect</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
