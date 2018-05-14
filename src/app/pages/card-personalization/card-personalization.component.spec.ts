@@ -6,6 +6,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { CardsComponent } from "../../shared/components/cards/cards.component";
 import { CardPersonalizationService } from "./card-personalization.service"; 
 import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 describe('CardPersonalizationComponent', () => {
   let component: CardPersonalizationComponent;
   let fixture: ComponentFixture<CardPersonalizationComponent>;
@@ -14,6 +15,7 @@ describe('CardPersonalizationComponent', () => {
     TestBed.configureTestingModule({
       imports : [HttpClientModule,FormsModule],
       declarations: [ CardPersonalizationComponent,ButtonComponent,CardsComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers : [CardPersonalizationService]
     })
     .compileComponents();
