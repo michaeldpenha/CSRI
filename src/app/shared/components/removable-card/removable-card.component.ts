@@ -22,9 +22,9 @@ export class RemovableCardComponent implements OnInit {
   /**
    * displayLabel
    */
-  public displayLabel = (item):string => {
+  public displayLabel = (item : any , label : any):string => {
     let result : string;
-    result = (item.key.toLowerCase().indexOf('date') === -1) ? item.value : moment(item.value).format('MM/D/YYYY');
+    result = (item) ? (item.key.toLowerCase().indexOf('date') === -1) ? item.value : moment(item.value).format('MM/D/YYYY') : label;
     return result;
   }
 
