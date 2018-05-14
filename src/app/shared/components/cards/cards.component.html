@@ -2,7 +2,7 @@
  <div class="card-body">
   <div class="text-right">
     <span *ngIf="!isCheckBoxtoChild">
-      <input [(ngModel)]="cardDetail.cardSelected" type="checkbox" />
+      <input (click) = "selected(cardDetail)" [checked] ="cardDetail.selected" type="checkbox" />
     </span>
   </div>
   <ng-content></ng-content>      

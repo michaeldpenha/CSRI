@@ -1,47 +1,54 @@
 <div class="container">
-  
+
   <div class="row">
     <div class="col-sm-12">
-      <app-button class="pull-right"  [text]="redirectButton" (click)="personalise($event)" [cls]="secondaryButtonClass"></app-button>
-       <app-button class="pull-right" [disabled]="this.tempArray && this.tempArray.length" [text]="personalizeButton" (click)="personalise($event)" [cls]="masterButtonClass"></app-button>
-     
+      <app-button class="pull-right" [text]="redirectButton" (click)="personalise($event)" [cls]="secondaryButtonClass"></app-button>
+      <app-button class="pull-right" [disabled]="this.tempArray && this.tempArray.length" [text]="personalizeButton" (click)="personalise($event)"
+        [cls]="masterButtonClass"></app-button>
+
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4 card po-cards">
       <div class="card-body small">
         <div class="row">
-          <div class="col-3 text-right"><h5>25</h5></div>
+          <div class="col-3 text-right">
+            <h5>25</h5>
+          </div>
           <div class="col-9">No of cards to be printed</div>
         </div>
         <div class="row">
-          <div class="col-3 text-right"><h5>30</h5></div>
+          <div class="col-3 text-right">
+            <h5>30</h5>
+          </div>
           <div class="col-9">No of cards available</div>
         </div>
         <div class="row">
-          <div class="col-3 text-right"><h5>100</h5></div>
+          <div class="col-3 text-right">
+            <h5>100</h5>
+          </div>
           <div class="col-9">Maximum cards that can be printed</div>
         </div>
       </div>
     </div>
     <div class="col-sm-4 card po-cards">
       <div class="card-body row">
-      <div class="col-sm-4 border-right">
-        <p> <img src="./assets/images/credit-card-1.jpg">
-        </p>
-        <p> <img _ngcontent-c1="" src="./assets/images/credit-card-1.jpg">
-        </p>
-      </div>
-      <div class="col-sm-8 small">        
-        <p>Gold tipping foil</p>
-        <p>Standard Debit Card Design</p>
-        <p>Carrier Template # 1</p>
-        <p>CMYK Ribbon</p>
-      </div>
+        <div class="col-sm-4 border-right">
+          <p> <img src="./assets/images/credit-card-1.jpg">
+          </p>
+          <p> <img _ngcontent-c1="" src="./assets/images/credit-card-1.jpg">
+          </p>
+        </div>
+        <div class="col-sm-8 small">
+          <p>Gold tipping foil</p>
+          <p>Standard Debit Card Design</p>
+          <p>Carrier Template # 1</p>
+          <p>CMYK Ribbon</p>
+        </div>
       </div>
     </div>
     <div class="col-sm-4 card po-cards">
-     <div class="card-body row small">     
+      <div class="card-body row small">
         <div class="col-sm-6">
           <p>Assigned printer</p>
           <p>Matica S3500</p>
@@ -52,7 +59,7 @@
           <p>Delivery date</p>
           <p>12/04/2018</p>
           <p>2 days to go</p>
-         
+
         </div>
       </div>
     </div>
@@ -72,25 +79,32 @@
 
 
   </div>
-  <div class="row" *ngIf="this.tempArray && this.tempArray.length">
-    <div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter:true" #selectedcard>
-      <app-cards [cardDetail]='card'>
+  <div class="row">
+    <div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter : true" #selectedcard>
+      <app-cards (recordSelected)="recordSelected($event)" [cardDetail]='card'>
         <h5>{{card.cardNumber}}</h5>
       </app-cards>
     </div>
- 
+    <ng-container *ngIf="(filteredCards | myfilter : true).length ===0">
+      <div>
+        No Record available
+      </div>
+    </ng-container>
     <div class="clearfix"></div>
     <hr/>
   </div>
 
   <div class="row">
-    <div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter:false">
-      <app-cards [cardDetail]='card'>
+    <div class="col-lg-2 col-sm-6" *ngFor="let card of filteredCards | myfilter  :false">
+      <app-cards (recordSelected)="recordSelected($event)" [cardDetail]='card'>
         <h5>{{card.cardNumber}}</h5>
       </app-cards>
     </div>
-     <div class="col-sm-12 text-center alert alert-danger" *ngIf="filteredCards && filteredCards.length<=0">No data Found.</div>
+    <ng-container *ngIf="(filteredCards | myfilter : false).length ===0">
+      <div>
+        No Record available
+      </div>
+    </ng-container>
   </div>
 
 </div>
-

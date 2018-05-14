@@ -12,10 +12,16 @@ export class CardsComponent implements OnInit {
   @Input() cls:string;
   @Input() isCheckBoxtoChild: boolean;
   @Output() cardIsSelected: EventEmitter<string> = new EventEmitter<string>();
+  @Output() recordSelected = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
   }
-  
+  /**
+   * selected
+   */
+  public selected = (item  : any) => {
+    this.recordSelected.emit(item);
+  }
 
 }

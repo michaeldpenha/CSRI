@@ -18,7 +18,7 @@
     <tbody>
       <ng-container *ngFor="let data of gridData">
         <tr>
-          <td><input type="checkbox" (click)="rowSelection(data)"  [checked]="data.selected"></td>
+          <td><input type="checkbox" (click)="rowSelection(data)" [checked]="data.selected"></td>
 
           <ng-container *ngFor="let colDef of columnDefs; let last = last">
             <td>{{customTemplate(data,colDef)}} <ng-container *ngIf="last"><app-progress-status ></app-progress-status></ng-container></td>

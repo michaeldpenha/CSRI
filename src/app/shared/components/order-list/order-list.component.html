@@ -97,7 +97,7 @@
   </div>
 
 
-  <app-grid [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" (allChecked)="allSOSelected($event)"
+  <app-grid class="d-none d-md-block" [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" (allChecked)="allSOSelected($event)"
     (rowSelected)="rowSelected($event)" [allItemsSelected]="allCheck"></app-grid>
   <ng-container *ngIf="data.length > 0">
     <app-pagination [pageLimitArray]="pageLimitArray" [count]="totalRecords" class="row" [page]="defaultPage" [perPage]="pageLimit"

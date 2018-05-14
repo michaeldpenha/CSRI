@@ -17,7 +17,6 @@ export class PodetailsComponent implements OnInit {
   public secondaryButtonClass:string= "btn-secondary";
   filteredCards = this.cardDetails;
   public placeholder:string="Search using PAN #";
-  tempArray: any; 
   performFilter(value): any {
     value = value.toLocaleLowerCase();
     this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['cardNumber'],'or');
@@ -33,15 +32,16 @@ export class PodetailsComponent implements OnInit {
         this.filteredCards = this.cardDetails
       });
   }
-ngDoCheck(){
-  if(this.cardDetails){
-  this.tempArray = this.utils.filterArray(this.cardDetails, 'true', ['cardSelected'],'or');
-  }
-
-  }
   personalise(eve: any) {
-    this.tempArray = this.utils.filterArray(this.cardDetails, 'true', ['cardSelected'],'or');
-    console.log(this.tempArray);
+    
+  }
+  
+  /**
+   * recordSelected
+   */
+  public recordSelected = (item  :any) => {
+    let index = this.utils.fetchObjectFromAnArray(this.cardDetails,item,'cardNumber');
+    this.cardDetails[index].selected =this.cardDetails[index].selected ? !this.cardDetails[index].selected : true;
   }
 
 }

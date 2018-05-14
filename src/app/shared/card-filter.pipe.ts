@@ -10,7 +10,7 @@ export class ArrayFilterPipe implements PipeTransform {
      transform(items: any[], searchText: boolean): any[] { 
     if(!items) return [];     
       return items.filter( it => {
-      return (searchText) ? it.cardSelected == searchText : (!it.cardSelected || it.cardSelected === searchText);
+      return (searchText) ? it.selected == searchText : (!it.selected || it.selected === searchText);
     });
    }
 }  
