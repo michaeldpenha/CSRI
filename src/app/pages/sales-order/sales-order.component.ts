@@ -11,6 +11,8 @@ export class SalesOrderComponent implements OnInit {
   public redirectView  :boolean = false;
   public refeshData : boolean = false;
   public redirectSelectedArray : any= [];
+  public selectedString = "Selected Sales Orders";
+  public redirectHeaderText = "Redirect Sales Orders";
   constructor(private listService : OrderListService) { }
 
   ngOnInit() {

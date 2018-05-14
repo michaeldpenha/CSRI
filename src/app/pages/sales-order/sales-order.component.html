@@ -2,5 +2,5 @@
     <app-order-list (redirectEvent)="onRedirect($event)" [refreshData] = "refeshData"></app-order-list>
 </ng-container>
 <ng-container *ngIf="redirectView" >
-    <app-reassign [selectionArray]="redirectSelectedArray" (redirectTrigger)="redirectTrigger()" (onCancelClick)="onCancel()"></app-reassign>
+    <app-reassign [headerText] = "redirectHeaderText" [selectionText] = "selectedString" [selectionArray]="redirectSelectedArray" (redirectTrigger)="redirectTrigger()" (onCancelClick)="onCancel()"></app-reassign>
 </ng-container>

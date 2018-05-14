@@ -10,6 +10,8 @@ import { UtilsService } from '../../services/utils/utils.service';
 export class ReassignComponent implements OnInit {
   constructor(protected reassignService: ReassignService, private utils: UtilsService) { }
   @Input('selectionArray') selectedArray: any;
+  @Input() headerText: string;
+  @Input() selectionText: string;
   @Output() onCancelClick = new EventEmitter<any>();
   @Output() redirectTrigger = new EventEmitter<any>();
   reassignForm: FormGroup;
@@ -26,7 +28,8 @@ export class ReassignComponent implements OnInit {
    */
   public initializeForm = () => {
     this.reassignForm = new FormGroup({
-      so: new FormControl('')
+      so: new FormControl(''),
+      externalSatellite: new FormControl('')
     });
     this.redirectionMedium = 'satellite';
   }
@@ -48,17 +51,56 @@ export class ReassignComponent implements OnInit {
   }
 
   onSubmitReassign(reassignForm) {
+    if (this.isFormValid()) {
+      this.param = this.manipulateParam();
+      this.reAssign();
+    }
+
+  }
+  /**
+   * isFormValid 
+   */
+  public isFormValid = (): boolean => {
+    let result = false;
+    result = this.fetchValueForRedirect() != '';
+    return result;
+  }
+  /**
+   * fetchValueForRedirect
+   */
+  public fetchValueForRedirect = (): any => {
+    let result;
+    debugger;
+    switch (this.redirectionMedium.toLocaleUpperCase()) {
+      case 'SATELLITE': result = this.reassignForm.controls['externalSatellite'].value; break;
+      case 'CDP': result = 'CDP'; break;
+    }
+    return result;
+  }
+  /**
+   * manipulateParam
+   */
+  public manipulateParam = (): any => {
+    let result = {};
+    let medium = this.redirectionMedium.toLocaleUpperCase();
+    if (medium != "CDP") {
+      result['satelliteId'] = this.fetchValueForRedirect();
+      result['salesOrderIds'] = this.toPopulateSelectedArray();
+    }
+    result['redirectOption'] = medium;
+    return result;
+  }
+  /**
+   * toPopulateSelectedArray 
+   */
+  public toPopulateSelectedArray = () : any => {
     let selectedOrders: any = [];
     this.selectedArray.forEach((item) => {
       selectedOrders.push(item.orderId);
     });
-    this.param = {
-      "redirectOption": this.redirectionMedium.toUpperCase(),
-      "satelliteId": 1,
-      "salesOrderIds": selectedOrders
-    };
-    this.reAssign();
+    return selectedOrders;
   }
+
   /**
    * removeSelectedArray
    */
