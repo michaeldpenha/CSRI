@@ -14,7 +14,9 @@ $_card-box-shadow:1px 0px 3px 0px rgba(0,0,0,0.2);
 
 
 .table {	
+	
 	box-shadow: $_card-box-shadow;
+	-webkit-box-shadow:$_card-box-shadow; 
 	    margin-top: 10px;
 	th {
 		font-family: $_font-semibold;

@@ -30,6 +30,7 @@ import {HttpInterceptorsService} from  './shared/services/http/http-interceptors
 import { RemovableCardComponent } from './shared/components/removable-card/removable-card.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import {OrderListService} from  './shared/services/resolve/order-list/order-list.service';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import {OrderListService} from  './shared/services/resolve/order-list/order-list
     ReassignComponent,
     CardPersonalizationComponent,
     RemovableCardComponent,
-    OrderListComponent
+    OrderListComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

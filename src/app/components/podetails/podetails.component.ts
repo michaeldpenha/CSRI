@@ -16,6 +16,7 @@ export class PodetailsComponent implements OnInit {
   public masterButtonClass:string= "btn-master";
   public secondaryButtonClass:string= "btn-secondary";
   filteredCards = this.cardDetails;
+  public placeholder:string="Search using PAN #";
   tempArray: any; 
   performFilter(value): any {
     value = value.toLocaleLowerCase();

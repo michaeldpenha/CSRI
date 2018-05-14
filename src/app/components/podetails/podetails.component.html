@@ -1,4 +1,12 @@
 <div class="container">
+  
+  <div class="row">
+    <div class="col-sm-12">
+      <app-button class="pull-right"  [text]="redirectButton" (click)="personalise($event)" [cls]="secondaryButtonClass"></app-button>
+       <app-button class="pull-right" [disabled]="this.tempArray && this.tempArray.length" [text]="personalizeButton" (click)="personalise($event)" [cls]="masterButtonClass"></app-button>
+     
+    </div>
+  </div>
   <div class="row">
     <div class="col-sm-4 card po-cards">
       <div class="card-body small">
@@ -49,13 +57,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <app-button class="pull-right" [text]="redirectButton" (click)="personalise($event)" [cls]="secondaryButtonClass"></app-button>
-       <app-button class="pull-right" [text]="personalizeButton" (click)="personalise($event)" [cls]="masterButtonClass"></app-button>
-     
-    </div>
-  </div>
+  <hr/>
   <div class="row">
     <div class="col-sm-3">
       Search:
@@ -76,6 +78,7 @@
         <h5>{{card.cardNumber}}</h5>
       </app-cards>
     </div>
+ 
     <div class="clearfix"></div>
     <hr/>
   </div>
@@ -86,6 +89,8 @@
         <h5>{{card.cardNumber}}</h5>
       </app-cards>
     </div>
+     <div class="col-sm-12 text-center alert alert-danger" *ngIf="filteredCards && filteredCards.length<=0">No data Found.</div>
   </div>
 
 </div>
+
