@@ -30,27 +30,33 @@
                   <div class="pull-left to-text">to</div>
                 </ng-container>
                 <div [ngClass]="filter.parentClass">
-                  <label [for]="filter.dataIndex">{{filter.label   }} </label>
+                  <label class="col-6 col-sm-12" [for]="filter.dataIndex">{{filter.label   }} </label>
                   <ng-container *ngIf="filter.key == 'to'">
                     <div class="blank-labels"></div>
                   </ng-container>
                   <ng-container *ngIf="filter.type === 'I'">
                     <ng-container *ngIf="ifDateField(filter)">
+                     <div class="col-6 col-sm-12"> 
                       <input [type]="filter.subType" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
                         [ngClass]="filter.inputClass" [bsConfig]="datePickerConfig(filter)" bsDatepicker readonly>
+                      </div>
                     </ng-container>
                     <ng-container *ngIf="!ifDateField(filter)">
+                       <div class="col-6 col-sm-12"> 
                       <input [type]="filter.subType" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
                         [ngClass]="filter.inputClass">
+                       </div>
                     </ng-container>
 
                   </ng-container>
                   <ng-container *ngIf="filter.type == 'S'">
+                     <div class="col-6 col-sm-12"> 
                     <select [formControlName]="filter.dataIndex" [ngClass]="filter.inputClass">
                         <ng-container *ngFor="let option of filter.options">
                           <option [value]="option.key">{{option.value}}</option>
                         </ng-container>
                       </select>
+                      </div>
                   </ng-container>
                 </div>
               </ng-container>

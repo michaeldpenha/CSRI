@@ -41,4 +41,17 @@ $_card-box-shadow:1px 0px 3px 0px rgba(0,0,0,0.2);
 	.sort-arrow{
 		margin-left: 10px
 	}
+	.progress-bar-text{
+		float: left;
+		text-transform: lowercase;
+
+			}
+		.progress-bar-text::first-letter {
+		text-transform: uppercase
+		}
+
+	.que-progress-bar{
+		margin-left: 70px
+
+	}
 }

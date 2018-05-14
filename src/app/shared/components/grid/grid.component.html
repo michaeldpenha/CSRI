@@ -21,7 +21,7 @@
           <td><input type="checkbox" (click)="rowSelection(data)" [checked]="data.selected"></td>
 
           <ng-container *ngFor="let colDef of columnDefs; let last = last">
-            <td>{{customTemplate(data,colDef)}} <ng-container *ngIf="last"><app-progress-status ></app-progress-status></ng-container></td>
+            <td><div class="progress-bar-text">{{customTemplate(data,colDef)}}</div><div class="que-progress-bar"> <ng-container *ngIf="last"><app-progress-status ></app-progress-status></ng-container></div></td>
           </ng-container>
         </tr>
       </ng-container>
