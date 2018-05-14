@@ -2,7 +2,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th><input type="checkbox" (click)="allSelected($event)"></th>
+        <th><input type="checkbox" (click)="allSelected($event)" [checked]="allItemsSelected"></th>
         <ng-container *ngFor="let colDef of columnDefs">
           <th>
             <div (click)="triggerSort(colDef)">

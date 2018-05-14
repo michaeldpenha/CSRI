@@ -97,135 +97,135 @@ export class OrderListComponent implements OnInit {
    * fetchStatusOrderList
    */
   public fetchStatusOrderList = () => {
-    this.listData = [];
-    this.http.get(this.config.url).toPromise().then(data => {
-      this.listData = data['salesOrders'];
-      this.modifySoData(this.listData);
-    }, err => {
-      this.listData = [];
-      this.modifySoData(this.listData);
-    })
-    // this.listData = [{
-    //   "orderId": "15",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-10",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "13",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-05",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "12",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-08",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "11",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-10",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "10",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-05",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-08",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-10",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-05",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-08",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-10",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-05",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-08",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-10",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-05",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-08",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-10",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-05",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-08",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-10",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-05",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-08",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-10",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-05",
-    //   "status": "Queued"
-    // }, {
-    //   "orderId": "1",
-    //   "volume": 50,
-    //   "deliveryDate": "2018-05-08",
-    //   "status": "Queued"
-    // }];
+    // this.listData = [];
+    // this.http.get(this.config.url).toPromise().then(data => {
+    //   this.listData = data['salesOrders'];
+    //   this.modifySoData(this.listData);
+    // }, err => {
+    //   this.listData = [];
+    //   this.modifySoData(this.listData);
+    // })
+    this.listData = [{
+      "orderId": "15",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "13",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "12",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "11",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "10",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-10",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-05",
+      "status": "Queued"
+    }, {
+      "orderId": "1",
+      "volume": 50,
+      "deliveryDate": "2018-05-08",
+      "status": "Queued"
+    }];
     this.modifySoData(this.listData);
   }
   /**
@@ -389,6 +389,7 @@ export class OrderListComponent implements OnInit {
       let selectedIndx = this.utils.fetchObjectFromAnArray(this.selectedArray, item, 'orderId');
       this.selectedArray.splice(selectedIndx, 1);
     }
+    this.allCheck = this.selectedArray.length === this.listData.length; 
   }
   /**
    * removeFilter
