@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { ReassignService } from './reassign.service';
-import { UtilsService } from '../../shared/services/utils/utils.service';
+import { UtilsService } from '../../services/utils/utils.service';
 @Component({
   selector: 'app-reassign',
   templateUrl: './reassign.component.html',

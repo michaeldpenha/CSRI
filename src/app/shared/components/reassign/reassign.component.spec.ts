@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHandler, HttpErrorResponse } from '@angular/common/http';
 import { ReassignService } from './reassign.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {UtilsService} from '../../shared/services/utils/utils.service';
+import { UtilsService } from '../../services/utils/utils.service';
 import { RouterTestingModule } from '@angular/router/testing';
 describe('ReassignComponent', () => {
   let component: ReassignComponent;

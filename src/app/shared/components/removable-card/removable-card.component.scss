@@ -1,10 +1,10 @@
 .selected {
-        border: 1px solid #717171;
-        padding: 0.2rem 0.5rem;
-        margin-right: 0.5rem;
-    }
+    display: inline-block;
+    border: 1px solid #717171;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.5rem;
 
-    .selected > span {
+    span {
         display: inline-block;
         border-radius: 50%;
         width: 25px;
@@ -15,3 +15,4 @@
         text-align: center;
         font: 22px Arial, sans-serif;
     }
+}

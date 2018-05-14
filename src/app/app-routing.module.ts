@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PodetailsComponent } from "./components/podetails/podetails.component";
-import { ReassignComponent } from "./components/reassign/reassign.component";
 import { CardPersonalizationComponent } from "./components/card-personalization/card-personalization.component";
 
 import { SalesOrderComponent, ProductionOrderComponent } from './pages/index';
@@ -15,9 +14,6 @@ const routes: Routes = [{
 }, {
   path: 'po-details',
   component: PodetailsComponent
-}, {
-  path: 'reassign',
-  component: ReassignComponent
 }, {
   path: 'po-personalization',
   component: CardPersonalizationComponent
