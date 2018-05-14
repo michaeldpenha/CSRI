@@ -10,7 +10,12 @@
     padding: 10px 16px;
     margin-left: 10px;
     line-height: 1;
-    font-family:OpenSans-Regular;
+    @include font-Regular;
 }
 
+@mixin font-Regular{
+    font-family: 'Open Sans';
+    font-weight: normal;
+    font-style: normal;
+}
 

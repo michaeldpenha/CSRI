@@ -23,7 +23,7 @@ export class OrderListComponent implements OnInit {
   public totalRecords: number;
   public pageLimitArray: any = [];
   public placeholder: string = "";
-  public filterButtonClass: string = "col-2 filter-button fa fa-filter";
+  public filterButtonClass: string = "filter-button fa fa-filter";
   public displayFilterOption: boolean = false;
   filterForm: FormGroup;
   public adavancedArray: any = [];

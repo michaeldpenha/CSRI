@@ -1,10 +1,19 @@
 <div class="container">
   <div class="row">
-    <app-searchfield class="col-4" [placeholder]="placeholder" (searchTrigger)="searchData($event)"></app-searchfield>
+    <div class="col-sm-6">
+      <div class="row">
+       <div class="col-9">
+    <app-searchfield [placeholder]="placeholder" (searchTrigger)="searchData($event)"></app-searchfield>
+       </div>
+    <div class="col-3">
     <div class="pipe"></div>
     <app-button [cls]="filterButtonClass" (onButtonClick)="displayFilterOptions()"></app-button>
+    </div>
+  </div>
+    </div><div class="col-sm-6 text-md-right">
     <app-button [cls]="secondaryButtonClass" [text]="beforeRedirect" [disabled]="selectedArray.length == 0" (onButtonClick)="generatePO()"></app-button>
     <app-button [cls]="secondaryButtonClass" [text]="redirectText" [disabled]="selectedArray.length == 0" (onButtonClick)="redirect()"></app-button>
+    </div>
   </div>
   <ng-container *ngFor="let item of adavancedArray">
     <app-removable-card [label]="item.value" [item]="item" (removeCard)="removeFilter($event)"></app-removable-card>
@@ -31,7 +40,7 @@
                         [ngClass]="filter.inputClass" [bsConfig]="datePickerConfig(filter)" bsDatepicker readonly>
                     </ng-container>
                     <ng-container *ngIf="!ifDateField(filter)">
-                      <input [type]="filter.subType"  [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
+                      <input [type]="filter.subType" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
                         [ngClass]="filter.inputClass">
                     </ng-container>
 

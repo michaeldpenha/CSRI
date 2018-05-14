@@ -4,7 +4,8 @@
 .pipe{
     width: 1px;
     background: #c5c5c5;
-    margin: 4px 0;
+    height: 26px;
+    float: left;
 }
 select.form-control:not([size]):not([multiple]){
     height: 30px
@@ -15,7 +16,8 @@ select.form-control:not([size]):not([multiple]){
 }
 .filter-button{
     background: none;
-    border: none
+    border: none;
+    
 }
 .to-text{
        padding-top: 32px;
