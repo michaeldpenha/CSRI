@@ -19,7 +19,7 @@ export class CardPersonalizationComponent implements OnInit {
   isCheckBox : boolean = true;
   opendDivId: any;
   public poCardClass:string="po-cards";
-  passProgressStatus : string = "80%";
+  passProgressStatus : string = "60%";
 
   private showHidePersonalItems = true;
 
