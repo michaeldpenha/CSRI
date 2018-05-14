@@ -24,7 +24,7 @@ export class RemovableCardComponent implements OnInit {
    */
   public displayLabel = (item : any , label : any):string => {
     let result : string;
-    result = (item) ? (item.key.toLowerCase().indexOf('date') === -1) ? item.value : moment(item.value).format('MM/D/YYYY') : label;
+    result = (item) ? (item.key.toLowerCase().indexOf('date') === -1) ? item.value : moment(item.value).format('DD/MM/YYYY') : label;
     return result;
   }
 
