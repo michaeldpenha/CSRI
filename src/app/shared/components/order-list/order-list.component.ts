@@ -14,6 +14,8 @@ import { BsDatepickerConfig } from "ngx-bootstrap";
 })
 export class OrderListComponent implements OnInit {
   @Input() refreshData: any;
+  @Input() defaultFilter: any;
+  @Input() defaultFilterValue: string;
   @Output() redirectEvent = new EventEmitter<any>();
   public columnDefs: any = [];
   public data: any = [];
@@ -60,8 +62,8 @@ export class OrderListComponent implements OnInit {
    */
   public initializeOrderList = () => {
     this.populateSalesOrderGrid();
-    this.defaultPageSettings();
     this.filterFormsControls();
+    this.defaultPageSettings();
   }
   /**
    * defaultPageSettings
@@ -71,6 +73,10 @@ export class OrderListComponent implements OnInit {
     this.redirectText = this.config.redirect;
     this.beforeRedirect = this.config.beforeRedirect;
     this.placeholder = this.config.globalPlaceholder;
+    if (this.defaultFilter) {
+      this.filterForm.controls[this.defaultFilter].setValue(this.defaultFilterValue);
+      this.adavancedArray.push({ key: this.defaultFilter, value: this.filterForm.controls[this.defaultFilter].value })
+    }
   }
   /**
    * filterFormsControls
@@ -100,10 +106,10 @@ export class OrderListComponent implements OnInit {
     this.listData = [];
     this.http.get(this.config.url).toPromise().then(data => {
       this.listData = data['salesOrders'];
-      this.modifySoData(this.listData);
+      this.filterSOData();
     }, err => {
       this.listData = [];
-      this.modifySoData(this.listData);
+      this.filterSOData();
     })
     // this.listData = [{
     //   "orderId": "15",
@@ -226,7 +232,7 @@ export class OrderListComponent implements OnInit {
     //   "deliveryDate": "2018-05-08",
     //   "status": "Queued"
     // }];
-    this.modifySoData(this.listData);
+    //this.modifySoData(this.listData);
   }
   /**
    * sortGridData
@@ -389,7 +395,7 @@ export class OrderListComponent implements OnInit {
       let selectedIndx = this.utils.fetchObjectFromAnArray(this.selectedArray, item, 'orderId');
       this.selectedArray.splice(selectedIndx, 1);
     }
-    this.allCheck = this.selectedArray.length === this.listData.length; 
+    this.allCheck = this.selectedArray.length === this.listData.length;
   }
   /**
    * removeFilter
@@ -410,6 +416,6 @@ export class OrderListComponent implements OnInit {
    * datePickerConfig
    */
   public datePickerConfig = (item: any) => {
-    return item.key.toLowerCase().indexOf('to') ? this.dateFromPickerConfig : this.dateToPickerConfig ;
+    return item.key.toLowerCase().indexOf('to') ? this.dateFromPickerConfig : this.dateToPickerConfig;
   }
 }

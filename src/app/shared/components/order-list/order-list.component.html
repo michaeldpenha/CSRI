@@ -53,7 +53,10 @@
                   <ng-container *ngIf="filter.type == 'S'">
                      <div class="col-6 col-sm-12"> 
                     <select [formControlName]="filter.dataIndex" [ngClass]="filter.inputClass">
-                        <ng-container *ngFor="let option of filter.options">
+                        <ng-container *ngFor="let option of filter.options; let first = first">
+                          <ng-container *ngIf="first">
+                            <option value="">Select</option>
+                          </ng-container>
                           <option [value]="option.key">{{option.value}}</option>
                         </ng-container>
                       </select>
