@@ -410,6 +410,6 @@ export class OrderListComponent implements OnInit {
    * datePickerConfig
    */
   public datePickerConfig = (item: any) => {
-    return item.key.toLowerCase().indexOf('to') ? this.dateToPickerConfig : this.dateFromPickerConfig;
+    return item.key.toLowerCase().indexOf('to') ? this.dateFromPickerConfig : this.dateToPickerConfig ;
   }
 }
