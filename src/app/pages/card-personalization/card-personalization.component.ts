@@ -17,7 +17,7 @@ export class CardPersonalizationComponent implements OnInit {
   buttonClass = "btn-master";
   isCheckBox: boolean = true;
   openPIElementsById: any;
-  public poCardClass: string = "po-cards h-100";
+  public poCardClass: string = "po-cards";
   passProgressStatus: string = "60%";
 
   private showHidePersonalItems = true;
