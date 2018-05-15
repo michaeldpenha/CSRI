@@ -1,0 +1,55 @@
+
+$_table-font-size:14px;
+$_table-header-color: #395961;
+$_table-row-color: #333333;
+$_table-header-padding:26px 20px;
+$_border-none:none;
+$_table-header-border:2px solid #c6c6c6;
+$_normal-line-height:1;
+$_table-row-padding:12px 20px;
+$_card-box-shadow:1px 0px 3px 0px rgba(0,0,0,0.2);
+
+
+
+.table {	
+	
+	box-shadow: $_card-box-shadow;
+	-webkit-box-shadow:$_card-box-shadow; 
+	    margin-top: 10px;
+	th {
+		font-family: $_font-semibold;
+		font-size: $_table-font-size;
+		color: $_table-header-color;
+		padding: $_table-header-padding;
+		line-height: $_normal-line-height;
+		border-top: $_border-none;
+		border-bottom: $_table-header-border;
+	}
+	td {
+		font-family: $_font-light;
+		font-size: $_table-font-size;
+		color: $_table-row-color;
+		padding: $_table-row-padding;
+		line-height: 1.25;
+	}
+	tbody tr:first-child td {
+		border-top: $_border-none;
+		padding-top: 20px;
+	}
+	.sort-arrow{
+		margin-left: 10px
+	}
+	.progress-bar-text{
+		float: left;
+		text-transform: lowercase;
+
+			}
+		.progress-bar-text::first-letter {
+		text-transform: uppercase
+		}
+
+	.que-progress-bar{
+		margin-left: 70px
+
+	}
+}

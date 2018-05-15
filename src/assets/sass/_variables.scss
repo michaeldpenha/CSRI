@@ -34,12 +34,23 @@ $_btn-background-sec:#395361;
 // $_btn-border-radius_signup: 5%;
 // $_btn-text-color_signup: #fff;
 
-/* Grid style variables*/
-$_font-semibold: OpenSans-Semibold;
+/* fonts variables*/
+$_font-light:Open-Sans-Light;
+$_font-light-italic:Open-Sans-LightItalic;
+$_font-regular:Open-Sans-Regular;
+$_font-semibold:Open-Sans-Semibold;
+$_font-semibold-italic:Open-Sans-SemiboldItalic;
+$_font-bold-light:Open-Sans-BoldItalic;
+$_font-extrabold:Open-Sans-ExtraBold;
+$_font-extrabold-italic:Open-Sans-ExtraBoldItalic;
+
+
+
+
 $_table-font-size:14px;
 $_table-header-color: #395961;
 $_table-row-color: #333333;
-$_font-light:OpenSans-Light;
+
 $_table-header-padding:26px 20px;
 $_border-none:none;
 $_table-header-border:2px solid #c6c6c6;
