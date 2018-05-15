@@ -6,8 +6,9 @@ export class OrderConfig {
     public globalPlaceholder : any ='';
     public perPageArray : any = [];
     public filterForm : any = [];
+    public mobileOrderList : any = [];
 
-    constructor(beforeRedirect,globalPlaceholder,redirect,perPageArray,filterForm,gridConfigs,url) {
+    constructor(beforeRedirect,globalPlaceholder,redirect,perPageArray,filterForm,gridConfigs,url,mobileOrderList) {
         this.beforeRedirect = beforeRedirect;
         this.redirect = redirect;
         this.gridConfigs = gridConfigs;
@@ -15,5 +16,6 @@ export class OrderConfig {
         this.globalPlaceholder = globalPlaceholder;
         this.perPageArray = perPageArray;
         this.filterForm = filterForm;
+        this.mobileOrderList = mobileOrderList;
     }
 }

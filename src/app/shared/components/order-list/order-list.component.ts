@@ -232,7 +232,7 @@ export class OrderListComponent implements OnInit {
     //   "deliveryDate": "2018-05-08",
     //   "status": "Queued"
     // }];
-    //this.modifySoData(this.listData);
+    // this.modifySoData(this.listData);
   }
   /**
    * sortGridData
@@ -285,6 +285,7 @@ export class OrderListComponent implements OnInit {
    */
   public searchData = (val) => {
     this.globalSearchText = val;
+    this.defaultPage = 1;
     this.filterSOData();
     // this.data = this.utils.filterArray(this.listData,)
   }
@@ -304,6 +305,7 @@ export class OrderListComponent implements OnInit {
     filterKeys.forEach((item) => {
       (me.filterForm.controls[item].value && me.filterForm.controls[item].value != '') ? me.adavancedArray.push({ key: item, value: me.filterForm.controls[item].value }) : '';
     });
+    this.defaultPage = 1;
     this.filterSOData();
     this.displayFilterOptions();
   }
@@ -313,6 +315,7 @@ export class OrderListComponent implements OnInit {
   public clearFilter = () => {
     this.adavancedArray = [];
     this.filterForm.reset();
+    this.defaultPage = 1;
     this.filterSOData();
     this.displayFilterOptions();
   }
@@ -323,7 +326,6 @@ export class OrderListComponent implements OnInit {
     let searchArray: any = this.listData.length > 0 ? Object.keys(this.listData[0]) : [];
     let filteredArry = this.utils.filterArray(this.listData, this.globalSearchText, searchArray, 'or');
     filteredArry = this.adavancedArray.length > 0 ? this.applyMultipleFilter(filteredArry) : filteredArry;
-    this.defaultPage = 1;
     this.modifySoData(filteredArry);
   }
   /**
@@ -404,6 +406,7 @@ export class OrderListComponent implements OnInit {
     let index = this.utils.fetchObjectFromAnArray(this.adavancedArray, item.value, item.key);
     this.filterForm.controls[item.value.key].setValue('');
     this.adavancedArray.splice(index, 1);
+    this.defaultPage = 1;
     this.filterSOData();
   }
   /**
