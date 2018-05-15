@@ -1,1 +1,1 @@
-<div (click)="removeContainer(item,label)" class="selected">{{item.label}}{{displayLabel(item,label)}} <span aria-hidden="true">&times;</span></div>
+<div (click)="removeContainer(item,label)" class="selected"><span class="small">{{item.label+": "}}</span>{{displayLabel(item,label)}} <span class="cross" aria-hidden="true">&times;</span></div>

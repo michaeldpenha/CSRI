@@ -19,7 +19,7 @@ export class PodetailsComponent implements OnInit {
   public placeholder:string="Search using PAN #";
   performFilter(value): any {
     value = value.toLocaleLowerCase();
-    this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['cardNumber'],'or');
+    this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['pan'],'or');
   }
   constructor(private podetailsService: POdetailsService, private utils: UtilsService, public cardpipe: ArrayFilterPipe) {
   }
@@ -28,7 +28,7 @@ export class PodetailsComponent implements OnInit {
   ngOnInit() {
     this.podetailsService.getCards()
       .subscribe(cards => {
-        this.cardDetails = cards;
+        this.cardDetails = cards.productionItems;
         this.filteredCards = this.cardDetails
       });
   }
@@ -40,7 +40,7 @@ export class PodetailsComponent implements OnInit {
    * recordSelected
    */
   public recordSelected = (item  :any) => {
-    let index = this.utils.fetchObjectFromAnArray(this.cardDetails,item,'cardNumber');
+    let index = this.utils.fetchObjectFromAnArray(this.cardDetails,item,'pan');
     this.cardDetails[index].selected =this.cardDetails[index].selected ? !this.cardDetails[index].selected : true;
   }
 

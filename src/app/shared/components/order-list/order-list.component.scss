@@ -29,3 +29,15 @@ select.form-control:not([size]):not([multiple]){
 .blank-labels{
     margin-top: 8px
 }
+@media (max-width: 767px) {
+.filter-panel{
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left:0;
+    z-index: 999;
+    margin: 0;
+    
+}
+}

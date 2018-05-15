@@ -26,20 +26,20 @@
             <form [formGroup]="filterForm" class="row">
               <ng-container *ngFor="let filter of advanFilterForm">
              
-                <div [ngClass]="filter.parentClass">
-                  <label class="col-6 col-sm-12" [for]="filter.dataIndex">{{filter.label}} </label>
+                <div [ngClass]="filter.parentClass" class="row">
+                  <label class="col-4 col-sm-12" [for]="filter.dataIndex">{{filter.label}} </label>
                   <ng-container *ngIf="filter.key == 'to'">
                     <div class="blank-labels"></div>
                   </ng-container>
                   <ng-container *ngIf="filter.type === 'I'">
                     <ng-container *ngIf="ifDateField(filter)">
-                      <div class="col-6 col-sm-12">
+                      <div class="col-3 col-sm-12">
                         <input [type]="filter.subType" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
                           [ngClass]="filter.inputClass" [bsConfig]="datePickerConfig(filter)" bsDatepicker readonly>
                       </div>
                     </ng-container>
                     <ng-container *ngIf="!ifDateField(filter)">
-                      <div class="col-6 col-sm-12">
+                      <div class="col-8 col-sm-12">
                         <input [type]="filter.subType" (blur)="onBlur($event)" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
                           [ngClass]="filter.inputClass">
                       </div>
@@ -47,7 +47,7 @@
 
                   </ng-container>
                   <ng-container *ngIf="filter.type == 'S'">
-                    <div class="col-6 col-sm-12">
+                    <div class="col-8 col-sm-12">
                       <select [formControlName]="filter.dataIndex" [ngClass]="filter.inputClass">
                         <ng-container *ngFor="let option of filter.options; let first = first">
                           <ng-container *ngIf="first">

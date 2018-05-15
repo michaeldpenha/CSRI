@@ -1,32 +1,45 @@
-[
-  {
-    "cardNumber": "XXXX 56895"
-  },
-  {
-    "cardNumber": "XXXX 11111"
-  },
-  {
-    "cardNumber": "XXXX 12345"
-  },
-  {
-    "cardNumber": "XXXX 78787"
-  },
-  {
-    "cardNumber": "XXXX 12345"
-  },
-  {
-    "cardNumber": "XXXX 12345"
-  },
-  {
-    "cardNumber": "XXXX 12345"
-  },
-  {
-    "cardNumber": "XXXX 12345"
-  },
-  {
-    "cardNumber": "XXXX 12345"
-  },
-  {
-    "cardNumber": "XXXX 12345"
-  }
-]
+{
+    "message": "Operation was successful",
+    "status": "SUCCESS",
+    "cardProgram": {
+        "tipping": false,
+        "ribbon": true,
+        "type": "VISA",
+        "thermal": true,
+        "embossing": false
+    },
+    "productionItems": [
+        {
+            "productionItemId": 701,
+            "status": "Queued",
+            "deliveryDate": "2018-05-16",
+            "pan": "BXUPM3268B"
+        },
+        {
+            "productionItemId": 703,
+            "status": "Queued",
+            "deliveryDate": "2018-05-16",
+            "pan": "BXUPM3268F"
+        },
+        {
+            "productionItemId": 704,
+            "status": "Queued",
+            "deliveryDate": "2018-05-16",
+            "pan": "BXUPM3268F"
+        },
+        {
+            "productionItemId": 702,
+            "status": "Queued",
+            "deliveryDate": "2018-05-18",
+            "pan": "BXUPM3268E"
+        }
+    ],
+    "productionOrderId": 601,
+    "clientManager": {
+        "clientMachineName": "CM01"
+    },
+    "cardBody": {
+        "design": "Card Design01\n",
+        "hologram": "HOLOGRAM01"
+    }
+}
