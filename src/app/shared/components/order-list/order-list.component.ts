@@ -44,7 +44,7 @@ export class OrderListComponent implements OnInit {
   dateFromPickerConfig: Partial<BsDatepickerConfig>;
   dateToPickerConfig: Partial<BsDatepickerConfig>;
 
-  constructor(public utils: UtilsService, public route: ActivatedRoute, public http: HttpClient, public listService: OrderListService) {
+  constructor(public utils: UtilsService, public router : Router,public route: ActivatedRoute, public http: HttpClient, public listService: OrderListService) {
   }
 
   ngOnInit() {
@@ -449,5 +449,19 @@ export class OrderListComponent implements OnInit {
       e.target.focus();
       console.log('Volume count should be lesser in the from coloumn');
     }
+  }
+  /**
+   * cellClick
+   */
+  public cellClick = (cell : any) => {
+    switch(cell.dataIndex.toLowerCase()){
+      case 'orderid' : this.navigateToPO(cell);break;
+    }
+  }
+  /**
+   * name
+   */
+  public navigateToPO = (cell : any) => {
+    this.router.navigate(['po-details',cell.id]);
   }
 }

@@ -13,7 +13,7 @@ const routes: Routes = [{
   path: 'sales-order',
   component: SalesOrderComponent
 }, {
-  path: 'po-details',
+  path: 'po-details/:id',
   component: PodetailsComponent
 },  {
   path: 'po-personalization',

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChildren } from '@angular/core';
 import { POdetailsService } from './podetails.service';
 import { UtilsService } from '../../shared/services/utils/utils.service';
 import { ArrayFilterPipe } from "../../shared/card-filter.pipe";
+import{ActivatedRoute} from '@angular/router';
 import { SearchfieldComponent } from '../../shared/components/searchfield/searchfield.component';
 @Component({
   selector: 'app-podetails',
@@ -21,11 +22,20 @@ export class PodetailsComponent implements OnInit {
     value = value.toLocaleLowerCase();
     this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['cardNumber'],'or');
   }
-  constructor(private podetailsService: POdetailsService, private utils: UtilsService, public cardpipe: ArrayFilterPipe) {
+  constructor(private podetailsService: POdetailsService, private utils: UtilsService, public cardpipe: ArrayFilterPipe,private route : ActivatedRoute) {
   }
 
   
   ngOnInit() {
+    this.route.params.subscribe((params) =>{
+      this.triggerPoDetails(params)
+    });
+  }
+  /**
+   * triggerPoDetails
+   */
+  public triggerPoDetails= (params) => {
+    //params.id
     this.podetailsService.getCards()
       .subscribe(cards => {
         this.cardDetails = cards;
