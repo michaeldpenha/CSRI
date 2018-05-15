@@ -9,7 +9,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { OrderConfig,OrderFiltersConfig,GridConfig } from '../../models/index';
+import { OrderConfig,OrderFiltersConfig,GridConfig,MOrderConfig } from '../../models/index';
 import { endPoints } from '../../constants/index';
 describe('OrderListComponent', () => {
   let component: OrderListComponent;
@@ -42,7 +42,8 @@ describe('OrderListComponent', () => {
       new GridConfig('volume', 'Volume', true),
       new GridConfig('deliveryDate', 'Delivery Date', false),
       new GridConfig('status', 'Status Of order', true)],
-      `${endPoints.baseUrl}/${endPoints.urlPath.salesOrder}/1/sales-orders`);
+      `${endPoints.baseUrl}/${endPoints.urlPath.salesOrder}/1/sales-orders`,
+      [new MOrderConfig('orderId', 'ID'), new MOrderConfig('status', 'Status'), new MOrderConfig('volume', 'Volume'), new MOrderConfig('deliveryDate', 'Delivery Date')] );
     component.ngOnInit();
     fixture.detectChanges();
   });

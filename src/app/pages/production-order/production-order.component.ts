@@ -11,6 +11,8 @@ export class ProductionOrderComponent implements OnInit {
   public redirectView: boolean = false;
   public refeshData: boolean = false;
   public redirectSelectedArray: any = [];
+  public defaultFilter = "status";
+  public defaultFilterValue = "queued";
   constructor(private listService: OrderListService) { }
 
   ngOnInit() {
