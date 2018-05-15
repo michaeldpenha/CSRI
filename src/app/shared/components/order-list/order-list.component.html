@@ -31,7 +31,7 @@
                   <div class="pull-left to-text">to</div>
                 </ng-container>
                 <div [ngClass]="filter.parentClass">
-                  <label class="col-6 col-sm-12" [for]="filter.dataIndex">{{filter.label   }} </label>
+                  <label class="col-6 col-sm-12" [for]="filter.dataIndex">{{filter.label}} </label>
                   <ng-container *ngIf="filter.key == 'to'">
                     <div class="blank-labels"></div>
                   </ng-container>
@@ -44,7 +44,7 @@
                     </ng-container>
                     <ng-container *ngIf="!ifDateField(filter)">
                       <div class="col-6 col-sm-12">
-                        <input [type]="filter.subType" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
+                        <input [type]="filter.subType" (blur)="onBlur($event)" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex" [placeholder]="filter.key"
                           [ngClass]="filter.inputClass">
                       </div>
                     </ng-container>
