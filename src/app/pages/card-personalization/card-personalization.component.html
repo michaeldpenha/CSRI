@@ -1,118 +1,134 @@
-<div class="container">
-  <app-button class="pull-right personalize-btn" [text]="personalizeButton" [cls]="buttonClass"></app-button>
-  <div class="clearfix"></div>
-  <div class="card ">
-    <div class="card-body">
-        
-      <div class="row" *ngFor="let cardPersonalization of cardPersonalization; let i = index;">
-        
-      <div class="col-2"><strong>PO #5345345</strong> </div><div class="col-2 text-right">Queued</div><div class="col-8"><app-progress-status [progressStatus]="passProgressStatus"></app-progress-status></div>
-
-        <div class="col-sm-4 "> 
-          <app-cards [cls]="poCardClass" [isCheckBoxtoChild]="isCheckBox">
-           
-            <div class="row ">
-              <div class="col-3 text-right">
-                <h5>{{cardPersonalization.no_of_cards_to_print}}</h5>
-              </div>
-              <div class="col-9 ">No of cards to be printed</div>
-            </div>
-            <div class="row">
-              <div class="col-3 text-right">
-                <h5>{{cardPersonalization.no_of_cards_available}}</h5>
-              </div>
-              <div class="col-9">No of cards available</div>
-            </div>
-            <div class="row">
-              <div class="col-3 text-right">
-                <h5>{{cardPersonalization.max_card_to_print}}</h5>
-              </div>
-              <div class="col-9">Maximum cards that can be printed</div>
-            </div>
-          </app-cards>
-        </div>
-
-
-        <div class="col-sm-4">
-          <app-cards [cls]="poCardClass" [isCheckBoxtoChild]="isCheckBox">
-            <div class="row">
-              <div class="col-sm-4 border-right">
-                <p> <img src="./assets/images/credit-card-1.jpg">
-                </p>
-                <p> <img _ngcontent-c1="" src="./assets/images/credit-card-1.jpg">
-                </p>
-              </div>
-              <div class="col-sm-4 small">
-                <p>Programs</p>
-                <p>{{cardPersonalization.program1}}</p>
-                <p>{{cardPersonalization.program2}}</p>
-                <p>{{cardPersonalization.program3}}</p>
-                <p>{{cardPersonalization.program4}}</p>
-              </div>
-            </div>
-          </app-cards>
-        </div>
-
-
-        <div class="col-sm-4">
-          <app-cards [cls]="poCardClass" [isCheckBoxtoChild]="isCheckBox">
-            <div class="row">
-              <div class="col-sm-6  border-right">
-                <p>Assigned printer</p>
-                <p>{{cardPersonalization.assigned_printer}}</p>
-                <p>{{cardPersonalization.hopper}}</p>
-                <p>{{cardPersonalization.Max_card_print}}</p>
-              </div>
-              <div class="col-sm-5">
-                <p>delivery Date</p>
-                <p>{{cardPersonalization.delivery_date}}</p>
-                <p>2 days to go</p>
-              </div>
-            </div>
-          </app-cards>
-        </div>
-
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-        <div *ngIf="opendDivId == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
-          <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
-        </div>
-
-        <a (click)="toggleProductionItems(i);" href="javascript:void(0);">Show all PI's</a>
-
-      </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <p class="text-right">
+        <app-button class="pull-right personalize-btn" [text]="personalizeButton" [cls]="buttonClass"></app-button>
+      </p>
     </div>
   </div>
-</div>
+  <p>PO #5345345 Queued</p>
+  <app-progress-status [progressStatus]="passProgressStatus"></app-progress-status>
+  <div class="row" *ngFor="let cardPersonalization of cardPersonalization; let i = index;">
 
+    <!-- <div class="col-12">
+      <p class="text-right">
+        <app-button class="pull-right personalize-btn" [text]="personalizeButton" [cls]="buttonClass"></app-button>
+      </p>
+      <p>PO #5345345 Queued</p>
+      <app-progress-status [progressStatus]="passProgressStatus" ></app-progress-status>
+    </div> -->
+
+    <div class="col-sm-4">
+      <app-cards [cls]="poCardClass" [isCheckBoxtoChild]="isCheckBox">
+        <div class="row">
+          <div class="col-3 text-right">
+            <h5>{{cardPersonalization.no_of_cards_to_print}}</h5>
+          </div>
+          <div class="col-9 ">
+            <p>No of cards to be printed</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3 text-right">
+            <h5>{{cardPersonalization.no_of_cards_available}}</h5>
+          </div>
+          <div class="col-9">
+            <p>No of cards available</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3 text-right">
+            <h5>{{cardPersonalization.max_card_to_print}}</h5>
+          </div>
+          <div class="col-9">
+            <p>Maximum cards that can be printed</p>
+          </div>
+        </div>
+      </app-cards>
+    </div>
+
+    <div class="col-sm-4">
+      <app-cards [cls]="poCardClass" [isCheckBoxtoChild]="isCheckBox">
+        <div class="row">
+          <div class="col-4 border-right">
+            <p> <img src="./assets/images/credit-card-1.jpg">
+            </p>
+            <p> <img _ngcontent-c1="" src="./assets/images/credit-card-1.jpg">
+            </p>
+          </div>
+          <div class="col-8">
+            <p>Programs</p>
+            <p>{{cardPersonalization.program1}}</p>
+            <p>{{cardPersonalization.program2}}</p>
+            <p>{{cardPersonalization.program3}}</p>
+            <p>{{cardPersonalization.program4}}</p>
+          </div>
+        </div>
+      </app-cards>
+    </div>
+
+    <div class="col-sm-4">
+      <app-cards [cls]="poCardClass" [isCheckBoxtoChild]="isCheckBox">
+        <div class="row">
+          <div class="col-6  border-right small">
+            <p>Assigned printer</p>
+            <p>{{cardPersonalization.assigned_printer}}</p>
+            <p>{{cardPersonalization.hopper}}</p>
+            <p>{{cardPersonalization.Max_card_print}}</p>
+          </div>
+          <div class="col-5 small">
+            <p>delivery Date</p>
+            <p>{{cardPersonalization.delivery_date}}</p>
+            <p>2 days to go</p>
+          </div>
+        </div>
+      </app-cards>
+    </div>
+
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+    <div *ngIf="openPIElementsById == i && !showHidePersonalItems" class="col-lg-2 col-sm-6">
+      <app-cards [isCheckBoxtoChild]="isCheckBox" class="small-card"> XXXX 1234</app-cards>
+    </div>
+
+    <div class="clearfix col-sm-12 text-center">
+      <a (click)="toggleProductionItems(i);" id="showHide_{{i}}" href="javascript:void(0);">Show all PI's</a>
+    </div>
+
+    <div class="col-sm-12">
+      <hr/>
+    </div>
+
+  </div>
+</div>

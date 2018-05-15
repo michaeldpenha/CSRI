@@ -75,7 +75,7 @@ export class OrderListComponent implements OnInit {
     this.placeholder = this.config.globalPlaceholder;
     if (this.defaultFilter) {
       this.filterForm.controls[this.defaultFilter].setValue(this.defaultFilterValue);
-      this.adavancedArray.push({ key: this.defaultFilter, value: this.filterForm.controls[this.defaultFilter].value })
+      this.adavancedArray.push({ key: this.defaultFilter, value: this.filterForm.controls[this.defaultFilter].value,label: 'Status' })
     }
   }
   /**
@@ -90,8 +90,8 @@ export class OrderListComponent implements OnInit {
     this.filterForm = new FormGroup(formGrp);
   }
   ngDoCheck() {
-    this.dateFromPickerConfig = Object.assign({}, { maxDate: this.filterForm.controls['toDate'].value,dateInputFormat: 'DD/MM/YYYY' });
-    this.dateToPickerConfig = Object.assign({}, { minDate: this.filterForm.controls['fromDate'].value,dateInputFormat: 'DD/MM/YYYY' });
+    this.dateFromPickerConfig = Object.assign({}, { maxDate: this.filterForm.controls['toDate'].value, dateInputFormat: 'DD/MM/YYYY' });
+    this.dateToPickerConfig = Object.assign({}, { minDate: this.filterForm.controls['fromDate'].value, dateInputFormat: 'DD/MM/YYYY' });
   }
   /**
    * populateSalesOrderGrid
@@ -232,7 +232,7 @@ export class OrderListComponent implements OnInit {
     //   "deliveryDate": "2018-05-08",
     //   "status": "Queued"
     // }];
-    //this.modifySoData(this.listData);
+    // this.modifySoData(this.listData);
   }
   /**
    * sortGridData
@@ -285,6 +285,7 @@ export class OrderListComponent implements OnInit {
    */
   public searchData = (val) => {
     this.globalSearchText = val;
+    this.defaultPage = 1;
     this.filterSOData();
     // this.data = this.utils.filterArray(this.listData,)
   }
@@ -300,12 +301,32 @@ export class OrderListComponent implements OnInit {
   public applyFilter = () => {
     let me = this;
     me.adavancedArray = [];
+    console.log(me.filterForm.controls)
     let filterKeys = Object.keys(me.filterForm.controls);
     filterKeys.forEach((item) => {
-      (me.filterForm.controls[item].value && me.filterForm.controls[item].value != '') ? me.adavancedArray.push({ key: item, value: me.filterForm.controls[item].value }) : '';
+      let label: any = '';
+      label = this.cardLabel(item);
+      (me.filterForm.controls[item].value && me.filterForm.controls[item].value != '') ? me.adavancedArray.push({ key: item, value: me.filterForm.controls[item].value, label: label }) : '';
     });
+    this.defaultPage = 1;
     this.filterSOData();
     this.displayFilterOptions();
+  }
+  /**
+   * cardLabel
+   */
+  public cardLabel = (item: any): string => {
+    let result: string;
+    switch (item.toLowerCase()) {
+      case 'volumefrom': result = 'Volume From'; break;
+      case 'volumeto': result = "Volume To"; break;
+      case 'fromdate': result = "Delivery Date From"; break;
+      case 'todate': result = "Delivery Date To"; break;
+      case 'status': result = "Status"; break;
+      case 'orderid': result = "Id"; break;
+      default : result = "";break;
+  }
+    return result;
   }
   /**
    * clearFilter
@@ -313,6 +334,7 @@ export class OrderListComponent implements OnInit {
   public clearFilter = () => {
     this.adavancedArray = [];
     this.filterForm.reset();
+    this.defaultPage = 1;
     this.filterSOData();
     this.displayFilterOptions();
   }
@@ -323,7 +345,6 @@ export class OrderListComponent implements OnInit {
     let searchArray: any = this.listData.length > 0 ? Object.keys(this.listData[0]) : [];
     let filteredArry = this.utils.filterArray(this.listData, this.globalSearchText, searchArray, 'or');
     filteredArry = this.adavancedArray.length > 0 ? this.applyMultipleFilter(filteredArry) : filteredArry;
-    this.defaultPage = 1;
     this.modifySoData(filteredArry);
   }
   /**
@@ -404,6 +425,7 @@ export class OrderListComponent implements OnInit {
     let index = this.utils.fetchObjectFromAnArray(this.adavancedArray, item.value, item.key);
     this.filterForm.controls[item.value.key].setValue('');
     this.adavancedArray.splice(index, 1);
+    this.defaultPage = 1;
     this.filterSOData();
   }
   /**
@@ -417,5 +439,15 @@ export class OrderListComponent implements OnInit {
    */
   public datePickerConfig = (item: any) => {
     return item.key.toLowerCase().indexOf('to') ? this.dateFromPickerConfig : this.dateToPickerConfig;
+  }
+  /**
+   * onKeyUp
+   */
+  public onBlur = (e: any): any => {
+    if (e.target.name.toLowerCase().indexOf('volume') > -1 && this.filterForm.controls['volumeFrom'].value != '' && this.filterForm.controls['volumeTo'].value != '' && this.filterForm.controls['volumeFrom'].value > this.filterForm.controls['volumeTo'].value) {
+      e.target.value = "";
+      e.target.focus();
+      console.log('Volume count should be lesser in the from coloumn');
+    }
   }
 }

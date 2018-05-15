@@ -13,18 +13,16 @@ export class CardPersonalizationComponent implements OnInit {
   constructor(protected pesonalization: CardPersonalizationService) { }
 
   cardPersonalization: any;
-  cancelButton = "Cancel";
   personalizeButton = "Personalize";
   buttonClass = "btn-master";
-  isCheckBox : boolean = true;
-  opendDivId: any;
-  public poCardClass:string="po-cards";
-  passProgressStatus : string = "60%";
+  isCheckBox: boolean = true;
+  openPIElementsById: any;
+  public poCardClass: string = "po-cards";
+  passProgressStatus: string = "60%";
 
   private showHidePersonalItems = true;
 
   ngOnInit() {
-
     this.pesonalization.getPersonalizeData()
       .subscribe(
       (successResponse) => {
@@ -36,8 +34,9 @@ export class CardPersonalizationComponent implements OnInit {
       );
   }
 
-  toggleProductionItems(index:any) {
-    this.opendDivId = index;
+  toggleProductionItems(index: any) {
+    this.openPIElementsById = index;
     this.showHidePersonalItems = !this.showHidePersonalItems;
+    !this.showHidePersonalItems ? document.getElementById('showHide_' + index).innerHTML = "Hide all PI's" : document.getElementById('showHide_' + index).innerHTML = "Show all PI's"
   }
 }

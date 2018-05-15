@@ -6,10 +6,12 @@
 
   <div class="page-body">
     <form [formGroup]="reassignForm" (ngSubmit)="onSubmitReassign(reassignForm)">
-      
-      <label>{{selectionText}} ({{selectedArray.length}})</label>
-      <div>
-        <app-removable-card (removeCard) = "removeSelectedArray($event,selected)" [label]="selected.orderId" *ngFor="let selected of selectedArray"></app-removable-card>
+      <label>
+        <span class="d-none .d-xl-block .d-sm-block"><a (click)="onCancel()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a> &nbsp;&nbsp;&nbsp;</span> 
+        {{selectionText}} ({{selectedArray.length}})
+      </label>
+      <div class="selectedSO">
+        <app-removable-card (removeCard)="removeSelectedArray($event,selected)" [label]="selected.orderId" *ngFor="let selected of selectedArray"></app-removable-card>
       </div>
       <hr />
 
@@ -25,14 +27,14 @@
         </div>
       </div>
       <hr />
-      
+
       <div class="form-group row" *ngIf="redirectionMedium == 'satellite'">
         <div class="col-md-2">
-            <div class="form-group">
-              <label>From</label>
-              <input type="text" class="form-control input-height" value="Existing satellite" disabled>
-            </div>
+          <div class="form-group">
+            <label>From</label>
+            <input type="text" class="form-control input-height" value="Existing satellite" disabled>
           </div>
+        </div>
         <div class="col-md-2">
           <div class="form-group">
             <label>To</label>
@@ -47,30 +49,32 @@
       <br />
       <div class="text-center">
         <button type="button" class="btn btn-default" (click)="onCancel()">Cancel</button>
-        <button type="submit" class="btn btn-success" [disabled]="selectedArray.length === 0 || redirectionMedium == ''">Redirect</button>
+        <button type="submit" class="btn btn-success" [disabled]="disableRedirect()" data-toggle="modal"
+          data-target="#reassignConfirm">Redirect</button>
       </div>
+
+      <!-- Reassign Confirmation Modal -->
+      <div class="modal fade" id="reassignConfirm" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Reassign Confirmation</h4>
+            </div>
+            <div class="modal-body">
+              <h2>Are you sure?</h2>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal">Redirect</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- .modal-->
+
     </form>
-  </div><!-- .page-body -->
-
-</div><!-- .reassign -->
-
-
-<!-- Reassign Confirmation Modal -->
-<div class="modal fade" id="reassignConfirm" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Reassign Confirmation</h4>
-        </div>
-        <div class="modal-body">
-          <h2>Are you sure?</h2>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal">Redirect</button>
-        </div>
-      </div>
-      
-    </div>
   </div>
+  <!-- .page-body -->
+
+</div>
+<!-- .reassign -->

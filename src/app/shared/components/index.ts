@@ -11,8 +11,9 @@ import {RemovableCardComponent} from './removable-card/removable-card.component'
 import {SearchfieldComponent} from './searchfield/searchfield.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {OrderListComponent} from './order-list/order-list.component';
+import { MOrderListComponent } from './m-order-list/m-order-list.component';
 export const SharedComponents = [ButtonComponent,CardsComponent,FilterPanelComponent,GridComponent,HeaderComponent,PaginationComponent,
-RemovableCardComponent,SearchfieldComponent,SidebarComponent,OrderListComponent];
+RemovableCardComponent,SearchfieldComponent,SidebarComponent,OrderListComponent,MOrderListComponent];
 
 
 export * from './button/button.component';
@@ -25,3 +26,4 @@ export * from './removable-card/removable-card.component';
 export * from './searchfield/searchfield.component';
 export * from './sidebar/sidebar.component';
 export * from './order-list/order-list.component';
+export * from './m-order-list/m-order-list.component';

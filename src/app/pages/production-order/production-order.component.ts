@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderConfig, OrderFiltersConfig, GridConfig } from '../../shared/models/index';
+import { OrderConfig, OrderFiltersConfig, GridConfig,MOrderConfig } from '../../shared/models/index';
 import { endPoints } from '../../shared/constants/index';
 import { OrderListService } from '../../shared/services/index';
 @Component({
@@ -11,6 +11,8 @@ export class ProductionOrderComponent implements OnInit {
   public redirectView: boolean = false;
   public refeshData: boolean = false;
   public redirectSelectedArray: any = [];
+  public defaultFilter = "status";
+  public defaultFilterValue = "queued";
   constructor(private listService: OrderListService) { }
 
   ngOnInit() {
@@ -38,7 +40,8 @@ export class ProductionOrderComponent implements OnInit {
       new GridConfig('deliveryDate', 'Delivery Date', false),
       new GridConfig('card', 'Card Program', true),
       new GridConfig('status', 'Status Of order', true)],
-      `${endPoints.urlPath.salesOrder}/1/sales-orders`
+      `${endPoints.urlPath.salesOrder}/1/sales-orders`,
+      [new MOrderConfig('orderId','ID'),new MOrderConfig('status','Status'),new MOrderConfig('volume','Volume'),new MOrderConfig('deliveryDate','Delivery Date')]
     );
     return config;
   }

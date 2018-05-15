@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { ReassignService } from './reassign.service';
 import { UtilsService } from '../../services/utils/utils.service';
+
 @Component({
   selector: 'app-reassign',
   templateUrl: './reassign.component.html',
@@ -70,7 +71,6 @@ export class ReassignComponent implements OnInit {
    */
   public fetchValueForRedirect = (): any => {
     let result;
-    debugger;
     switch (this.redirectionMedium.toLocaleUpperCase()) {
       case 'SATELLITE': result = this.reassignForm.controls['externalSatellite'].value; break;
       case 'CDP': result = 'CDP'; break;
@@ -127,5 +127,14 @@ export class ReassignComponent implements OnInit {
         console.log(error)
       }
     );
+  }
+  /**
+   * disableRedirect
+   */
+  public disableRedirect = () : boolean => {
+    let result = true;
+    result = this.selectedArray.length === 0 || this.redirectionMedium == '' || this.fetchValueForRedirect() == '';
+    return result; 
+    
   }
 }
