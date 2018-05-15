@@ -106,7 +106,7 @@
   </ng-container>
 
   <app-grid class="d-none d-md-block" [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" (allChecked)="allSOSelected($event)"
-    (rowSelected)="rowSelected($event)" [allItemsSelected]="allCheck"></app-grid>
+    (onCellClick)="cellClick($event)" (rowSelected)="rowSelected($event)" [allItemsSelected]="allCheck"></app-grid>
   <app-m-order-list class="d-sm-none" [config]="config.mobileOrderList"[data]="data" (rowSelected)="rowSelected($event)"></app-m-order-list>
   <ng-container *ngIf="data.length > 0">
     <app-pagination [pageLimitArray]="pageLimitArray" [count]="totalRecords" class="row" [page]="defaultPage" [perPage]="pageLimit"

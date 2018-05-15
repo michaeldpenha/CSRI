@@ -17,6 +17,7 @@ export class GridComponent implements OnInit {
   @Output() sortTrigger = new EventEmitter<any>();
   @Output() allChecked = new EventEmitter<any>();
   @Output() rowSelected = new EventEmitter<any>();
+  @Output() onCellClick = new EventEmitter<any>();
   public reverseSort: boolean = true;
 
   // Events Exposed to parents
@@ -68,5 +69,11 @@ export class GridComponent implements OnInit {
    */
   public rowSelection = (item) => {
     this.rowSelected.emit(item);
+  }
+  /**
+   * cellClick
+   */
+  public cellClick = (dataIndex : string,id : string) => {
+    this.onCellClick.emit({dataIndex : dataIndex, id : id});
   }
 }

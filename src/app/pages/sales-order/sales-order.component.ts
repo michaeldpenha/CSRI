@@ -35,10 +35,10 @@ export class SalesOrderComponent implements OnInit {
       new OrderFiltersConfig('I', 'text', [], 'form-group col-sm-2', 'Delivery Date:', 'from', 'fromDate', 'form-control'),
       new OrderFiltersConfig('I', 'text', [], 'form-group col-sm-2', ' ', 'to', 'toDate', 'form-control '),
       new OrderFiltersConfig('S', 'options', [{ key: 'queued', value: 'Queued' }], 'form-group col-sm-2', 'Status:', 'status', 'status', 'form-control')],
-      [new GridConfig('orderId', 'Sales Order Id', true),
-      new GridConfig('volume', 'Volume', true),
-      new GridConfig('deliveryDate', 'Delivery Date', false),
-      new GridConfig('status', 'Status Of order', true)],
+      [new GridConfig('orderId', 'Sales Order Id', true,false),
+      new GridConfig('volume', 'Volume', true,false),
+      new GridConfig('deliveryDate', 'Delivery Date', false,false),
+      new GridConfig('status', 'Status Of order', true,false)],
       `${endPoints.baseUrl}/${endPoints.urlPath.salesOrder}/1/sales-orders`,
       [new MOrderConfig('orderId', 'ID'), new MOrderConfig('status', 'Status'), new MOrderConfig('volume', 'Volume'), new MOrderConfig('deliveryDate', 'Delivery Date')]
     );

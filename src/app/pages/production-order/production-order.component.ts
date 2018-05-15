@@ -35,11 +35,11 @@ export class ProductionOrderComponent implements OnInit {
       new OrderFiltersConfig('I', 'text', [], 'form-group col-2', '', 'to', 'toDate', 'form-control'),
       new OrderFiltersConfig('S', 'options', [{ key: 'queued', value: 'Queued' }], 'form-group col-2', 'Status', 'status', 'status', 'form-control'),
       new OrderFiltersConfig('S', 'options', [{ key: 'queued', value: 'Queued' }], 'form-group col-2', 'Card Program', 'card', 'card', 'form-control')],
-      [new GridConfig('orderId', 'Production Order Id', true),
-      new GridConfig('volume', 'Volume', true),
-      new GridConfig('deliveryDate', 'Delivery Date', false),
-      new GridConfig('card', 'Card Program', true),
-      new GridConfig('status', 'Status Of order', true)],
+      [new GridConfig('orderId', 'Production Order Id', true,true),
+      new GridConfig('volume', 'Volume', true,false),
+      new GridConfig('deliveryDate', 'Delivery Date', false,false),
+      new GridConfig('card', 'Card Program', true,false),
+      new GridConfig('status', 'Status Of order', true,false)],
       `${endPoints.urlPath.salesOrder}/1/sales-orders`,
       [new MOrderConfig('orderId','ID'),new MOrderConfig('status','Status'),new MOrderConfig('volume','Volume'),new MOrderConfig('deliveryDate','Delivery Date')]
     );
