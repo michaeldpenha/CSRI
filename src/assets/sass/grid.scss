@@ -1,14 +1,4 @@
 
-$_table-font-size:14px;
-$_table-header-color: #395961;
-$_table-row-color: #333333;
-$_table-header-padding:26px 20px;
-$_border-none:none;
-$_table-header-border:2px solid #c6c6c6;
-$_normal-line-height:1;
-$_table-row-padding:12px 20px;
-$_card-box-shadow:1px 0px 3px 0px rgba(0,0,0,0.2);
-
 
 
 .table {	
@@ -23,7 +13,8 @@ $_card-box-shadow:1px 0px 3px 0px rgba(0,0,0,0.2);
 		padding: $_table-header-padding;
 		line-height: $_normal-line-height;
 		border-top: $_border-none;
-		border-bottom: $_table-header-border;
+        border-bottom: $_table-header-border;
+        cursor: pointer;
 	}
 	td {
 		font-family: $_font-light;
@@ -52,4 +43,21 @@ $_card-box-shadow:1px 0px 3px 0px rgba(0,0,0,0.2);
 		margin-left: 70px
 
 	}
+}
+.pagination-panel{
+    font-family: $_font-regular;
+    font-size: $_standard-font-size;
+    .pagination-navigate button{
+        background: none;
+        border: $_border-none;
+        text-decoration: $_text-decoration-underline;
+        color: #395361;
+        font-size: $_standard-font-size;
+}
+.pagination-navigate button:focus{
+    outline: $_border-none;
+}
+.count-text{
+    margin-right: 50px
+}
 }

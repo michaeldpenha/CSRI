@@ -12,27 +12,20 @@ $_body-background-color: #FFE4C4;
 $_btn-height: 30px;
 $_btn-width:  96px;
 $_btn-radius: 3px;
-
 $_btn-background:#1ebe9c; 
-
 $_btn-font-size: 14px;
 $_btn-border-radius: 3px;
 $_btn-text-color: #fff;
-
+$_btn-background-hover:#66d9c4; 
+$_btn-background-disabled:#99e5d7; 
+$_btn-background-sec-hover:#748690;
+$_btn-background-sec-disabled:#c3cbcf;
 /*
 
 */
 $_btn-background-sec:#395361; 
 
 
-/* Button's Variable for Secondary  */
-// $_btn-height_signup: 50px;
-// $_btn-width_signup:  160px;
-// $_btn-border_signup: 0px solid orange;
-// $_btn-font-size_signup: 16px;
-// $_btn-background_signup: orange; 
-// $_btn-border-radius_signup: 5%;
-// $_btn-text-color_signup: #fff;
 
 /* fonts variables*/
 $_font-light:Open-Sans-Light;
@@ -43,17 +36,18 @@ $_font-semibold-italic:Open-Sans-SemiboldItalic;
 $_font-bold-light:Open-Sans-BoldItalic;
 $_font-extrabold:Open-Sans-ExtraBold;
 $_font-extrabold-italic:Open-Sans-ExtraBoldItalic;
+$_standard-font-size:14px;
 
 
 
-
-$_table-font-size:14px;
+/*Grid variables*/
+$_table-font-size:$_standard-font-size;
 $_table-header-color: #395961;
 $_table-row-color: #333333;
-
-$_table-header-padding:26px 20px;
+$_table-header-padding:30px 20px 25px 20px;
 $_border-none:none;
 $_table-header-border:2px solid #c6c6c6;
 $_normal-line-height:1;
 $_table-row-padding:12px 20px;
 $_card-box-shadow:1px 0px 3px 0px rgba(0,0,0,0.2);
+$_text-decoration-underline:underline;

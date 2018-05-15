@@ -12,16 +12,55 @@
 .btn-secondary {
     @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background-sec,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
  }
-
+.btn-master:hover {
+     @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background-hover,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
+}
+.btn-master:disabled {
+     @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background-disabled,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
+}
+.btn-secondary:hover {
+    @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background-sec-hover,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
+ }
+.btn-secondary:disabled {
+    @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background-sec-disabled,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
+ }
+body{
+    font-family: $_font-regular;
+}
  input.form-control, select.form-control {
     height: 30px;
     line-height: 1;
     padding: 0 10px;
-   
+   font-size: $_standard-font-size;
 }
 
 .po-cards{
     background: #fbf6f6;
 }
-
-
+h1{
+    font-family: $_font-light;
+    font-size: 18px;
+    color: #333;
+}
+.page-title{
+    padding: 25px 0;
+}
+.filter-panel label{
+    font-size: 11px;
+    color: #666;
+    font-family: $_font-light;
+    margin-bottom: 10px;
+}
+input.form-control::placeholder{ /* Chrome, Firefox, Opera, Safari 10.1+ */
+    text-transform: lowercase;
+    text-transform: capitalize;
+    font-size: $_standard-font-size;
+   // opacity: 1; /* Firefox */
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

@@ -13,11 +13,15 @@ select.form-control:not([size]):not([multiple]){
 .filter-panel{
     -webkit-box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 15px
 }
 .filter-button{
     background: none;
     border: none;
     
+}
+.search-row{
+     margin-bottom: 15px
 }
 .to-text{
        padding-top: 32px;

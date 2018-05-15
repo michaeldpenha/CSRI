@@ -16,6 +16,7 @@
       </tr>
     </thead>
     <tbody>
+      
       <ng-container *ngFor="let data of gridData">
         <tr>
           <td><input type="checkbox" (click)="rowSelection(data)" [checked]="data.selected"></td>
