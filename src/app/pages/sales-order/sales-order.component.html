@@ -1,5 +1,5 @@
 <ng-container *ngIf="!redirectView" >
-    <app-order-list (redirectEvent)="onRedirect($event)" [refreshData] = "refeshData"></app-order-list>
+    <app-order-list (redirectEvent)="onRedirect($event)" [refreshData] = "refeshData" [defaultFilter]="defaultFilter" [defaultFilterValue]="defaultFilterValue"></app-order-list>
 </ng-container>
 <ng-container *ngIf="redirectView" >
     <app-reassign [headerText] = "redirectHeaderText" [selectionText] = "selectedString" [selectionArray]="redirectSelectedArray" (redirectTrigger)="redirectTrigger()" (onCancelClick)="onCancel()"></app-reassign>

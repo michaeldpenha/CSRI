@@ -13,6 +13,8 @@ export class SalesOrderComponent implements OnInit {
   public redirectSelectedArray : any= [];
   public selectedString = "Selected Sales Orders";
   public redirectHeaderText = "Redirect Sales Orders";
+  public defaultFilter = "status";
+  public defaultFilterValue = "queued";
   constructor(private listService : OrderListService) { }
 
   ngOnInit() {
