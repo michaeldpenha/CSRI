@@ -30,7 +30,6 @@ import { ReassignComponent } from "./shared/components/reassign/reassign.compone
 
 import { ReassignService } from './shared/components/reassign/reassign.service';
 import { ProgressStatusComponent } from "./shared/components/progress-status/progress-status.component";
-import { LoaderComponent } from './shared/components/loader/loader.component';
 import { CardPersonalizationService } from "./pages/card-personalization/card-personalization.service";
 @NgModule({
   declarations: [
@@ -40,8 +39,7 @@ import { CardPersonalizationService } from "./pages/card-personalization/card-pe
     ArrayFilterPipe,
     ReassignComponent,
     PagesComponent,
-    ProgressStatusComponent,
-    LoaderComponent
+    ProgressStatusComponent
   ],
   imports: [
     BrowserModule,

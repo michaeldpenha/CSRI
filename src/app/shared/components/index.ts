@@ -12,8 +12,9 @@ import {SearchfieldComponent} from './searchfield/searchfield.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {OrderListComponent} from './order-list/order-list.component';
 import { MOrderListComponent } from './m-order-list/m-order-list.component';
+import {LoaderComponent} from './loader/loader.component';
 export const SharedComponents = [ButtonComponent,CardsComponent,FilterPanelComponent,GridComponent,HeaderComponent,PaginationComponent,
-RemovableCardComponent,SearchfieldComponent,SidebarComponent,OrderListComponent,MOrderListComponent];
+RemovableCardComponent,SearchfieldComponent,SidebarComponent,OrderListComponent,MOrderListComponent,LoaderComponent];
 
 
 export * from './button/button.component';
@@ -27,3 +28,4 @@ export * from './searchfield/searchfield.component';
 export * from './sidebar/sidebar.component';
 export * from './order-list/order-list.component';
 export * from './m-order-list/m-order-list.component';
+export *  from './loader/loader.component';
