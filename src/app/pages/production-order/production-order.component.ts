@@ -14,6 +14,8 @@ export class ProductionOrderComponent implements OnInit {
   public defaultFilter = "status";
   public defaultFilterValue = "queued";
   public responseKey = "productionOrders";
+  public selectedString = "Selected Production Orders";
+  public redirectHeaderText = "Redirect Production Orders";
   constructor(private listService: OrderListService) { }
 
   ngOnInit() {
