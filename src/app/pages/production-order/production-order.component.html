@@ -1,12 +1,12 @@
 <div class="container">
-    <div class="row page-title">
+    <div class="row page-title" [hidden]="redirectView">
         <div class="col-sm-6 ">
             <h1>Production Order</h1>
         </div>
     </div>
-    <ng-container *ngIf="!redirectView">
+    <div [hidden]="redirectView">
         <app-order-list [responseKey]="responseKey" (redirectEvent)="onRedirect($event)" [refreshData]="refeshData" [defaultFilter]="defaultFilter" [defaultFilterValue]="defaultFilterValue"></app-order-list>
-    </ng-container>
+    </div>
     <ng-container *ngIf="redirectView">
         <app-reassign [selectionArray]="redirectSelectedArray" (redirectTrigger)="redirectTrigger()" (onCancelClick)="onCancel()"></app-reassign>
     </ng-container>
