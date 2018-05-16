@@ -30,7 +30,7 @@ export class SalesOrderComponent implements OnInit {
       "Search using Id's,status etc.",
       'Redirect',
       [10, 20, 30],
-      [new OrderFiltersConfig('I', 'text', [], 'form-group col-sm-2', 'Sales Order Id:', 'SOID', 'orderId', 'form-control '),
+      [new OrderFiltersConfig('I', 'text', [], 'form-group col-sm-2', 'Sales Order Id:', 'soid', 'orderId', 'form-control '),
       new OrderFiltersConfig('I', 'number', [], 'form-group col-sm-2', 'Volume:', 'from', 'volumeFrom', 'form-control'),
       new OrderFiltersConfig('I', 'number', [], 'form-group col-sm-2', ' ', 'to', 'volumeTo', 'form-control'),
       new OrderFiltersConfig('I', 'text', [], 'form-group col-sm-2', 'Delivery Date:', 'from', 'fromDate', 'form-control'),
