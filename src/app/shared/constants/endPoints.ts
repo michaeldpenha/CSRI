@@ -6,7 +6,7 @@ export const endPoints = {
     //baseUrl : 'http://172.30.30.20:8096',
     //baseUrl : 'http://172.26.21.106:8094',
     urlPath: { 
-        salesOrder : '/api/issuers'
+        issuers : 'api/issuers'
         //loginApi: '/auth/login',
     }
 };

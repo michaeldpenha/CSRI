@@ -15,6 +15,7 @@ export class SalesOrderComponent implements OnInit {
   public redirectHeaderText = "Redirect Sales Orders";
   public defaultFilter = "status";
   public defaultFilterValue = "queued";
+  public responseKey = "salesOrders";
   constructor(private listService: OrderListService) { }
 
   ngOnInit() {
@@ -39,7 +40,7 @@ export class SalesOrderComponent implements OnInit {
       new GridConfig('volume', 'Volume', true,false),
       new GridConfig('deliveryDate', 'Delivery Date', false,false),
       new GridConfig('status', 'Status Of order', true,false)],
-      `${endPoints.baseUrl}/${endPoints.urlPath.salesOrder}/1/sales-orders`,
+      `${endPoints.baseUrl}/${endPoints.urlPath.issuers}/1/sales-orders`,
       [new MOrderConfig('orderId', 'ID'), new MOrderConfig('status', 'Status'), new MOrderConfig('volume', 'Volume'), new MOrderConfig('deliveryDate', 'Delivery Date')]
     );
     return config;
