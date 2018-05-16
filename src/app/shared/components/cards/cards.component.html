@@ -1,7 +1,8 @@
 
 <div class="card" [ngClass]="cls">
+ 
  <div class="card-body">
-  <div class="text-right">
+   <div class="text-right">
     <span *ngIf="!isCheckBoxtoChild">
       <input (click) = "selected(cardDetail)" [checked] ="cardDetail.selected" type="checkbox" />
     </span>

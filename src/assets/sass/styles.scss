@@ -37,7 +37,7 @@ body{
 .po-cards{
     background: #fbf6f6;
 }
-p{
+body{
     font-size: 14px;
 }
 
@@ -68,4 +68,21 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-appearance: none;
     appearance: none;
     margin: 0; 
+}
+.card-body{
+   padding:  5px 10px;
+}
+.came-case{
+    display: inline-block;
+    text-transform: lowercase;
+}
+.came-case::first-letter{
+    text-transform: capitalize;
+}
+@media (max-width:480px) {
+
+.so-buttons button.btn-secondary{
+  margin: 10px 0;
+}
+
 }

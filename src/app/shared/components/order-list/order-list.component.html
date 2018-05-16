@@ -60,40 +60,7 @@
                   </ng-container>
                 </div>
               </ng-container>
-              <!-- <div class="form-group col-2"><label for="soId">Sales Order Id:</label>
-                <input formControlName="orderId" id="soId" name="soId" placeholder="SOID" class="form-control">
-              </div>-->
-              <!-- <div class="form-group col-2">
-            <label for="issuer">Issuer:</label>
-            <input formControlName="issuer" id="issuer" name="issuer" placeholder="Issuer" class="form-control">
-          </div>
-          <div class="form-group col-2">
-            <label for="issuerid">Issuer Id:</label>
-             <input formControlName="issuerid" id="issuerid" name="issuerid" class="form-control" placeholder="Issuer Id">
-          </div>-->
-              <!--<div class="form-group col-3">
-                  <label for="volumeFrom">Volume:</label>
-                  <div class=""><input formControlName="volumeFrom" id="volumeFrom" class="form-control col-5 pull-left" type="number">
-                    <div class=" pull-left">to</div><input class="form-control col-5 pull-left" formControlName="volumeTo" type="number"></div>
-                </div>
-
-                <div class="form-group col-3">
-                  <label for="fromDate">Delivery Date:</label>
-                  <div>
-                    <input formControlName="fromDate" id="fromDate" type="text" [bsConfig]="dateFromPickerConfig" placeholder="Datepicker" class="form-control pull-left col-5"
-                      bsDatepicker readonly>
-                    <div class=" pull-left">to</div>
-                    <input formControlName="toDate" type="text" placeholder="Datepicker" [bsConfig]="dateToPickerConfig" class="form-control col-5 pull-left"
-                      bsDatepicker readonly>
-                  </div>
-                </div>
-                <div class="form-group col-2">
-                  <label for="fromDate">Status:</label>
-                  <select formControlName="status" class="form-control">
-              <option value="Queued">Queued</option>
-          
-            </select>
-                </div>-->
+              
 
             </form>
           </app-filter-panel>
@@ -107,7 +74,7 @@
 
   <app-grid class="d-none d-md-block" [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" (allChecked)="allSOSelected($event)"
     (onCellClick)="cellClick($event)" (rowSelected)="rowSelected($event)" [allItemsSelected]="allCheck"></app-grid>
-  <app-m-order-list class="d-sm-none" [config]="config.mobileOrderList"[data]="data" (rowSelected)="rowSelected($event)"></app-m-order-list>
+  <app-m-order-list class="d-md-none" [config]="config.mobileOrderList"[data]="data" (rowSelected)="rowSelected($event)"></app-m-order-list>
   <ng-container *ngIf="data.length > 0">
     <app-pagination [pageLimitArray]="pageLimitArray" [count]="totalRecords" class="row" [page]="defaultPage" [perPage]="pageLimit"
       [pagesToShow]="5" (goPrev)="previousPage($event)" (goNext)="nextPage($event)" (goPage)="goToPage($event)" (changeInPerPage)="pageLimitChange($event)"></app-pagination>

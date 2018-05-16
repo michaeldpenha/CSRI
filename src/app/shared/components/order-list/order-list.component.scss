@@ -41,7 +41,8 @@ select.form-control:not([size]):not([multiple]){
     margin: 0;
     
 }
-.so-buttons app-button{
-    margin: 10px 10px 0 0; 
+.btn-secondary{
+    border: 1px solid red;
 }
+
 }
