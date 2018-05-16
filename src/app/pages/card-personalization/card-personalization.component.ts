@@ -18,7 +18,7 @@ export class CardPersonalizationComponent implements OnInit {
   isCheckBox: boolean = true;
   openPIElementsById: any;
   public poCardClass: string = "po-cards";
-  passProgressStatus: string = "60%";
+  passProgressStatus: string = "" ;
 
   private showHidePersonalItems = true;
 
@@ -34,7 +34,7 @@ export class CardPersonalizationComponent implements OnInit {
       );
   }
 
-  toggleProductionItems(index: any) {
+  togglePersonalizeItems(index: any) {
     this.openPIElementsById = index;
     this.showHidePersonalItems = !this.showHidePersonalItems;
     !this.showHidePersonalItems ? document.getElementById('showHide_' + index).innerHTML = "Hide all PI's" : document.getElementById('showHide_' + index).innerHTML = "Show all PI's"

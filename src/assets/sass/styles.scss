@@ -37,15 +37,19 @@ body{
 .po-cards{
     background: #fbf6f6;
 }
+
 p{
     font-size: 14px;
 }
-
 
 h1{
     font-family: $_font-light;
     font-size: 18px;
     color: #333;
+}
+a,a:hover{
+    font-size: $_standard-font-size;
+    text-decoration: $_border-none;
 }
 .page-title{
     padding: 25px 0;
@@ -63,9 +67,11 @@ input.form-control::placeholder{ /* Chrome, Firefox, Opera, Safari 10.1+ */
    // opacity: 1; /* Firefox */
 }
 input[type=number]::-webkit-inner-spin-button, 
+
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin: 0; 
 }
+
