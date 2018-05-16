@@ -14,7 +14,7 @@ select.form-control:not([size]):not([multiple]){
     -webkit-box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 0px 3px 0px rgba(0, 0, 0, 0.2);
     margin-top: 15px;
-        margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .filter-button{
     background: none;
@@ -31,18 +31,24 @@ select.form-control:not([size]):not([multiple]){
     margin-top: 25px
 }
 @media (max-width: 767px) {
-.filter-panel{
-    display: block;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left:0;
-    z-index: 999;
-    margin: 0;
-    
+    .filter-panel{
+        display: block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left:0;
+        z-index: 999;
+        margin: 0;
+        
+    }
+    .btn-secondary{
+        border: 1px solid red;
+    }
 }
-.btn-secondary{
-    border: 1px solid red;
+.m-order-list {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
 }
 
-}
