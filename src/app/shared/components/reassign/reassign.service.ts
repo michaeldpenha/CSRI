@@ -13,10 +13,10 @@ export class ReassignService {
   constructor(private http: HttpClient) { }
 
   getSatellite(): Observable<any> {
-    return this.http.get( `${endPoints.baseUrl}/${endPoints.urlPath.salesOrder}/1/satellites` );
+    return this.http.get( `${endPoints.baseUrl}/${endPoints.urlPath.issuers}/1/satellites` );
   }
   patchSoReassign(param):Observable<any> {
-    return this.http.patch( `${endPoints.baseUrl}/${endPoints.urlPath.salesOrder}/1/reassign-sales-orders`, param);
+    return this.http.patch( `${endPoints.baseUrl}/${endPoints.urlPath.issuers}/1/reassign-sales-orders`, param);
   }
 
 }

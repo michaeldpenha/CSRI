@@ -15,6 +15,7 @@ import { BsDatepickerConfig } from "ngx-bootstrap";
 export class OrderListComponent implements OnInit {
   @Input() refreshData: any;
   @Input() defaultFilter: any;
+  @Input() responseKey : string;
   @Input() defaultFilterValue: string;
   @Output() redirectEvent = new EventEmitter<any>();
   public columnDefs: any = [];
@@ -105,7 +106,7 @@ export class OrderListComponent implements OnInit {
   public fetchStatusOrderList = () => {
     this.listData = [];
     this.http.get(this.config.url).toPromise().then(data => {
-      this.listData = data['salesOrders'];
+      this.listData = data[this.responseKey];
       this.filterSOData();
     }, err => {
       this.listData = [];
@@ -447,8 +448,7 @@ export class OrderListComponent implements OnInit {
     if (e.target.name.toLowerCase().indexOf('volume') > -1 && this.filterForm.controls['volumeFrom'].value != '' && this.filterForm.controls['volumeTo'].value != '' && this.filterForm.controls['volumeFrom'].value > this.filterForm.controls['volumeTo'].value) {
       e.target.value = "";
       e.target.focus();
-      console.log('Volume count should be lesser in the from coloumn');
-    }
+     }
   }
   /**
    * cellClick

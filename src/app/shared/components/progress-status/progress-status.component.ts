@@ -7,10 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProgressStatusComponent implements OnInit {
 
+ 
   @Input('progressStatus') progressStatus: string;
+  public deafultProgressStatus: string = '30%';
+
   constructor() { }
   
   ngOnInit() {
+    this.progressStatus = (this.progressStatus) ? this.progressStatus : this.deafultProgressStatus;
   }
 
 }
