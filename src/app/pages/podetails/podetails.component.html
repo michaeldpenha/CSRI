@@ -1,16 +1,30 @@
 <div class="container">
 
-  <div class="row">
-    <div class="col-sm-12">
+  <div class="row page-title">
+    <div class="col-sm-6 ">
+      <h1>Production Order Details</h1>
+    </div>
+    <div class="col-sm-6 ">
       <app-button class="pull-right" [text]="redirectButton" (click)="personalise($event)" [cls]="secondaryButtonClass"></app-button>
       <app-button class="pull-right" [disabled]="this.tempArray && this.tempArray.length" [text]="personalizeButton" (click)="personalise($event)"
         [cls]="masterButtonClass"></app-button>
-
     </div>
   </div>
-  <div class="row">
+   <div class="row">
+      <div class="col-12 col-md-2">
+        <p><span class="bold">PO #</span> {{podetails.productionOrderId}} </p>
+      </div>
+      <div class="col-3 col-md-1">
+        <p>Queued </p>
+      </div>
+      <div class="col-md-6 col-9">
+        <app-progress-status [progressStatus]="passProgressStatus"></app-progress-status>
+      </div>
+    </div>
+
+   <div class="row">
     <div class="col-sm-4 card po-cards">
-      <div class="card-body small">
+      <div class="card-body">
         <div class="row">
           <div class="col-3 text-right">
             <h5>25</h5>
@@ -39,7 +53,7 @@
           <p> <img _ngcontent-c1="" src="./assets/images/credit-card-1.jpg">
           </p>
         </div>
-        <div class="col-sm-8 small">
+        <div class="col-sm-8">
           <p>Gold tipping foil</p>
           <p>Standard Debit Card Design</p>
           <p>Carrier Template # 1</p>
@@ -48,7 +62,7 @@
       </div>
     </div>
     <div class="col-sm-4 card po-cards">
-      <div class="card-body row small">
+      <div class="card-body row ">
         <div class="col-sm-6">
           <p>Assigned printer</p>
           <p>Matica S3500</p>
@@ -63,7 +77,8 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> 
+  
   <hr/>
   <div class="row">
     <div class="col-sm-3">
