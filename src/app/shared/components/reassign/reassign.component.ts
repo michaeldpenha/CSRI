@@ -11,6 +11,7 @@ import { UtilsService } from '../../services/utils/utils.service';
 export class ReassignComponent implements OnInit {
   constructor(protected reassignService: ReassignService, private utils: UtilsService) { }
   @Input('selectionArray') selectedArray: any;
+  @Input() selectedKey : string;
   @Input() headerText: string;
   @Input() selectionText: string;
   @Output() onCancelClick = new EventEmitter<any>();

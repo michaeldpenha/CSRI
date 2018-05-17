@@ -18,8 +18,13 @@ export class PodetailsComponent implements OnInit {
   public masterButtonClass: string = "btn-master";
   public secondaryButtonClass: string = "btn-secondary";
   filteredCards = this.cardDetails;
-  public isCheckBox:boolean= false;
+  public redirectSelectedArray: any;
+  public redirectDisabled: boolean = true;
+  public selectedKey : string = 'pan';
   public placeholder: string = "Search using PAN #";
+  public redirectView: boolean = false;
+  public redirectHeaderText: string = "Personlize PO";
+  public selectedString: string = "Selection Of Pis"
   performFilter(value): any {
     value = value.toLocaleLowerCase();
     this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['pan'], 'or');
@@ -45,16 +50,35 @@ export class PodetailsComponent implements OnInit {
         this.filteredCards = this.cardDetails
       });
   }
-  personalise(eve: any) {
-
+  public redirectPI = (e: any) => {
+    this.redirectSelectedArray = this.fetchSelectedPIS();
+    this.redirectView = (this.redirectSelectedArray.length > 0) ? true : false;
   }
-
+  /**
+   * fetchSelectedPIS
+   */
+  public fetchSelectedPIS = (): any => {
+    let result: any = [];
+    let ary: any = this.filteredCards ? this.filteredCards : [];
+    result = this.utils.filterArray(ary, 'true', ['selected'], 'or');
+    return result;
+  }
   /**
    * recordSelected
    */
   public recordSelected = (item: any) => {
     let index = this.utils.fetchObjectFromAnArray(this.cardDetails, item, 'pan');
     this.cardDetails[index].selected = this.cardDetails[index].selected ? !this.cardDetails[index].selected : true;
+    this.redirectDisabled = this.fetchSelectedPIS().length > 0 ? false : true;
   }
-
+  /**
+   * redirectTrigger
+   */
+  public redirectTrigger = () => {
+    this.redirectView = false;
+    console.log('redirect');
+  }
+  public onCancel = () =>{
+    this.redirectView = false;
+  }
 }

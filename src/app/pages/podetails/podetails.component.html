@@ -1,13 +1,14 @@
-<div class="container">
+<div class="container" [hidden]="redirectView">
 
   <div class="row page-title">
     <div class="col-sm-6 ">
       <h1>Production Order Details</h1>
     </div>
     <div class="col-sm-6 ">
-      <app-button class="pull-right" [text]="redirectButton" (click)="personalise($event)" [cls]="secondaryButtonClass"></app-button>
-      <app-button class="pull-right" [disabled]="this.tempArray && this.tempArray.length" [text]="personalizeButton" (click)="personalise($event)"
-        [cls]="masterButtonClass"></app-button>
+      <app-button class="pull-right" [disabled]="redirectDisabled" [text]="redirectButton" (click)="redirectPI($event)" [cls]="secondaryButtonClass"></app-button>
+      <app-button class="pull-right" [text]="personalizeButton" (click)="personalise($event)" [cls]="masterButtonClass"></app-button>
+
+
     </div>
   </div>
    <div class="row">
@@ -122,4 +123,8 @@
     </ng-container>
   </div>
 
+</div>
+<div *ngIf="redirectView">
+  <app-reassign  [selectedKey]="selectedKey" [headerText]="redirectHeaderText" [selectionText]="selectedString" [selectionArray]="redirectSelectedArray"
+    (redirectTrigger)="redirectTrigger()" (onCancelClick)="onCancel()"></app-reassign>
 </div>
