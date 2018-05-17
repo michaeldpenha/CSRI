@@ -10,10 +10,11 @@ import { SearchfieldComponent } from '../../shared/components/searchfield/search
   styleUrls: ['./podetails.component.scss']
 })
 export class PodetailsComponent implements OnInit {
-
+  public podetails: any;
   public personalizeButton: string = "Personalize All"
   public redirectButton: string = "Redirect"
   public cardDetails: any;
+  public poCardClass: string = "card po-cards";
   public masterButtonClass: string = "btn-master";
   public secondaryButtonClass: string = "btn-secondary";
   filteredCards = this.cardDetails;
@@ -45,6 +46,7 @@ export class PodetailsComponent implements OnInit {
     this.podetailsService.getCards()
       .subscribe(cards => {
         this.cardDetails = cards.productionItems;
+        this.podetails = cards;
         this.filteredCards = this.cardDetails
       });
   }
