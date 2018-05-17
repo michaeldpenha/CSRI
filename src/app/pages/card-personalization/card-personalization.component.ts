@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardPersonalizationService } from "./card-personalization.service";
 import { Observable } from 'rxjs/observable';
+import {LoaderService} from '../../shared/services/index';
 
 @Component({
   selector: 'app-card-personalization',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs/observable';
 })
 export class CardPersonalizationComponent implements OnInit {
 
-  constructor(protected pesonalization: CardPersonalizationService) { }
+  constructor(protected pesonalization: CardPersonalizationService , private loadingService : LoaderService) { }
 
   cardPersonalization: any;
   personalizeButton = "Personalize";
@@ -27,6 +28,7 @@ export class CardPersonalizationComponent implements OnInit {
       .subscribe(
       (successResponse) => {
         this.cardPersonalization = successResponse;
+        this.loadingService.hide();
       },
       (errorResponse) => {
         window.alert('Error occurred while fetching events. Please contact administrator for more details.');

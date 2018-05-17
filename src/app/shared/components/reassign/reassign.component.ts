@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { ReassignService } from './reassign.service';
-import { UtilsService } from '../../services/utils/utils.service';
+import { UtilsService,LoaderService } from '../../services/index';
 
 @Component({
   selector: 'app-reassign',
@@ -9,7 +9,7 @@ import { UtilsService } from '../../services/utils/utils.service';
   styleUrls: ['./reassign.component.scss']
 })
 export class ReassignComponent implements OnInit {
-  constructor(protected reassignService: ReassignService, private utils: UtilsService) { }
+  constructor(protected reassignService: ReassignService, private utils: UtilsService, private loadingService : LoaderService) { }
   @Input('selectionArray') selectedArray: any;
   @Input() selectedKey : string;
   @Input() headerText: string;
@@ -43,6 +43,7 @@ export class ReassignComponent implements OnInit {
     this.reassignService.getSatellite().subscribe(
       (response) => {
         this.satellites = response.satellites;
+        this.loadingService.hide();
       },
       (error) => {
         console.log(error)
@@ -122,8 +123,8 @@ export class ReassignComponent implements OnInit {
   public reAssign = () => {
     this.reassignService.patchSoReassign(this.param).subscribe(
       (response) => {
-        console.log(response);
         this.redirectTrigger.emit();
+        this.loadingService.hide()
       },
       (error) => {
         console.log(error)

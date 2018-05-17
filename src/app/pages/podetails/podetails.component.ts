@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import { POdetailsService } from './podetails.service';
-import { UtilsService } from '../../shared/services/utils/utils.service';
+import { UtilsService,LoaderService } from '../../shared/services/index';
 import { ArrayFilterPipe } from "../../shared/card-filter.pipe";
 import { ActivatedRoute } from '@angular/router';
 import { SearchfieldComponent } from '../../shared/components/searchfield/searchfield.component';
@@ -30,7 +30,7 @@ export class PodetailsComponent implements OnInit {
     value = value.toLocaleLowerCase();
     this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['pan'], 'or');
   }
-  constructor(private podetailsService: POdetailsService, private utils: UtilsService, public cardpipe: ArrayFilterPipe, private route: ActivatedRoute) {
+  constructor(private podetailsService: POdetailsService, private utils: UtilsService, public cardpipe: ArrayFilterPipe, private route: ActivatedRoute, public loadingService  :LoaderService) {
   }
 
 
@@ -48,7 +48,8 @@ export class PodetailsComponent implements OnInit {
       .subscribe(cards => {
         this.cardDetails = cards.productionItems;
         this.podetails = cards;
-        this.filteredCards = this.cardDetails
+        this.filteredCards = this.cardDetails;
+        this.loadingService.hide();
       });
   }
   public redirectPI = (e: any) => {
