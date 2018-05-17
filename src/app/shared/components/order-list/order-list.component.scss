@@ -45,10 +45,12 @@ select.form-control:not([size]):not([multiple]){
         border: 1px solid red;
     }
 }
-.m-order-list {
-    height: 300px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: block;
+@media (max-width: 481px) {
+    .m-order-list {
+        height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: block;
+    }
 }
 
