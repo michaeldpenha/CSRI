@@ -83,8 +83,10 @@
   </div>
   <app-grid class="d-none d-md-block" [columnDefs]="columnDefs" [data]="data" (sortTrigger)="sortGridData($event)" (allChecked)="allSOSelected($event)"
     (onCellClick)="cellClick($event)" (rowSelected)="rowSelected($event)" [allItemsSelected]="allCheck"></app-grid>
-  <app-m-order-list class="d-md-none" [config]="config.mobileOrderList"[data]="data" (rowSelected)="rowSelected($event)"></app-m-order-list>
-  <ng-container *ngIf="data.length > 0">
+
+  <div class="m-order-list">
+    <app-m-order-list class="d-sm-none" [config]="config.mobileOrderList"[data]="data" (rowSelected)="rowSelected($event)"></app-m-order-list>
+  </div>  <ng-container *ngIf="data.length > 0">
     <app-pagination [pageLimitArray]="pageLimitArray" [count]="totalRecords" class="row" [page]="defaultPage" [perPage]="pageLimit"
       [pagesToShow]="5" (goPrev)="previousPage($event)" (goNext)="nextPage($event)" (goPage)="goToPage($event)" (changeInPerPage)="pageLimitChange($event)"></app-pagination>
   </ng-container>
