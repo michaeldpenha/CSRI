@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { GridConfig } from '../../models/index';
-import { UtilsService, OrderListService } from '../../services/index';
+import { UtilsService, OrderListService,LoaderService } from '../../services/index';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
@@ -45,7 +45,7 @@ export class OrderListComponent implements OnInit {
   dateFromPickerConfig: Partial<BsDatepickerConfig>;
   dateToPickerConfig: Partial<BsDatepickerConfig>;
 
-  constructor(public utils: UtilsService, public router : Router,public route: ActivatedRoute, public http: HttpClient, public listService: OrderListService) {
+  constructor(public utils: UtilsService, public router : Router,public route: ActivatedRoute, public http: HttpClient, public listService: OrderListService,public loaderService : LoaderService) {
   }
 
   ngOnInit() {
@@ -108,10 +108,11 @@ export class OrderListComponent implements OnInit {
     this.http.get(this.config.url).toPromise().then(data => {
       this.listData = data[this.responseKey];
       this.filterSOData();
+      this.loaderService.hide();
     }, err => {
       this.listData = [];
       this.filterSOData();
-    })
+    });
     // this.listData = [{
     //   "orderId": "15",
     //   "volume": 50,

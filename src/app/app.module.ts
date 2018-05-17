@@ -31,6 +31,7 @@ import { ReassignComponent } from "./shared/components/reassign/reassign.compone
 import { ReassignService } from './shared/components/reassign/reassign.service';
 import { ProgressStatusComponent } from "./shared/components/progress-status/progress-status.component";
 import { CardPersonalizationService } from "./pages/card-personalization/card-personalization.service";
+
 @NgModule({
   declarations: [
     AppComponent,

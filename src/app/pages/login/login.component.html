@@ -1,0 +1,45 @@
+<div class="loginPage">
+
+    <div class="jumbotronBox">
+
+        <div class="jumbotron ">
+            <div class="logo"><img src="../../assets/images/Logo-big.png"></div>
+            <p>Online Portal to change production instruction or data before / while cards are being personalized </p>
+
+            <ul>
+                <li><a>Contact</a></li>
+                <li><a>Site Terms</a></li>
+                <li><a>Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="loginBox">
+        <div class="loginForm">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-horizontal ">
+                <div class="form-group ">
+                    <h3>Sign In</h3>
+                    <label>UserName</label>
+                    <input type="text" name="username" formControlName="username" class="form-control">
+                    <span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched" class="alert alert-danger">{{errorMsg.usernameRequired}}</span>
+                </div>
+                <div class="form-group ">
+                    <label>Password</label>
+                    <input type="password" name="password" formControlName="password" class="form-control">
+                    <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched" class="alert alert-danger">{{errorMsg.passwordRequired}}</span>
+                </div>
+                <div class="form-group ">
+                    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary signInBtn">Sign In</button>
+                </div>
+            </form>
+
+            <ul class="">
+                <li><a>Need help signing in?</a></li>
+                <li><a>Forgot password?</a></li>
+                <li><a>User manual</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
