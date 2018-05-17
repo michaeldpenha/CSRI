@@ -1,11 +1,14 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap';
-
 import { AppRoutingModule } from './app-routing.module';
+
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 /**
@@ -32,11 +35,17 @@ import { ReassignService } from './shared/components/reassign/reassign.service';
 import { ProgressStatusComponent } from "./shared/components/progress-status/progress-status.component";
 import { CardPersonalizationService } from "./pages/card-personalization/card-personalization.service";
 
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+}
+// export function createTranslateLoader(http: HttpClient) {
+//   return new TranslateHttpLoader(http, './shared/config/i18n/assets/i18n/', '.json');
+// }
+
 @NgModule({
   declarations: [
     AppComponent,
     SharedComponents,
-   
     ArrayFilterPipe,
     ReassignComponent,
     PagesComponent,
@@ -49,6 +58,14 @@ import { CardPersonalizationService } from "./pages/card-personalization/card-pe
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
     BsDatepickerModule.forRoot()
   ],
   providers: [{
