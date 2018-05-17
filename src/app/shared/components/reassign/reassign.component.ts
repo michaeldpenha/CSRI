@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { ReassignService } from './reassign.service';
 import { UtilsService,LoaderService } from '../../services/index';
-
+import {endPoints} from '../../constants/index';
 @Component({
   selector: 'app-reassign',
   templateUrl: './reassign.component.html',
@@ -14,17 +14,25 @@ export class ReassignComponent implements OnInit {
   @Input() selectedKey : string;
   @Input() headerText: string;
   @Input() selectionText: string;
+  @Input() parentCmp : string;
+  @Input() selectionType : string = "radio";
   @Output() onCancelClick = new EventEmitter<any>();
   @Output() redirectTrigger = new EventEmitter<any>();
   reassignForm: FormGroup;
   public showHide: boolean = true;
+  public isClientManagerRequired : boolean = false;
   public showDropdown: boolean = false;
   public satellites: any = [];
   public redirectionMedium: string = '';
   public param: any;
+  public clientMachine : any;
+  public clientMachineSelected : any = [];
+  
   ngOnInit() {
     this.initializeForm();
     this.fetchSatelliteInfo();
+    this.isClientManagerRequired = this.isRedirectionMediumRequired();
+    (this.isClientManagerRequired) ? this.fetchClientInfo() : '';
   }
   /**
    * initializeForm
@@ -50,8 +58,23 @@ export class ReassignComponent implements OnInit {
       }
     );
   }
+  /**
+   * fetchClientInfo
+   */
+  public fetchClientInfo = () => {
+    this.reassignService.getClientMachines().subscribe(
+      (response) => {
+        //response.clientMachines
+        this.clientMachine = response.clientMachines;
+        this.loadingService.hide();
+      },
+      (error) => {
+      }
+    );
+  }
   checkType = () => {
     this.redirectionMedium = this.reassignForm.controls.so.value;
+    this.clientMachineSelected = [];
   }
 
   onSubmitReassign(reassignForm) {
@@ -76,6 +99,7 @@ export class ReassignComponent implements OnInit {
     let result;
     switch (this.redirectionMedium.toLocaleUpperCase()) {
       case 'SATELLITE': result = this.reassignForm.controls['externalSatellite'].value; break;
+      case 'CLIENTMACHINES' : result = this.clientMachineSelected && this.clientMachineSelected.length > 0 ? this.clientMachineSelected : ''; break;
       case 'CDP': result = 'CDP'; break;
     }
     return result;
@@ -86,9 +110,13 @@ export class ReassignComponent implements OnInit {
   public manipulateParam = (): any => {
     let result = {};
     let medium = this.redirectionMedium.toLocaleUpperCase();
-    if (medium != "CDP") {
+    if (medium === "SATELLITE") {
       result['satelliteId'] = this.fetchValueForRedirect();
       result['salesOrderIds'] = this.toPopulateSelectedArray();
+    }else if(medium === "CLIENTMACHINES"){
+      result['productionOrderIds'] = this.toPopulateSelectedArray();
+      result['satelliteId'] = "1";
+      result['clientMachineId'] = this.clientMachineSelected[0].id;
     }
     result['redirectOption'] = medium;
     return result;
@@ -121,7 +149,8 @@ export class ReassignComponent implements OnInit {
    * reAssign
    */
   public reAssign = () => {
-    this.reassignService.patchSoReassign(this.param).subscribe(
+    let url = this.fetchPatchUrl();
+    this.reassignService.patchSoReassign(this.param,url).subscribe(
       (response) => {
         this.redirectTrigger.emit();
         this.loadingService.hide()
@@ -144,5 +173,33 @@ export class ReassignComponent implements OnInit {
    */
   public showHideIcon() {
     this.showHide = !this.showHide;
+  }
+  /**
+   * isRequired
+   */
+  public isRedirectionMediumRequired = () :boolean =>  {
+    let result : boolean = true;
+    switch(this.parentCmp && this.parentCmp.toLowerCase()){
+      case 'salesorder' : result = false; break;
+    }
+    return result;
+  }
+  /**
+   * recordSelected
+   */
+  public recordFromRadioSelection = (e : any) => {
+    this.clientMachineSelected = [];
+    this.clientMachineSelected.push(e);
+  }
+  /**
+   * fetchPatchUrl
+   */
+  public fetchPatchUrl = () : string => {
+    let url : string = `${endPoints.baseUrl}/${endPoints.urlPath.issuers}`;
+    switch(this.parentCmp && this.parentCmp.toLowerCase()){
+      case 'salesorder' : url = url + '/1/reassign-sales-orders'; break;
+      case 'productionorder' : url = url + '/1/reassign-production-orders';break;
+    }
+    return url;
   }
 }

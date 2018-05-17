@@ -9,7 +9,7 @@
             [defaultFilterValue]="defaultFilterValue"></app-order-list>
     </div>
     <ng-container *ngIf="redirectView">
-        <app-reassign  [selectedKey]="selectedKey" [headerText]="redirectHeaderText" [selectionText]="selectedString" [selectionArray]="redirectSelectedArray"
+        <app-reassign  [parentCmp] = "parentCmp" [selectedKey]="selectedKey" [headerText]="redirectHeaderText" [selectionText]="selectedString" [selectionArray]="redirectSelectedArray"
             (redirectTrigger)="redirectTrigger()" (onCancelClick)="onCancel()"></app-reassign>
     </ng-container>
 </div>

@@ -15,8 +15,14 @@ export class ReassignService {
   getSatellite(): Observable<any> {
     return this.http.get( `${endPoints.baseUrl}/${endPoints.urlPath.issuers}/1/satellites` );
   }
-  patchSoReassign(param):Observable<any> {
-    return this.http.patch( `${endPoints.baseUrl}/${endPoints.urlPath.issuers}/1/reassign-sales-orders`, param);
+  patchSoReassign(param : string , url : string):Observable<any> {
+    return this.http.patch( url, param);
+  }
+  /**
+   * getClientMachines
+   */
+  public getClientMachines = () : Observable<any> => {
+    return this.http.get( `${endPoints.baseUrl}/${endPoints.urlPath.issuers}/1/satellites/1/client-machines` );
   }
 
 }

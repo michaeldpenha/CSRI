@@ -17,6 +17,7 @@ export class ProductionOrderComponent implements OnInit {
   public responseKey = "productionOrders";
   public selectedString = "Selected Production Orders";
   public redirectHeaderText = "Redirect Production Orders";
+  public parentCmp: string = "productionorder";
   constructor(private listService: OrderListService) { }
 
   ngOnInit() {
