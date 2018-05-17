@@ -21,10 +21,11 @@ export class PodetailsComponent implements OnInit {
   public redirectSelectedArray: any;
   public redirectDisabled: boolean = true;
   public selectedKey : string = 'pan';
-  public placeholder: string = "Search using PAN #";
+  public searchplaceholder: string = "Search using PAN #";
   public redirectView: boolean = false;
   public redirectHeaderText: string = "Personlize PO";
-  public selectedString: string = "Selection Of Pis"
+  public selectedString: string = "Selection Of Pis";
+   isCheckBox: boolean = true;
   performFilter(value): any {
     value = value.toLocaleLowerCase();
     this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['pan'], 'or');

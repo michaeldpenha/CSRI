@@ -24,9 +24,7 @@
 .btn-secondary:disabled {
     @include btn-configuration($_btn-height,$_btn-width,$_btn-radius,$_btn-background-sec-disabled,$_btn-font-size,$_btn-border-radius,$_btn-text-color); 
  }
-body{
-    font-family: $_font-regular;
-}
+
  input.form-control, select.form-control {
     height: 30px;
     line-height: 1;
@@ -36,8 +34,12 @@ body{
 
 .po-cards{
     background: #fbf6f6;
+        font-size: 13px;
+    padding: 10px;
+
 }
 body,p span{
+     font-family: $_font-regular;
     font-size: 14px;
 }
 
@@ -45,6 +47,9 @@ h1{
     font-family: $_font-light;
     font-size: 18px;
     color: #333;
+}
+.bold{
+    font-family: $_font-bold;
 }
 a,a:hover{
     font-size: $_standard-font-size;
@@ -82,6 +87,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .came-case::first-letter{
     text-transform: capitalize;
+}
+.alert{
+    padding: 4px
 }
 @media (max-width:767px) {
 
