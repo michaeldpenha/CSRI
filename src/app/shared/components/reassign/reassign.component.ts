@@ -17,6 +17,7 @@ export class ReassignComponent implements OnInit {
   @Output() onCancelClick = new EventEmitter<any>();
   @Output() redirectTrigger = new EventEmitter<any>();
   reassignForm: FormGroup;
+  public showHide: boolean = true;
   public showDropdown: boolean = false;
   public satellites: any = [];
   public redirectionMedium: string = '';
@@ -136,6 +137,11 @@ export class ReassignComponent implements OnInit {
     let result = true;
     result = this.selectedArray.length === 0 || this.redirectionMedium == '' || this.fetchValueForRedirect() == '';
     return result; 
-    
+  }
+  /**
+   * showHideIcon
+   */
+  public showHideIcon() {
+    this.showHide = !this.showHide;
   }
 }
