@@ -12,6 +12,7 @@ export class ProductionOrderComponent implements OnInit {
   public refeshData: boolean = false;
   public redirectSelectedArray: any = [];
   public defaultFilter = "status";
+  public selectedKey : string = "orderId";
   public defaultFilterValue = "queued";
   public responseKey = "productionOrders";
   public selectedString = "Selected Production Orders";

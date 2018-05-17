@@ -19,6 +19,7 @@ export class PodetailsComponent implements OnInit {
   filteredCards = this.cardDetails;
   public redirectSelectedArray: any;
   public redirectDisabled: boolean = true;
+  public selectedKey : string = 'pan';
   public placeholder: string = "Search using PAN #";
   public redirectView: boolean = false;
   public redirectHeaderText: string = "Personlize PO";

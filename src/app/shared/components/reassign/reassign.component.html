@@ -18,7 +18,7 @@
         {{selectionText}} ({{selectedArray.length}})
       </label>
       <div class="selectedSO">
-        <app-removable-card (removeCard)="removeSelectedArray($event,selected)" [label]="selected.orderId" *ngFor="let selected of selectedArray"></app-removable-card>
+        <app-removable-card (removeCard)="removeSelectedArray($event,selected)" [label]="selected[selectedKey]" *ngFor="let selected of selectedArray"></app-removable-card>
       </div>
       <hr />
 

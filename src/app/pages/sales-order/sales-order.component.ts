@@ -11,6 +11,7 @@ export class SalesOrderComponent implements OnInit {
   public redirectView: boolean = false;
   public refeshData: boolean = false;
   public redirectSelectedArray: any = [];
+  public selectedKey : string = "orderId";
   public selectedString = "Selected Sales Orders";
   public redirectHeaderText = "Redirect Sales Orders";
   public defaultFilter = "status";
@@ -38,7 +39,7 @@ export class SalesOrderComponent implements OnInit {
       new OrderFiltersConfig('S', 'options', [{ key: 'queued', value: 'Queued' }], 'form-group col-sm-3 col-md-2', 'Status:', 'status', 'status', 'form-control')],
       [new GridConfig('orderId', 'Sales Order Id', true,false),
       new GridConfig('volume', 'Volume', true,false),
-      new GridConfig('deliveryDate', 'Delivery Date', false,false),
+      new GridConfig('deliveryDate', 'Delivery Date', true,false),
       new GridConfig('status', 'Status Of order', true,false)],
       `${endPoints.baseUrl}/${endPoints.urlPath.issuers}/1/sales-orders`,
       [new MOrderConfig('orderId', 'ID'), new MOrderConfig('status', 'Status'), new MOrderConfig('volume', 'Volume'), new MOrderConfig('deliveryDate', 'Delivery Date')]
