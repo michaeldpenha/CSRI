@@ -3,7 +3,7 @@ table {
     table-layout:fixed;
     margin:auto;
 }
-thead, tfoot {
+thead {
     display:table;
     width:100%;
     width:calc(100% - 18px);

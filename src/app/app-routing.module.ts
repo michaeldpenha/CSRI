@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PodetailsComponent } from "./pages/podetails/podetails.component";
 
-import { SalesOrderComponent, ProductionOrderComponent } from './pages/index';
-import { CardPersonalizationComponent } from "./pages/card-personalization/card-personalization.component";
+import { SalesOrderComponent, ProductionOrderComponent,LoginComponent,PodetailsComponent,CardPersonalizationComponent } from './pages/index';
 
 const routes: Routes = [{
   path: '',
-  redirectTo: '/sales-order',
+  redirectTo: '/login',
   pathMatch: 'full'
+},{
+  path: 'login',
+  component: LoginComponent
 }, {
   path: 'sales-order',
   component: SalesOrderComponent
