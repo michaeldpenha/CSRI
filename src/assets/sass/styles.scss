@@ -56,9 +56,9 @@ a,a:hover{
     font-size: $_standard-font-size;
     text-decoration: $_border-none;
 }
-.page-title{
+/* .page-title{
     padding: 25px 0;
-}
+} */
 .filter-panel label{
     font-size: 11px;
     color: #666;
@@ -91,6 +91,19 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .alert{
     padding: 4px
+}
+.side-bar-nav{
+    font-family: $_font-semibold;
+}
+.wrapper{
+    margin:60px 0 0 90px
+}
+@media (min-width: 1200px)
+{
+.container {
+    max-width: 100%;
+    padding: 25px 30px;
+}
 }
 @media (max-width:767px) {
 
