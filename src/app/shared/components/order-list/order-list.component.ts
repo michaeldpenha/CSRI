@@ -301,9 +301,11 @@ export class OrderListComponent implements OnInit {
    * applyFilter
    */
   public applyFilter = () => {
+    if(!this.checkValidation()){
+
+    }else{
     let me = this;
     me.adavancedArray = [];
-    console.log(me.filterForm.controls)
     let filterKeys = Object.keys(me.filterForm.controls);
     filterKeys.forEach((item) => {
       let label: any = '';
@@ -313,6 +315,14 @@ export class OrderListComponent implements OnInit {
     this.defaultPage = 1;
     this.filterSOData();
     this.displayFilterOptions();
+      
+    }
+  }
+  /**
+   * checkValidation
+   */
+  public checkValidation = (): boolean  => {
+    return true;
   }
   /**
    * cardLabel

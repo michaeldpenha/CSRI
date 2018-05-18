@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderConfig, OrderFiltersConfig, GridConfig,MOrderConfig } from '../../shared/models/index';
+import { OrderConfig, OrderFiltersConfig, GridConfig, MOrderConfig } from '../../shared/models/index';
 import { endPoints } from '../../shared/constants/index';
 import { OrderListService } from '../../shared/services/index';
 @Component({
@@ -12,7 +12,7 @@ export class ProductionOrderComponent implements OnInit {
   public refeshData: boolean = false;
   public redirectSelectedArray: any = [];
   public defaultFilter = "status";
-  public selectedKey : string = "orderId";
+  public selectedKey: string = "orderId";
   public defaultFilterValue = "queued";
   public responseKey = "productionOrders";
   public selectedString = "Selected Production Orders";
@@ -38,28 +38,28 @@ export class ProductionOrderComponent implements OnInit {
       new OrderFiltersConfig('I', 'number', [], 'form-group col-sm-2', '', 'to', 'volumeTo', 'form-control'),
       new OrderFiltersConfig('I', 'text', [], 'form-group col-sm-3 col-md-2', 'Delivery Date', 'from', 'fromDate', 'form-control'),
       new OrderFiltersConfig('I', 'text', [], 'form-group col-sm-3 col-md-2', '', 'to', 'toDate', 'form-control'),
-      new OrderFiltersConfig('S', 'options', [{ key: 'queued', value: 'Queued' }], 'form-group col-sm-3 col-md-2', 'Status', 'status', 'status', 'form-control')
+      new OrderFiltersConfig('S', 'options', this.fetchStatusOptions(), 'form-group col-sm-3 col-md-2', 'Status', 'status', 'status', 'form-control')
       ],
-      [new GridConfig('orderId', 'Production Order Id', true,true),
-      new GridConfig('volume', 'Volume', true,false),
-      new GridConfig('deliveryDate', 'Delivery Date', false,false),
-      new GridConfig('status', 'Status Of order', true,false)],
+      [new GridConfig('orderId', 'Production Order Id', true, true),
+      new GridConfig('volume', 'Volume', true, false),
+      new GridConfig('deliveryDate', 'Delivery Date', false, false),
+      new GridConfig('status', 'Status Of order', true, false)],
       `${endPoints.baseUrl}/${endPoints.urlPath.issuers}/1/satellites/1/clientMachines/1/production-orders`,
-      [new MOrderConfig('orderId','ID'),new MOrderConfig('status','Status'),new MOrderConfig('volume','Volume'),new MOrderConfig('deliveryDate','Delivery Date')]
+      [new MOrderConfig('orderId', 'ID'), new MOrderConfig('status', 'Status'), new MOrderConfig('volume', 'Volume'), new MOrderConfig('deliveryDate', 'Delivery Date')]
     );
     return config;
   }
   /**
    * onRedirect
    */
-  public onRedirect = (selectedEl : any) => {
+  public onRedirect = (selectedEl: any) => {
     this.redirectView = true;
     this.redirectSelectedArray = selectedEl;
   }
   /**
    * onCancel 
    */
-  public onCancel = () => {     
+  public onCancel = () => {
     this.redirectView = false;
   }
   /**
@@ -69,5 +69,25 @@ export class ProductionOrderComponent implements OnInit {
     this.redirectView = false;
     this.refeshData = !this.refeshData;
   }
+  /**
+   * fetchStatusOptions
+   */
+  public fetchStatusOptions = (): any => {
+    let result: any = [];
+    result.push({
+        key: 'created', value: 'Created'
+      }, {
+        key: 'queued', value: 'Queued'
+      }, {
+        key: 'under process', value: 'Under Process'
+      }, {
+        key: 'completed', value: 'Completed'
+      }, {
+        key: 'failed', value: 'Failed'
+      },{
+        key : 'shipped' , value : 'Shipped'
+      });
+    return result;
 
+  }
 }

@@ -47,7 +47,7 @@
                   </ng-container>
                   <ng-container *ngIf="!ifDateField(filter)">
                     <div class="col-8 col-sm-12">
-                      <input [type]="filter.subType" (blur)="onBlur($event)" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex"
+                      <input [type]="filter.subType" [formControlName]="filter.dataIndex" [id]="filter.dataIndex" [name]="filter.dataIndex"
                         [placeholder]="filter.key" [ngClass]="filter.inputClass">
                     </div>
                   </ng-container>

@@ -37,7 +37,7 @@ export class SalesOrderComponent implements OnInit {
       new OrderFiltersConfig('I', 'number', [], 'form-group col-sm-2', ' ', 'to', 'volumeTo', 'form-control'),
       new OrderFiltersConfig('I', 'text', [], 'form-group col-sm-3 col-md-2', 'Delivery Date:', 'from', 'fromDate', 'form-control'),
       new OrderFiltersConfig('I', 'text', [], 'form-group col-sm-3 col-md-2', ' ', 'to', 'toDate', 'form-control '),
-      new OrderFiltersConfig('S', 'options', [{ key: 'queued', value: 'Queued' }], 'form-group col-sm-3 col-md-2', 'Status:', 'status', 'status', 'form-control')],
+      new OrderFiltersConfig('S', 'options',  this.fetchStatusOptions(), 'form-group col-sm-3 col-md-2', 'Status:', 'status', 'status', 'form-control')],
       [new GridConfig('orderId', 'Sales Order Id', true, false),
       new GridConfig('volume', 'Volume', true, false),
       new GridConfig('deliveryDate', 'Delivery Date', true, false),
@@ -66,5 +66,30 @@ export class SalesOrderComponent implements OnInit {
   public redirectTrigger = () => {
     this.redirectView = false;
     this.refeshData = !this.refeshData;
+  }
+  /**
+   * fetchStatusOptions
+   */
+  public fetchStatusOptions = (): any => {
+    let result: any = [];
+    result.push({
+        key: 'received', value: 'Received'
+      },{
+        key: 'verified', value: 'Verified'
+      }, {
+        key: 'queued', value: 'Queued'
+      },{
+        key: 'prodution orders generated', value: 'Production Orders Generated'
+      }, {
+        key: 'under process', value: 'Under Process'
+      }, {
+        key: 'completed', value: 'Completed'
+      }, {
+        key: 'failed', value: 'Failed'
+      },{
+        key : 'shipped' , value : 'Shipped'
+      });
+    return result;
+
   }
 }
