@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { OrderConfig, OrderFiltersConfig, GridConfig, MOrderConfig } from '../../shared/models/index';
 import { endPoints } from '../../shared/constants/index';
 import { OrderListService } from '../../shared/services/index';
+import {ViewEncapsulation} from '@angular/core';
 @Component({
   selector: 'app-sales-order',
+  encapsulation: ViewEncapsulation.Emulated,
   templateUrl: './sales-order.component.html',
   styleUrls: ['./sales-order.component.scss']
 })
@@ -29,7 +31,7 @@ export class SalesOrderComponent implements OnInit {
   public salesOrderConfig = () => {
     let config: any;
     config = new OrderConfig('Generate PO',
-      "Search using Id's,status etc.",
+      "Search using id's,status etc.",
       'Redirect',
       [10, 20, 30],
       [new OrderFiltersConfig('I', 'text', [], 'form-group col-sm-3 col-md-2', 'Sales Order Id:', 'soid', 'orderId', 'form-control '),

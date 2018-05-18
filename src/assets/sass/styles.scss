@@ -44,6 +44,15 @@ body,p span{
     font-size: 14px;
 }
 
+.fa-search:before {
+    content: "";
+    background: #fff;
+    display: inline-block;
+    height: 20px;
+    width: 16px;
+    padding-left: 4px;
+}
+
 h1{
     font-family: $_font-light;
     font-size: 18px;
@@ -71,6 +80,11 @@ input.form-control::placeholder{ /* Chrome, Firefox, Opera, Safari 10.1+ */
     font-size: $_standard-font-size;
    // opacity: 1; /* Firefox */
 }
+
+.search input.form-control::placeholder{ /* Chrome, Firefox, Opera, Safari 10.1+ */
+    text-transform: none;
+}
+
 input[type=number]::-webkit-inner-spin-button, 
 
 input[type=number]::-webkit-outer-spin-button { 
