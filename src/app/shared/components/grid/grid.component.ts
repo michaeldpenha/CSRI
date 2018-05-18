@@ -31,7 +31,7 @@ export class GridComponent implements OnInit {
 
   ngOnInit() { }
 
-  ngAfterViewInit() { this.resizeTableCol(); }
+  ngAfterViewChecked() { this.resizeTableCol(); }
   /**
    * customTemplate
    */
