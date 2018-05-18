@@ -3,7 +3,8 @@ import {ProductionOrderComponent} from './production-order/production-order.comp
 import { CardPersonalizationComponent } from "./card-personalization/card-personalization.component";
 import { PodetailsComponent } from "./podetails/podetails.component";
 import { LoginComponent } from './login/login.component';
-export const PagesComponent = [SalesOrderComponent,ProductionOrderComponent,CardPersonalizationComponent,PodetailsComponent,LoginComponent];
+import { ProgressStatusComponent } from "../shared/components/progress-status/progress-status.component";
+export const PagesComponent = [ProgressStatusComponent, SalesOrderComponent, ProductionOrderComponent, CardPersonalizationComponent, PodetailsComponent, LoginComponent];
 
 export * from './sales-order/sales-order.component';
 export * from './production-order/production-order.component';

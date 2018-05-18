@@ -1,60 +1,11 @@
-.loginPage {
-    display: table;
-    height: 100%;
-    width: 100%;
-    .logo {
-        img {
-            position: relative;
-            left: -85px;
-        }
-    }
-    .jumbotronBox {
-        display: table-cell;
-        vertical-align: middle;
-        width: 70%;
-        background: #ec8729;
-        color: #fff;
-        padding-right: 10%;
-        ul {
-            padding-left: 0;
-            li {
-                list-style: none;
-                line-height: 30px;
-                float: left;
-                a {
-                    color: #fff;
-                    font-size: 13px;
-                    border-right: 1px solid #fff!important;
-                    padding: 0 10px;
-                }
-                &:last-child {
-                    a {
-                        border: none!important;
-                    }
-                }
-                &:first-child {
-                    a {
-                        padding-left: 0!important;
-                    }
-                }
-            }
-        }
-    }
-    ul {
-        padding-left: 0;
-        li {
-            list-style: none;
-            line-height: 25px;
-            a {
-                color: #363636;
-                font-size: 13px
-            }
-        }
-    }
+
     .loginBox {
-        display: table-cell;
+        margin-left: auto;
+        margin-right: auto;
+        /* margin: auto; */
+    
         vertical-align: middle;
-        width: 30%;
+
         padding: 3%;
         // border-left: 3px solid #f00;
         ul {
@@ -81,74 +32,12 @@
             position: relative;
             top: -2px;
             &.alert-danger {
-                color: #d92b2b;
-                background-color: #f6e9e9
+                    color: #d92b2b;
+                    background-color: #f6e9e9;
+                    top: 2px;
             }
         }
     }
-}
-
-p {
-    font-size: 13px
-}
-
-.jumbotron {
-    width: 350px;
-    float: right;
-    padding-top: 0;
-    background: transparent;
-    position: relative;
-    top: -70px;
-    h3 {
-        margin-top: 0;
-        margin-bottom: 30px;
-        font-weight: 400;
-        color: #fff;
-    }
-    p {
-        font-weight: 600;
-        line-height: 20px;
-    }
-}
-
-.loginForm {
-    width: 200px;
-}
-
-.form-horizontal {
-    // width: 200px;
-    // display: inline-block;
-    // position: absolute;
-    // top: 40%;
-    // right: 0;
-    label {
-        width: 100%
-    }
-    .form-group {
-        margin-bottom: 10px;
-        input {
-            margin-bottom: 10px;
-            border-radius: 0;
-            box-shadow: none;
-            &.ng-invalid {
-                &.ng-touched {
-                    border: 1px solid #d92b2b
-                }
-            }
-        }
-    }
-}
-
-.icon {
-    width: 90px;
-    height: 80px;
-    position: relative;
-    float: right;
-    background: #999;
-    border-radius: 13px;
-    left: -30px;
-    top: 15px;
-}
 
 .signInBtn {
     width: 120px

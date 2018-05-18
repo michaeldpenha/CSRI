@@ -18,7 +18,6 @@ import { AppComponent } from './app.component';
  */
 import { SharedComponents } from './shared/components/index';
 
-
 /**
  * SharedService from Shared folder
  */
@@ -34,15 +33,11 @@ import { POdetailsService } from "./pages/podetails/podetails.service";
 import { ReassignComponent } from "./shared/components/reassign/reassign.component";
 
 import { ReassignService } from './shared/components/reassign/reassign.service';
-import { ProgressStatusComponent } from "./shared/components/progress-status/progress-status.component";
 import { CardPersonalizationService } from "./pages/card-personalization/card-personalization.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
-// export function createTranslateLoader(http: HttpClient) {
-//   return new TranslateHttpLoader(http, './shared/config/i18n/assets/i18n/', '.json');
-// }
 
 @NgModule({
   declarations: [
@@ -51,7 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ArrayFilterPipe,
     ReassignComponent,
     PagesComponent,
-    ProgressStatusComponent
+    // ProgressStatusComponent
   ],
   imports: [
     BrowserModule,
