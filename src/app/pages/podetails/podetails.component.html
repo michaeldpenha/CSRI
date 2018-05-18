@@ -135,6 +135,6 @@
 
 </div>
 <div *ngIf="redirectView">
-  <app-reassign  [selectedKey]="selectedKey" [headerText]="redirectHeaderText" [selectionText]="selectedString" [selectionArray]="redirectSelectedArray"
+  <app-reassign  [parentCmp]="parentCmp" [selectedKey]="selectedKey" [headerText]="redirectHeaderText" [selectionText]="selectedString" [selectionArray]="redirectSelectedArray"
     (redirectTrigger)="redirectTrigger()" (onCancelClick)="onCancel()"></app-reassign>
 </div>

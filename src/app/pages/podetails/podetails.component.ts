@@ -26,6 +26,7 @@ export class PodetailsComponent implements OnInit {
   public redirectHeaderText: string = "Personlize PO";
   public selectedString: string = "Selection Of Pis";
    isCheckBox: boolean = true;
+   public parentCmp : string = "podetails";
   performFilter(value): any {
     value = value.toLocaleLowerCase();
     this.filteredCards = this.utils.filterArray(this.cardDetails, value, ['pan'], 'or');

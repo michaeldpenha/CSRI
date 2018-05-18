@@ -11,6 +11,7 @@ export class CardsComponent implements OnInit {
   @Input() cardDetail:Object;
   @Input() cls:string;
   @Input() isCheckBoxtoChild: boolean;
+  @Input() selectionType : string = "checkbox";
   @Output() cardIsSelected: EventEmitter<string> = new EventEmitter<string>();
   @Output() recordSelected = new EventEmitter<any>();
   constructor() { }
