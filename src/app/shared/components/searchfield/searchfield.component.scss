@@ -1,5 +1,6 @@
 .search { 
     position: relative;
+    z-index: -1;
     .fa-search { 
         position: absolute;
         top: 6px;
